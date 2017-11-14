@@ -8,7 +8,6 @@ import MediaPlayer
 class NowPlayingViewController: UIViewController {
     let webservice = Webservice()
 
-    @IBOutlet weak var albumHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var albumImageView: SpringImageView!
     @IBOutlet weak var artistLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
@@ -26,7 +25,7 @@ class NowPlayingViewController: UIViewController {
     )
     var nowPlayingImageView: UIImageView!
     let radioPlayer = AVPlayer(url: URL.WXYCStream)
-    var track: Track = Track()
+    var playcut: Track = Track()
     var mpVolumeSlider = UISlider()
     var obs: NSKeyValueObservation?
     
@@ -49,7 +48,7 @@ class NowPlayingViewController: UIViewController {
         // Notification for when app becomes active
         NotificationCenter.default.addObserver(self,
             selector: #selector(NowPlayingViewController.didBecomeActiveNotificationReceived),
-            name: Notification.Name("UIApplicationDidBecomeActiveNotification"),
+            name: NSNotification.Name.UIApplicationDidBecomeActive,
             object: nil)
         
         
@@ -65,9 +64,9 @@ class NowPlayingViewController: UIViewController {
         }
         
         updateLabels()
-        albumImageView.image = track.artworkImage
+        albumImageView.image = playcut.artworkImage
         
-        if !track.isPlaying {
+        if !playcut.isPlaying {
             pausePressed()
         } else {
             nowPlayingImageView.startAnimating()
@@ -85,7 +84,7 @@ class NowPlayingViewController: UIViewController {
     @objc func didBecomeActiveNotificationReceived() {
         // View became active
         updateLabels()
-        if track.isPlaying == false {
+        if playcut.isPlaying == false {
             resetStream()
         }
     }
@@ -93,7 +92,7 @@ class NowPlayingViewController: UIViewController {
     deinit {
         // Be a good citizen
         NotificationCenter.default.removeObserver(self,
-            name: Notification.Name("UIApplicationDidBecomeActiveNotification"),
+            name: Notification.Name.UIApplicationDidBecomeActive,
             object: nil)
         NotificationCenter.default.removeObserver(self,
             name: Notification.Name.AVAudioSessionInterruption,
@@ -148,7 +147,7 @@ class NowPlayingViewController: UIViewController {
         songLabel.animation = "flash"
         songLabel.animate()
         
-        track.isPlaying = false
+        playcut.isPlaying = false
         
         self.checkPlaylist()
     }
@@ -170,7 +169,7 @@ class NowPlayingViewController: UIViewController {
     //*****************************************************************
     
     @IBAction func playPressed() {
-        track.isPlaying = true
+        playcut.isPlaying = true
         playButtonEnable(enabled: false)
         radioPlayer.play()
         updateLabels()
@@ -187,7 +186,7 @@ class NowPlayingViewController: UIViewController {
     
     @IBAction func pausePressed() {
         
-        track.isPlaying = false
+        playcut.isPlaying = false
         
         playButtonEnable()
         
@@ -216,8 +215,8 @@ class NowPlayingViewController: UIViewController {
             
         } else {
             // Radio is (hopefully) streaming properly
-            songLabel.text = track.title
-            artistLabel.text = track.artist
+            songLabel.text = playcut.title
+            artistLabel.text = playcut.artist
         }
     }
     
@@ -225,11 +224,11 @@ class NowPlayingViewController: UIViewController {
         if enabled {
             playButton.isEnabled = true
             pauseButton.isEnabled = false
-            track.isPlaying = false
+            playcut.isPlaying = false
         } else {
             playButton.isEnabled = false
             pauseButton.isEnabled = true
-            track.isPlaying = true
+            playcut.isPlaying = true
         }
     }
     
@@ -271,8 +270,8 @@ class NowPlayingViewController: UIViewController {
     }
     
     @IBAction func shareButtonPressed(_ sender: UIButton) {
-        let songToShare = "I'm listening to \(track.title) on \(currentStation.name)"
-        let activityViewController = UIActivityViewController(activityItems: [songToShare, track.artworkImage!], applicationActivities: nil)
+        let songToShare = "I'm listening to \(playcut.title) on \(currentStation.name)"
+        let activityViewController = UIActivityViewController(activityItems: [songToShare, playcut.artworkImage!], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
     
@@ -284,18 +283,18 @@ class NowPlayingViewController: UIViewController {
         
         // Update notification/lock screen
         
-        let image:UIImage = track.artworkImage!
+        let image:UIImage = playcut.artworkImage!
         let albumArtwork = MPMediaItemArtwork.init(boundsSize: image.size, requestHandler: { (size) -> UIImage in
             return image
         })
         
         MPNowPlayingInfoCenter.default().nowPlayingInfo = [
-            MPMediaItemPropertyArtist: track.artist,
-            MPMediaItemPropertyTitle: track.title,
+            MPMediaItemPropertyArtist: playcut.artist,
+            MPMediaItemPropertyTitle: playcut.title,
             MPMediaItemPropertyArtwork: albumArtwork,
-            MPMediaItemPropertyAlbumTitle: track.album,
+            MPMediaItemPropertyAlbumTitle: playcut.album,
             MPNowPlayingInfoPropertyIsLiveStream: true,
-            MPNowPlayingInfoPropertyPlaybackRate: track.isPlaying ? 1.0 : 0.0
+            MPNowPlayingInfoPropertyPlaybackRate: playcut.isPlaying ? 1.0 : 0.0
         ]
     }
     
@@ -312,7 +311,7 @@ class NowPlayingViewController: UIViewController {
         case (.remoteControlPause):
             pausePressed()
         case (.remoteControlTogglePlayPause):
-            track.isPlaying ? pausePressed() : playPressed()
+            playcut.isPlaying ? pausePressed() : playPressed()
         default:
             break
         }
@@ -323,30 +322,30 @@ class NowPlayingViewController: UIViewController {
             return
         }
         
-        let currentSongName = self.track.title
+        let currentSongName = self.playcut.title
         
-        self.track.artist = playcut.artistName
-        self.track.title = playcut.songTitle
-        self.track.id = "\(playcut.id)"
-        self.track.album = playcut.releaseTitle
+        self.playcut.artist = playcut.artistName
+        self.playcut.title = playcut.songTitle
+        self.playcut.id = "\(playcut.id)"
+        self.playcut.album = playcut.releaseTitle
         
-        if self.track.artist == "" && self.track.title == "" {
-            self.track.artist = self.currentStation.desc
-            self.track.title = self.currentStation.name
+        if self.playcut.artist == "" && self.playcut.title == "" {
+            self.playcut.artist = self.currentStation.desc
+            self.playcut.title = self.currentStation.name
         }
         
-        guard currentSongName != self.track.title else {
+        guard currentSongName != self.playcut.title else {
             return
         }
         
         DispatchQueue.main.async {
             if kDebugLog {
-                print("METADATA artist: \(self.track.artist) | title: \(self.track.title) | album: \(self.track.album)")
+                print("METADATA artist: \(self.playcut.artist) | title: \(self.playcut.title) | album: \(self.playcut.album)")
             }
             
             // Update Labels
-            self.artistLabel.text = self.track.artist
-            self.songLabel.text = self.track.title
+            self.artistLabel.text = self.playcut.artist
+            self.songLabel.text = self.playcut.title
             self.updateUserActivityState(self.userActivity!)
             
             // songLabel animation

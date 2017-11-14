@@ -13,6 +13,7 @@
 		235102031FB95B8800ED3DDF /* iTunes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 235102021FB95B8800ED3DDF /* iTunes.swift */; };
 		235102041FB9691700ED3DDF /* Misc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94DB0A821B98B762005ED993 /* Misc.swift */; };
 		2C5545BD1C1124DE00728469 /* SwiftRadioUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */; };
+		348464841FBA56A2001F9538 /* NowPlayingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348464831FBA56A2001F9538 /* NowPlayingService.swift */; };
 		348E6EE51FAE693000B77665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 348E6EE41FAE693000B77665 /* LaunchScreen.storyboard */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
 		9409E1241ABF6FEA00312E2B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9409E1221ABF6FEA00312E2B /* Main.storyboard */; };
@@ -74,6 +75,7 @@
 		2C5545BA1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SwiftRadioUITests.swift; path = WXYCUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5545BC1C1124DE00728469 /* SwiftRadioUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SwiftRadioUITests.swift; path = ../WXYCUITests/SwiftRadioUITests.swift; sourceTree = "<group>"; };
 		2C5545BE1C1124DE00728469 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		348464831FBA56A2001F9538 /* NowPlayingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingService.swift; sourceTree = "<group>"; };
 		348E6EE41FAE693000B77665 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9409E11A1ABF6FEA00312E2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 				235101FE1FB93B4500ED3DDF /* LastFM.swift */,
 				235102001FB95A1300ED3DDF /* WXYC.swift */,
 				235102021FB95B8800ED3DDF /* iTunes.swift */,
+				348464831FBA56A2001F9538 /* NowPlayingService.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -437,6 +440,7 @@
 				94E9761C1B1A8F3200F52B1E /* UIImage+DropShadow.swift in Sources */,
 				235101FD1FB9002100ED3DDF /* Future.swift in Sources */,
 				94DB0AAA1B98B762005ED993 /* TransitionManager.swift in Sources */,
+				348464841FBA56A2001F9538 /* NowPlayingService.swift in Sources */,
 				94DB0A9B1B98B762005ED993 /* ImageLoader.swift in Sources */,
 				94D260981B45E8B800DE671C /* Track.swift in Sources */,
 				94DB0A951B98B762005ED993 /* DesignableImageView.swift in Sources */,
