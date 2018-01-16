@@ -53,6 +53,7 @@
 		345B0BBD1FBF6CAD00C580B0 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345B0BBC1FBF6CAD00C580B0 /* RootPageViewController.swift */; };
 		345B0BC11FBF6D6C00C580B0 /* NowPlayingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 345B0BC01FBF6D6C00C580B0 /* NowPlayingViewController.xib */; };
 		348E6EE51FAE693000B77665 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 348E6EE41FAE693000B77665 /* LaunchScreen.storyboard */; };
+		3499C6CD2002E75D00B0B32E /* TimeBasedCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3499C6CC2002E75D00B0B32E /* TimeBasedCache.swift */; };
 		34AC2AF41FCF5DC100F72879 /* PlaybackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34AC2AF31FCF5DC100F72879 /* PlaybackButton.swift */; };
 		34E7C6881FBF77FC00825164 /* InfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34E7C6871FBF77FC00825164 /* InfoDetailViewController.xib */; };
 		9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9409E11B1ABF6FEA00312E2B /* AppDelegate.swift */; };
@@ -126,6 +127,8 @@
 		345B0BBC1FBF6CAD00C580B0 /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
 		345B0BC01FBF6D6C00C580B0 /* NowPlayingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NowPlayingViewController.xib; sourceTree = "<group>"; };
 		348E6EE41FAE693000B77665 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		3499C6CC2002E75D00B0B32E /* TimeBasedCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeBasedCache.swift; sourceTree = "<group>"; };
+		34A8A47D1FF9483600A2CA9D /* WXYC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WXYC.entitlements; sourceTree = "<group>"; };
 		34AC2AF31FCF5DC100F72879 /* PlaybackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackButton.swift; sourceTree = "<group>"; };
 		34E7C6871FBF77FC00825164 /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
 		9409E1161ABF6FEA00312E2B /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +258,7 @@
 		9409E1181ABF6FEA00312E2B /* WXYC */ = {
 			isa = PBXGroup;
 			children = (
+				34A8A47D1FF9483600A2CA9D /* WXYC.entitlements */,
 				94D2608E1B45D0F800DE671C /* ViewControllers */,
 				9409E1221ABF6FEA00312E2B /* iOSMain.storyboard */,
 				348E6EE41FAE693000B77665 /* LaunchScreen.storyboard */,
@@ -336,6 +340,7 @@
 				235101FE1FB93B4500ED3DDF /* LastFM.swift */,
 				235102001FB95A1300ED3DDF /* WXYC.swift */,
 				235102021FB95B8800ED3DDF /* iTunes.swift */,
+				3499C6CC2002E75D00B0B32E /* TimeBasedCache.swift */,
 			);
 			name = Model;
 			path = ../WXYC;
@@ -450,6 +455,9 @@
 						LastSwiftMigration = 0900;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Multipath = {
 								enabled = 1;
 							};
 						};
@@ -582,6 +590,7 @@
 				94DB0AA61B98B762005ED993 /* SpringLabel.swift in Sources */,
 				9409E1401ABF78B000312E2B /* NowPlayingViewController.swift in Sources */,
 				94D1D0A51AD6D6230022CA11 /* InfoDetailViewController.swift in Sources */,
+				3499C6CD2002E75D00B0B32E /* TimeBasedCache.swift in Sources */,
 				949BBB401ACC9DEE005B7C26 /* Webservice.swift in Sources */,
 				235101FD1FB9002100ED3DDF /* Future.swift in Sources */,
 				9409E11C1ABF6FEA00312E2B /* AppDelegate.swift in Sources */,
@@ -874,6 +883,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WXYC/WXYC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;
@@ -895,6 +905,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = WXYC/WXYC.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEFINES_MODULE = YES;

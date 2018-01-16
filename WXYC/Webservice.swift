@@ -44,9 +44,14 @@ final class Webservice {
     }
 }
 
-extension Playcut {
+extension Playcut {    
     func getArtwork() -> Future<UIImage> {
         return getLastFMArtwork() || getItunesArtwork() || getDefaultArtwork()
+    }
+    
+    private func getCachedArtwork() -> Future<UIImage> {
+        let defaults = UserDefaults.init(suiteName: "org.wxyc.apps")
+        defaults?.double(forKey: "<#T##String#>")
     }
     
     private func getLastFMArtwork() -> Future<UIImage> {
