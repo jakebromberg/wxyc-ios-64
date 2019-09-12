@@ -31,44 +31,44 @@ public final class RadioPlayerController {
     ) {
         self.radioPlayer = radioPlayer
         
-        self.inputObservations = [
-            notificationCenter.addObserver(
-                forName: UIApplication.didEnterBackgroundNotification,
-                object: nil,
-                queue: nil,
-                using: self.applicationDidEnterBackground
-            ),
-            notificationCenter.addObserver(
-                forName: UIApplication.willEnterForegroundNotification,
-                object: nil,
-                queue: nil,
-                using: self.applicationWillEnterForeground
-            ),
-            notificationCenter.addObserver(
-                forName: AVAudioSession.interruptionNotification,
-                object: nil,
-                queue: nil,
-                using: self.sessionInterrupted
-            ),
-            notificationCenter.addObserver(
-                forName: .AVPlayerItemPlaybackStalled,
-                object: nil,
-                queue: nil,
-                using: self.playbackStalled
-            ),
-            remoteCommandCenter.playCommand.addTarget(
-                handler: self.remotePlayCommand
-            ),
-            remoteCommandCenter.pauseCommand.addTarget(
-                handler: self.remotePauseOrStopCommand
-            ),
-            remoteCommandCenter.stopCommand.addTarget(
-                handler: self.remotePauseOrStopCommand
-            ),
-            remoteCommandCenter.togglePlayPauseCommand.addTarget(
-                handler: self.remotePauseOrStopCommand
-            ),
-        ]
+//        self.inputObservations = [
+//            notificationCenter.addObserver(
+//                forName: UIApplication.didEnterBackgroundNotification,
+//                object: nil,
+//                queue: nil,
+//                using: self.applicationDidEnterBackground
+//            ),
+//            notificationCenter.addObserver(
+//                forName: UIApplication.willEnterForegroundNotification,
+//                object: nil,
+//                queue: nil,
+//                using: self.applicationWillEnterForeground
+//            ),
+//            notificationCenter.addObserver(
+//                forName: AVAudioSession.interruptionNotification,
+//                object: nil,
+//                queue: nil,
+//                using: self.sessionInterrupted
+//            ),
+//            notificationCenter.addObserver(
+//                forName: .AVPlayerItemPlaybackStalled,
+//                object: nil,
+//                queue: nil,
+//                using: self.playbackStalled
+//            ),
+//            remoteCommandCenter.playCommand.addTarget(
+//                handler: self.remotePlayCommand
+//            ),
+//            remoteCommandCenter.pauseCommand.addTarget(
+//                handler: self.remotePauseOrStopCommand
+//            ),
+//            remoteCommandCenter.stopCommand.addTarget(
+//                handler: self.remotePauseOrStopCommand
+//            ),
+//            remoteCommandCenter.togglePlayPauseCommand.addTarget(
+//                handler: self.remotePauseOrStopCommand
+//            ),
+//        ]
     }
     
     // MARK: Public methods

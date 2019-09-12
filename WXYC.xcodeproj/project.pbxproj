@@ -56,6 +56,7 @@
 		34585AE421C7142D009662FA /* ServiceUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34585AE221C71401009662FA /* ServiceUtilities.swift */; };
 		345CF90C2307193A00865B56 /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 345CF90B2307193A00865B56 /* RootPageViewController.swift */; };
 		345CF90E2307250A00865B56 /* iOSMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 345CF90D2307250A00865B56 /* iOSMain.storyboard */; };
+		347F6B90232AF89500C934C2 /* libCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3434007F2030A29600FC778F /* libCore.a */; };
 		348534A122287A65002AA181 /* PlayerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 348534A022287A65002AA181 /* PlayerHeader.xib */; };
 		348534A4222F4E0D002AA181 /* PlaycutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348534A3222F4E0D002AA181 /* PlaycutCell.swift */; };
 		348534A6222F4E51002AA181 /* TalksetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 348534A5222F4E51002AA181 /* TalksetCell.swift */; };
@@ -70,6 +71,16 @@
 		34CEF92022417B1C00D120F7 /* PlaylistCellViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CEF91F22417B1C00D120F7 /* PlaylistCellViewModelProducer.swift */; };
 		34CEF92222417C0000D120F7 /* PlaycutActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CEF92122417C0000D120F7 /* PlaycutActivityItem.swift */; };
 		34CEFA8E22419F5900D120F7 /* PlaylistCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34CEFA8D22419F5900D120F7 /* PlaylistCellViewModel.swift */; };
+		34D7DABB232AF1FD000C55EB /* WXYC Watch WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 34D7DABA232AF1FD000C55EB /* WXYC Watch WatchKit App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		34D7DAC1232AF1FD000C55EB /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 34D7DABF232AF1FD000C55EB /* Interface.storyboard */; };
+		34D7DAC3232AF1FE000C55EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34D7DAC2232AF1FE000C55EB /* Assets.xcassets */; };
+		34D7DACA232AF1FE000C55EB /* WXYC Watch WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 34D7DAC9232AF1FE000C55EB /* WXYC Watch WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		34D7DACF232AF1FE000C55EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D7DACE232AF1FE000C55EB /* ContentView.swift */; };
+		34D7DAD1232AF1FE000C55EB /* HostingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D7DAD0232AF1FE000C55EB /* HostingController.swift */; };
+		34D7DAD3232AF1FE000C55EB /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D7DAD2232AF1FE000C55EB /* ExtensionDelegate.swift */; };
+		34D7DAD5232AF1FE000C55EB /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D7DAD4232AF1FE000C55EB /* ComplicationController.swift */; };
+		34D7DAD7232AF1FF000C55EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34D7DAD6232AF1FF000C55EB /* Assets.xcassets */; };
+		34D7DADA232AF1FF000C55EB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 34D7DAD9232AF1FF000C55EB /* Preview Assets.xcassets */; };
 		34D908562113EE5600AB8C79 /* RadioPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34D908542113EE4800AB8C79 /* RadioPlayerController.swift */; };
 		34FA49A92231BD9C001D6040 /* InkingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34FA49A82231BD9C001D6040 /* InkingButton.swift */; };
 		34FA49AB2236ED93001D6040 /* PlaycutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 34FA49AA2236ED93001D6040 /* PlaycutCell.xib */; };
@@ -106,6 +117,20 @@
 			remoteGlobalIDString = 34B1890421C1C8BA005ADD84;
 			remoteInfo = "iOS Intents Extension";
 		};
+		34D7DABC232AF1FD000C55EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3434F4BC2030A1A700FC778F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34D7DAB9232AF1FD000C55EB;
+			remoteInfo = "WXYC Watch WatchKit App";
+		};
+		34D7DACB232AF1FE000C55EB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3434F4BC2030A1A700FC778F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 34D7DAC8232AF1FE000C55EB;
+			remoteInfo = "WXYC Watch WatchKit Extension";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -137,6 +162,28 @@
 			dstSubfolderSpec = 16;
 			files = (
 			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D7DADF232AF1FF000C55EB /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				34D7DACA232AF1FE000C55EB /* WXYC Watch WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D7DAE3232AF1FF000C55EB /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				34D7DABB232AF1FD000C55EB /* WXYC Watch WatchKit App.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -209,6 +256,20 @@
 		34CEF91F22417B1C00D120F7 /* PlaylistCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellViewModelProducer.swift; sourceTree = "<group>"; };
 		34CEF92122417C0000D120F7 /* PlaycutActivityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaycutActivityItem.swift; sourceTree = "<group>"; };
 		34CEFA8D22419F5900D120F7 /* PlaylistCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellViewModel.swift; sourceTree = "<group>"; };
+		34D7DAAC232AF1BD000C55EB /* watchLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchLib.swift; sourceTree = "<group>"; };
+		34D7DAB7232AF1FD000C55EB /* WXYC Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WXYC Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D7DABA232AF1FD000C55EB /* WXYC Watch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WXYC Watch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D7DAC0232AF1FD000C55EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		34D7DAC2232AF1FE000C55EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		34D7DAC4232AF1FE000C55EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		34D7DAC9232AF1FE000C55EB /* WXYC Watch WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "WXYC Watch WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		34D7DACE232AF1FE000C55EB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		34D7DAD0232AF1FE000C55EB /* HostingController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostingController.swift; sourceTree = "<group>"; };
+		34D7DAD2232AF1FE000C55EB /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		34D7DAD4232AF1FE000C55EB /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		34D7DAD6232AF1FF000C55EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		34D7DAD9232AF1FF000C55EB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		34D7DADB232AF1FF000C55EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34D908542113EE4800AB8C79 /* RadioPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadioPlayerController.swift; sourceTree = "<group>"; };
 		34FA49A82231BD9C001D6040 /* InkingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkingButton.swift; sourceTree = "<group>"; };
 		34FA49AA2236ED93001D6040 /* PlaycutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaycutCell.xib; sourceTree = "<group>"; };
@@ -275,6 +336,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34D7DAC6232AF1FE000C55EB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				347F6B90232AF89500C934C2 /* libCore.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -300,6 +369,9 @@
 				344C0D88204B5A1C008FCB05 /* WXYC Tests */,
 				34425DBA21B8BAE100C8DD5F /* Core Tests */,
 				34B1890621C1C8BA005ADD84 /* iOS Intents Extension */,
+				34D7DAAB232AF1BD000C55EB /* watchLib */,
+				34D7DABE232AF1FD000C55EB /* WXYC Watch WatchKit App */,
+				34D7DACD232AF1FE000C55EB /* WXYC Watch WatchKit Extension */,
 				343400642030A1E700FC778F /* Frameworks */,
 				3434F4C52030A1A700FC778F /* Products */,
 			);
@@ -315,6 +387,9 @@
 				341FBACC2041E7AB00CD2F36 /* WXYC.app */,
 				34425DB921B8BAE100C8DD5F /* Core Tests.xctest */,
 				34B1890521C1C8BA005ADD84 /* iOS Intents Extension.appex */,
+				34D7DAB7232AF1FD000C55EB /* WXYC Watch.app */,
+				34D7DABA232AF1FD000C55EB /* WXYC Watch WatchKit App.app */,
+				34D7DAC9232AF1FE000C55EB /* WXYC Watch WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -477,6 +552,46 @@
 			path = "Playlist Cells";
 			sourceTree = "<group>";
 		};
+		34D7DAAB232AF1BD000C55EB /* watchLib */ = {
+			isa = PBXGroup;
+			children = (
+				34D7DAAC232AF1BD000C55EB /* watchLib.swift */,
+			);
+			path = watchLib;
+			sourceTree = "<group>";
+		};
+		34D7DABE232AF1FD000C55EB /* WXYC Watch WatchKit App */ = {
+			isa = PBXGroup;
+			children = (
+				34D7DABF232AF1FD000C55EB /* Interface.storyboard */,
+				34D7DAC2232AF1FE000C55EB /* Assets.xcassets */,
+				34D7DAC4232AF1FE000C55EB /* Info.plist */,
+			);
+			path = "WXYC Watch WatchKit App";
+			sourceTree = "<group>";
+		};
+		34D7DACD232AF1FE000C55EB /* WXYC Watch WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				34D7DACE232AF1FE000C55EB /* ContentView.swift */,
+				34D7DAD0232AF1FE000C55EB /* HostingController.swift */,
+				34D7DAD2232AF1FE000C55EB /* ExtensionDelegate.swift */,
+				34D7DAD4232AF1FE000C55EB /* ComplicationController.swift */,
+				34D7DAD6232AF1FF000C55EB /* Assets.xcassets */,
+				34D7DADB232AF1FF000C55EB /* Info.plist */,
+				34D7DAD8232AF1FF000C55EB /* Preview Content */,
+			);
+			path = "WXYC Watch WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		34D7DAD8232AF1FF000C55EB /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				34D7DAD9232AF1FF000C55EB /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -604,13 +719,64 @@
 			productReference = 34B1890521C1C8BA005ADD84 /* iOS Intents Extension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
+		34D7DAB6232AF1FD000C55EB /* WXYC Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34D7DAE4232AF1FF000C55EB /* Build configuration list for PBXNativeTarget "WXYC Watch" */;
+			buildPhases = (
+				34D7DAB5232AF1FD000C55EB /* Resources */,
+				34D7DAE3232AF1FF000C55EB /* Embed Watch Content */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34D7DABD232AF1FD000C55EB /* PBXTargetDependency */,
+			);
+			name = "WXYC Watch";
+			productName = "WXYC Watch";
+			productReference = 34D7DAB7232AF1FD000C55EB /* WXYC Watch.app */;
+			productType = "com.apple.product-type.application.watchapp2-container";
+		};
+		34D7DAB9232AF1FD000C55EB /* WXYC Watch WatchKit App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34D7DAE0232AF1FF000C55EB /* Build configuration list for PBXNativeTarget "WXYC Watch WatchKit App" */;
+			buildPhases = (
+				34D7DAB8232AF1FD000C55EB /* Resources */,
+				34D7DADF232AF1FF000C55EB /* Embed App Extensions */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				34D7DACC232AF1FE000C55EB /* PBXTargetDependency */,
+			);
+			name = "WXYC Watch WatchKit App";
+			productName = "WXYC Watch WatchKit App";
+			productReference = 34D7DABA232AF1FD000C55EB /* WXYC Watch WatchKit App.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		34D7DAC8232AF1FE000C55EB /* WXYC Watch WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 34D7DADC232AF1FF000C55EB /* Build configuration list for PBXNativeTarget "WXYC Watch WatchKit Extension" */;
+			buildPhases = (
+				34D7DAC5232AF1FE000C55EB /* Sources */,
+				34D7DAC6232AF1FE000C55EB /* Frameworks */,
+				34D7DAC7232AF1FE000C55EB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "WXYC Watch WatchKit Extension";
+			productName = "WXYC Watch WatchKit Extension";
+			productReference = 34D7DAC9232AF1FE000C55EB /* WXYC Watch WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		3434F4BC2030A1A700FC778F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1010;
+				LastSwiftUpdateCheck = 1100;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = WXYC;
 				TargetAttributes = {
@@ -659,6 +825,18 @@
 						LastSwiftMigration = 1100;
 						ProvisioningStyle = Automatic;
 					};
+					34D7DAB6232AF1FD000C55EB = {
+						CreatedOnToolsVersion = 11.0;
+						ProvisioningStyle = Automatic;
+					};
+					34D7DAB9232AF1FD000C55EB = {
+						CreatedOnToolsVersion = 11.0;
+						ProvisioningStyle = Automatic;
+					};
+					34D7DAC8232AF1FE000C55EB = {
+						CreatedOnToolsVersion = 11.0;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 3434F4BF2030A1A700FC778F /* Build configuration list for PBXProject "WXYC" */;
@@ -681,6 +859,9 @@
 				343400932030A2C200FC778F /* UI */,
 				34425DB821B8BAE100C8DD5F /* Core Tests */,
 				34B1890421C1C8BA005ADD84 /* iOS Intents Extension */,
+				34D7DAB6232AF1FD000C55EB /* WXYC Watch */,
+				34D7DAB9232AF1FD000C55EB /* WXYC Watch WatchKit App */,
+				34D7DAC8232AF1FE000C55EB /* WXYC Watch WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -732,6 +913,31 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D7DAB5232AF1FD000C55EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D7DAB8232AF1FD000C55EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D7DAC3232AF1FE000C55EB /* Assets.xcassets in Resources */,
+				34D7DAC1232AF1FD000C55EB /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		34D7DAC7232AF1FE000C55EB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D7DADA232AF1FF000C55EB /* Preview Assets.xcassets in Resources */,
+				34D7DAD7232AF1FF000C55EB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,6 +1037,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		34D7DAC5232AF1FE000C55EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				34D7DAD1232AF1FE000C55EB /* HostingController.swift in Sources */,
+				34D7DAD5232AF1FE000C55EB /* ComplicationController.swift in Sources */,
+				34D7DACF232AF1FE000C55EB /* ContentView.swift in Sources */,
+				34D7DAD3232AF1FE000C55EB /* ExtensionDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -853,6 +1070,16 @@
 			isa = PBXTargetDependency;
 			target = 34B1890421C1C8BA005ADD84 /* iOS Intents Extension */;
 			targetProxy = 34B1890A21C1C8BA005ADD84 /* PBXContainerItemProxy */;
+		};
+		34D7DABD232AF1FD000C55EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34D7DAB9232AF1FD000C55EB /* WXYC Watch WatchKit App */;
+			targetProxy = 34D7DABC232AF1FD000C55EB /* PBXContainerItemProxy */;
+		};
+		34D7DACC232AF1FE000C55EB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 34D7DAC8232AF1FE000C55EB /* WXYC Watch WatchKit Extension */;
+			targetProxy = 34D7DACB232AF1FE000C55EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -879,6 +1106,14 @@
 				3434FC092030A1CC00FC778F /* Base */,
 			);
 			name = TVMain.storyboard;
+			sourceTree = "<group>";
+		};
+		34D7DABF232AF1FD000C55EB /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				34D7DAC0232AF1FD000C55EB /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -950,7 +1185,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -964,7 +1199,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -978,7 +1213,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -992,7 +1227,7 @@
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
-				SUPPORTED_PLATFORMS = "appletvsimulator appletvos iphonesimulator iphoneos";
+				SUPPORTED_PLATFORMS = "watchsimulator watchos";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1036,8 +1271,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1082,12 +1317,11 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MODULE_NAME = WXYC;
-				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1098,8 +1332,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_ENABLE_OBJC_WEAK = YES;
@@ -1138,10 +1372,9 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MODULE_NAME = WXYC;
-				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -1206,6 +1439,134 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		34D7DADD232AF1FF000C55EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Shared/**",
+				);
+				INFOPLIST_FILE = "WXYC Watch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Shared/**",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.watch.app.extension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		34D7DADE232AF1FF000C55EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Shared/**",
+				);
+				INFOPLIST_FILE = "WXYC Watch WatchKit Extension/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/Shared/**",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.watch.app.extension;
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				STRIP_STYLE = "non-global";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		34D7DAE1232AF1FF000C55EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P8QACM85EZ;
+				ENABLE_PREVIEWS = YES;
+				IBSC_MODULE = WXYC_Watch_WatchKit_Extension;
+				INFOPLIST_FILE = "WXYC Watch WatchKit App/Info.plist";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.watch.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Debug;
+		};
+		34D7DAE2232AF1FF000C55EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = P8QACM85EZ;
+				ENABLE_PREVIEWS = YES;
+				IBSC_MODULE = WXYC_Watch_WatchKit_Extension;
+				INFOPLIST_FILE = "WXYC Watch WatchKit App/Info.plist";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.watch.app;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 6.0;
+			};
+			name = Release;
+		};
+		34D7DAE5232AF1FF000C55EB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P8QACM85EZ;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		34D7DAE6232AF1FF000C55EB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = P8QACM85EZ;
+				MARKETING_VERSION = 1.0;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1280,6 +1641,33 @@
 			buildConfigurations = (
 				34B1890D21C1C8BA005ADD84 /* Debug */,
 				34B1890E21C1C8BA005ADD84 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34D7DADC232AF1FF000C55EB /* Build configuration list for PBXNativeTarget "WXYC Watch WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34D7DADD232AF1FF000C55EB /* Debug */,
+				34D7DADE232AF1FF000C55EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34D7DAE0232AF1FF000C55EB /* Build configuration list for PBXNativeTarget "WXYC Watch WatchKit App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34D7DAE1232AF1FF000C55EB /* Debug */,
+				34D7DAE2232AF1FF000C55EB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		34D7DAE4232AF1FF000C55EB /* Build configuration list for PBXNativeTarget "WXYC Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				34D7DAE5232AF1FF000C55EB /* Debug */,
+				34D7DAE6232AF1FF000C55EB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
