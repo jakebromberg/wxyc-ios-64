@@ -2,11 +2,13 @@ import UIKit
 import AVFoundation
 import Intents
 import Core
+import MediaPlayer
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let cacheCoordinator = CacheCoordinator.WXYCPlaylist
     var nowPlayingService: NowPlayingService?
+    var carPlayService: CarPlayDataSource?
     let lockscreenInfoService = LockscreenInfoService()
 
     enum UserSettingsKeys: String {
@@ -62,6 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.donateSiriIntentIfNeeded()
         
         self.nowPlayingService = NowPlayingService(observers: self.lockscreenInfoService)
+      
+        self.carPlayService = CarPlayDataSource()
+        MPPlayableContentManager.shared().dataSource = self.carPlayService
         
         return true
     }

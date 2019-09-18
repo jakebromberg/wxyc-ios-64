@@ -143,7 +143,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3414CAA12332D62600221D32 /* CarPlayDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlayDataSource.swift; sourceTree = "<group>"; };
+		3414CAA12332D62600221D32 /* CarPlayDataSource.swift */ = {isa = PBXFileReference; indentWidth = 4; lastKnownFileType = sourcecode.swift; path = CarPlayDataSource.swift; sourceTree = "<group>"; };
 		341FBACC2041E7AB00CD2F36 /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		341FBACD2041E7AC00CD2F36 /* iOS Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "iOS Info.plist"; path = "/Users/jakebromberg/source/personal/wxyc-ios-64/iOS/iOS Info.plist"; sourceTree = "<absolute>"; };
 		343400632030A1E700FC778F /* Today Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Today Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };

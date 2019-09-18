@@ -10,17 +10,17 @@ import UIKit
 import Core
 
 final class PlaylistCellViewModel {
-  let cellClass: UITableViewCell.Type
+  let viewClass: NSObject.Type
   let reuseIdentifier: String
   let configure: (UITableViewCell) -> ()
   let artworkService = ArtworkService.shared
   
-  init<Cell: UITableViewCell>(reuseIdentifier: String = NSStringFromClass(Cell.self), configure: @escaping (Cell) -> ()) {
-    self.cellClass = Cell.self
+  init<View: NSObject>(reuseIdentifier: String = NSStringFromClass(View.self), configure: @escaping (View) -> ()) {
+    self.viewClass = View.self
     self.reuseIdentifier = reuseIdentifier
     
     self.configure = { cell in
-      configure(cell as! Cell)
+      configure(cell as! View)
     }
   }
 }

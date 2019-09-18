@@ -55,7 +55,7 @@ class PlaylistViewController: UITableViewController, PlaylistPresentable {
         let viewModel = self.viewModels[indexPath.row]
         
         if !self.reuseIdentifiers.contains(viewModel.reuseIdentifier) {
-            let className = NSStringFromClass(viewModel.cellClass)
+            let className = NSStringFromClass(viewModel.viewClass)
             let nib = UINib(nibName: className, bundle: nil)
             
             tableView.register(nib, forCellReuseIdentifier: className)
