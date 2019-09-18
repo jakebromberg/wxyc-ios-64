@@ -256,7 +256,6 @@
 		34CEF91F22417B1C00D120F7 /* PlaylistCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellViewModelProducer.swift; sourceTree = "<group>"; };
 		34CEF92122417C0000D120F7 /* PlaycutActivityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaycutActivityItem.swift; sourceTree = "<group>"; };
 		34CEFA8D22419F5900D120F7 /* PlaylistCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellViewModel.swift; sourceTree = "<group>"; };
-		34D7DAAC232AF1BD000C55EB /* watchLib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = watchLib.swift; sourceTree = "<group>"; };
 		34D7DAB7232AF1FD000C55EB /* WXYC Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WXYC Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D7DABA232AF1FD000C55EB /* WXYC Watch WatchKit App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WXYC Watch WatchKit App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		34D7DAC0232AF1FD000C55EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
@@ -369,7 +368,6 @@
 				344C0D88204B5A1C008FCB05 /* WXYC Tests */,
 				34425DBA21B8BAE100C8DD5F /* Core Tests */,
 				34B1890621C1C8BA005ADD84 /* iOS Intents Extension */,
-				34D7DAAB232AF1BD000C55EB /* watchLib */,
 				34D7DABE232AF1FD000C55EB /* WXYC Watch WatchKit App */,
 				34D7DACD232AF1FE000C55EB /* WXYC Watch WatchKit Extension */,
 				343400642030A1E700FC778F /* Frameworks */,
@@ -550,14 +548,6 @@
 				34FA49B0223876F0001D6040 /* TalksetCell.xib */,
 			);
 			path = "Playlist Cells";
-			sourceTree = "<group>";
-		};
-		34D7DAAB232AF1BD000C55EB /* watchLib */ = {
-			isa = PBXGroup;
-			children = (
-				34D7DAAC232AF1BD000C55EB /* watchLib.swift */,
-			);
-			path = watchLib;
 			sourceTree = "<group>";
 		};
 		34D7DABE232AF1FD000C55EB /* WXYC Watch WatchKit App */ = {

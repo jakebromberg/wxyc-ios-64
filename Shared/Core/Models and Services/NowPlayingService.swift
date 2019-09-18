@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public protocol NowPlayingServiceObserver: class {
+public protocol NowPlayingServiceObserver {
     func updateWith(playcutResult: Result<Playcut>)
     func updateWith(artworkResult: Result<UIImage>)
 }

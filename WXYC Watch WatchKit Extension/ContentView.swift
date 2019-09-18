@@ -10,6 +10,13 @@ import SwiftUI
 import Core
 
 struct ContentView: View, NowPlayingServiceObserver {
+  private enum ContentErrors: Error {
+    case `default`
+  }
+  
+  @State var playcutResult: Result<Playcut> = .error(ContentErrors.default)
+  @State var artworkResult: Result<UIImage> = .error(ContentErrors.default)
+  
   func updateWith(playcutResult: Result<Playcut>) {
     
   }
@@ -23,8 +30,8 @@ struct ContentView: View, NowPlayingServiceObserver {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}
