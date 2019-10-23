@@ -37,7 +37,7 @@ private extension MPContentItem {
     convenience init(_ viewModel: PlaylistCellViewModel) {
         self.init()
         
-        self.title = viewModel.
+//        self.title = viewModel.
     }
 }
 
