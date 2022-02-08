@@ -6,7 +6,7 @@ extension URL {
     static let WXYCStream320kMP3 = URL(string: "http://audio-mp3.ibiblio.org:8000/wxyc-alt.mp3")!
 }
 
-public protocol PlaylistEntry: Codable {
+public protocol PlaylistEntry: Codable, Sendable {
     var id: Int { get }
     var hour: Int { get }
     var chronOrderID: Int { get }

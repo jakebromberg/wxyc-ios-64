@@ -9,7 +9,8 @@
 import Foundation
 
 protocol Cache {
-    subscript(key: String) -> Data? { get set }
+    func set(data: Data?, for key: String) async
+    func data(for key: String) async -> Data?
 }
 
 extension UserDefaults {
@@ -17,12 +18,11 @@ extension UserDefaults {
 }
 
 extension UserDefaults: Cache {
-    subscript(key: String) -> Data? {
-        get {
-            return self.object(forKey: key) as? Data
-        }
-        set {
-            self.set(newValue, forKey: key)
-        }
+    func set(data: Data?, for key: String) async {
+        self.set(data, forKey: key)
+    }
+    
+    func data(for key: String) async -> Data? {
+        self.object(forKey: key) as? Data
     }
 }

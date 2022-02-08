@@ -3,7 +3,7 @@ import Combine
 
 let DefaultLifespan: TimeInterval = 30
 
-public final actor CacheCoordinator {
+public final actor CacheCoordinator: Sendable {
     public static let WXYCPlaylist = CacheCoordinator(cache: UserDefaults.WXYC)
     public static let AlbumArt = CacheCoordinator(cache: ImageCache())
     
@@ -32,7 +32,7 @@ public final actor CacheCoordinator {
     
     public func value<Value: Codable>(for key: String) async throws -> Value {
         do {
-            guard let encodedCachedRecord = self.cache[key] else {
+            guard let encodedCachedRecord = await self.cache.data(for: key) else {
                 throw ServiceErrors.noCachedResult
             }
             
@@ -41,7 +41,7 @@ public final actor CacheCoordinator {
             
             // nil out record, if expired
             guard !cachedRecord.isExpired else {
-                self.set(value: nil as Value?, for: key, lifespan: .distantFuture) // Nil-out expired record
+                await self.set(value: nil as Value?, for: key, lifespan: .distantFuture) // Nil-out expired record
                 
                 throw ServiceErrors.noCachedResult
             }
@@ -55,24 +55,24 @@ public final actor CacheCoordinator {
         }
     }
     
-    public func set<Value, Key>(value: Value?, for key: Key, lifespan: TimeInterval)
+    public func set<Value, Key>(value: Value?, for key: Key, lifespan: TimeInterval) async
         where Value: Codable, Key: RawRepresentable, Key.RawValue == String {
-            return self.set(value: value, for: key.rawValue, lifespan: lifespan)
+            return await self.set(value: value, for: key.rawValue, lifespan: lifespan)
     }
     
-    public func set<Value, Key>(value: Value?, for key: Key, lifespan: TimeInterval)
+    public func set<Value, Key>(value: Value?, for key: Key, lifespan: TimeInterval) async
         where Value: Codable, Key: Identifiable, Key.ID == Int {
-            return self.set(value: value, for: String(key.id), lifespan: lifespan)
+            return await self.set(value: value, for: String(key.id), lifespan: lifespan)
     }
     
-    public func set<Value: Codable>(value: Value?, for key: String, lifespan: TimeInterval) {
+    public func set<Value: Codable>(value: Value?, for key: String, lifespan: TimeInterval) async {
         if let value = value {
             let cachedRecord = CachedRecord(value: value, lifespan: lifespan)
             let encodedCachedRecord = try? Self.encoder.encode(cachedRecord)
             
-            self.cache[key] = encodedCachedRecord
+            await self.cache.set(data: encodedCachedRecord, for: key)
         } else {
-            self.cache[key] = nil as Data?
+            await self.cache.set(data: nil, for: key)
         }
     }
 }

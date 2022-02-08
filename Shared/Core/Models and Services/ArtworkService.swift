@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import Combine
 
-public final actor ArtworkService {
+public final actor ArtworkService: Sendable {
     public static let shared = ArtworkService(fetchers: [
         CacheCoordinator.AlbumArt,
         RemoteArtworkFetcher(configuration: .discogs),
@@ -37,7 +37,7 @@ public final actor ArtworkService {
     }
 }
 
-protocol ArtworkFetcher {
+protocol ArtworkFetcher: Sendable {
     func fetchArtwork(for playcut: Playcut) async throws -> UIImage
 }
 
@@ -52,7 +52,7 @@ extension CacheCoordinator: ArtworkFetcher {
     }
 }
 
-internal final class RemoteArtworkFetcher: ArtworkFetcher {
+internal final actor RemoteArtworkFetcher: ArtworkFetcher {
     internal struct Configuration {
         let makeSearchURL: (Playcut) -> URL
         let extractURL: (Data) throws -> URL

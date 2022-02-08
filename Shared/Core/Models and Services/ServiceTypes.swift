@@ -12,5 +12,6 @@ enum ServiceErrors: String, LocalizedError {
 }
 
 protocol WebSession {
+    @Sendable
     func dataTaskPublisher(for url: URL) -> URLSession.DataTaskPublisher
 }
