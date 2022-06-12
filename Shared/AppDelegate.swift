@@ -5,6 +5,45 @@ import Intents
 import UI
 import MediaPlayer
 import WidgetKit
+import AppIntents
+
+public struct PlayWXYC: AudioStartingIntent {
+    public static var title: LocalizedStringResource = "Play WXYC"
+    
+    public init() { }
+    
+    public func perform() async throws -> some IntentPerformResult {
+        RadioPlayerController.shared.play()
+        return .finished(value: "Now playing WXYC.")
+    }
+}
+
+public struct WhatsPlayingOnWXYC: AppIntent {
+    public static let title: LocalizedStringResource = "What’s Playing on WXYC?"
+    public static let authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
+    
+    public init() { }
+
+    @MainActor
+    public func perform() async throws -> some IntentPerformResult {
+        guard let nowPlayingItem = await NowPlayingService.shared.fetch() else {
+            return .finished(dialog: "An unknown song by an unknown artist is now playing on WXYC.")
+        }
+//        return .finished(value: _IntentValueType, view: <#T##View#>)
+        return .finished(dialog: "\(nowPlayingItem.playcut.songTitle) by \(nowPlayingItem.playcut.artistName) is now playing on WXYC.")
+    }
+
+    public static var openAppWhenRun = false
+}
+
+public struct WXYCAppShortcuts: AppShortcutsProvider {
+    public static var appShortcuts: [AppShortcut] {
+        AppShortcut(
+            intent: WhatsPlayingOnWXYC(),
+            phrases: ["What’s playing on WXYC?"]
+        )
+    }
+}
 
 @UIApplicationMain
 @MainActor
