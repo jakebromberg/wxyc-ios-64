@@ -8,8 +8,8 @@
 
 import Foundation
 
-enum PlaylistCacheKeys: String {
-    case playcut
+enum PlaylistCacheKeys: String, CacheKey {
     case playlist
-    case artwork
+    
+    var id: String { rawValue }
 }

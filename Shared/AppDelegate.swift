@@ -9,7 +9,7 @@ import WidgetKit
 @UIApplicationMain
 @MainActor
 class AppDelegate: UIResponder, UIApplicationDelegate {
-    let cacheCoordinator = CacheCoordinator.WXYCPlaylist
+    let cacheCoordinator = PlaylistCache
     var nowPlayingObservation: Any?
 
     // MARK: UIApplicationDelegate
@@ -30,11 +30,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if os(iOS)
             await SiriService.shared.donateSiriIntentIfNeeded()
 #endif
-            
             self.nowPlayingObservation = NowPlayingService.shared.observe { nowPlayingItem in
                 MPNowPlayingInfoCenter.default().update(nowPlayingItem: nowPlayingItem)
                 WidgetCenter.shared.reloadAllTimelines()
-                Task { await SiriService.shared.donate(nowPlayingItem: nowPlayingItem) }
+                await SiriService.shared.donate(nowPlayingItem: nowPlayingItem)
             }
         }
         

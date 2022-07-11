@@ -27,7 +27,7 @@ final class PlaylistDataSource {
     private var observation: Cancellable? = nil
 }
 
-extension Sequence where Element == PlaylistEntry {
+extension Sequence where Element == any PlaylistEntry {
     var cellViewModels: [PlaylistCellViewModel] {
         return self
             .compactMap { $0 as? PlaylistCellViewModelProducer }

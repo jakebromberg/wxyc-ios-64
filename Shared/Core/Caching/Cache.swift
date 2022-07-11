@@ -1,28 +1,54 @@
 //
-//  Defaults.swift
-//  WXYC
+//  Cache.swift
+//  Core
 //
-//  Created by Jake Bromberg on 2/26/19.
-//  Copyright © 2019 WXYC. All rights reserved.
+//  Created by Jake Bromberg on 7/11/22.
+//  Copyright © 2022 WXYC. All rights reserved.
 //
 
 import Foundation
 
-protocol Cache {
-    subscript(key: String) -> Data? { get set }
-}
+let ArtworkCache = Cache(coder: ImageCacheCoder(), store: FileCacheStore())
+public let PlaylistCache = Cache(coder: JSONCacheCoder<Playlist>(), store: UserDefaultsCacheStore())
 
-extension UserDefaults {
-    static let WXYC = UserDefaults(suiteName: "org.wxyc.apps")!
-}
-
-extension UserDefaults: Cache {
-    subscript(key: String) -> Data? {
-        get {
-            return self.object(forKey: key) as? Data
+public class Cache<Value> {
+    enum Error: Swift.Error {
+        case cacheMiss
+        case cacheValueExpired
+    }
+    
+    typealias Coder = any CacheCoder<Value>
+    
+    private let coder: Coder
+    private let store: CacheStore
+    private let cacheRecordCoder = JSONCacheCoder<CacheRecord<Data>>()
+    
+    init(coder: Coder, store: CacheStore) {
+        self.coder = coder
+        self.store = store
+    }
+    
+    func value(for key: String) throws -> Value {
+        guard let data = store[key] else {
+            throw Error.cacheMiss
         }
-        set {
-            self.set(newValue, forKey: key)
+        
+        let record = try cacheRecordCoder.decode(data)
+        
+        if record.isExpired {
+            throw Error.cacheValueExpired
+        }
+        
+        return try coder.decode(data)
+    }
+    
+    func set(value: Value?, for key: String, lifespan: TimeInterval = DefaultLifespan) throws {
+        if let value = value {
+            let data = try coder.encode(value)
+            let record = CacheRecord(value: data, lifespan: lifespan)
+            self.store[key] = try cacheRecordCoder.encode(record)
+        } else {
+            self.store[key] = nil
         }
     }
 }

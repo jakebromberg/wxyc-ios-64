@@ -10,15 +10,18 @@ import Foundation
 import Intents
 import MediaPlayer
 
-public actor SiriService {
+
+@MainActor
+public final class SiriService {
     enum Error: Swift.Error {
         case unknownIntentIdentifier
     }
     
     public static let shared = SiriService()
+    private static let FlagsCache = Cache<Bool>(coder: JSONCacheCoder(), store: UserDefaultsCacheStore())
     
-    init(cacheCoordinator: CacheCoordinator = .WXYCPlaylist) {
-        self.cacheCoordinator = cacheCoordinator
+    init(cache: Cache<Bool> = FlagsCache) {
+        self.cache = cache
     }
     
 #if os(iOS)
@@ -36,7 +39,7 @@ public actor SiriService {
     
     // MARK: Private
     
-    private let cacheCoordinator: CacheCoordinator
+    private let cache: Cache<Bool>
 }
 
 enum IntentIdentifiers {
@@ -45,8 +48,10 @@ enum IntentIdentifiers {
 }
 
 extension SiriService {
-    enum UserSettingsKeys: String {
+    enum UserSettingsKeys: String, CacheKey {
         case intentDonated
+        
+        var id: String { rawValue }
     }
     
     public func donateSiriIntentIfNeeded() async {
@@ -56,7 +61,7 @@ extension SiriService {
 
         do {
             try await INInteraction.playWXYC.donate()
-            await self.cacheCoordinator.set(value: true, for: UserSettingsKeys.intentDonated, lifespan: .distantFuture)
+            try self.cache.set(value: true, for: UserSettingsKeys.intentDonated, lifespan: .distantFuture)
         } catch {
             print("Could not donate Siri intent: \(error)")
         }
@@ -72,7 +77,7 @@ extension SiriService {
 
     func shouldDonateSiriIntent() async -> Bool {
         do {
-            return try await self.cacheCoordinator.value(for: UserSettingsKeys.intentDonated)
+            return try self.cache.value(for: UserSettingsKeys.intentDonated)
         } catch {
             return false
         }

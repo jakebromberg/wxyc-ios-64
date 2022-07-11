@@ -12,7 +12,7 @@ import Combine
 
 public final actor ArtworkService {
     public static let shared = ArtworkService(fetchers: [
-        CacheCoordinator.AlbumArt,
+        ArtworkCache,
         RemoteArtworkFetcher(configuration: .discogs),
         RemoteArtworkFetcher(configuration: .lastFM),
         RemoteArtworkFetcher(configuration: .iTunes),
@@ -41,10 +41,9 @@ protocol ArtworkFetcher {
     func fetchArtwork(for playcut: Playcut) async throws -> UIImage
 }
 
-extension CacheCoordinator: ArtworkFetcher {
+extension Cache: ArtworkFetcher where Value == UIImage {
     func fetchArtwork(for playcut: Playcut) async throws -> UIImage {
-        let cachedData: Data = try await self.value(for: playcut)
-        guard let artwork = UIImage(data: cachedData) else {
+        guard let artwork: UIImage = try? self.value(for: playcut.cacheKey) else {
             throw ServiceErrors.noCachedResult
         }
         
@@ -59,28 +58,26 @@ internal final class RemoteArtworkFetcher: ArtworkFetcher {
     }
     
     private let session: WebSession
-    private let cacheCoordinator: CacheCoordinator
+    private let cache: Cache<UIImage>
     private let configuration: Configuration
     
     private var cacheOperation: Cancellable?
     
     internal init(
         configuration: Configuration,
-        cacheCoordinator: CacheCoordinator = .AlbumArt,
+        cache: Cache<UIImage> = ArtworkCache,
         session: WebSession = URLSession.shared
     ) {
         self.configuration = configuration
-        self.cacheCoordinator = cacheCoordinator
+        self.cache = cache
         self.session = session
     }
     
     internal func fetchArtwork(for playcut: Playcut) async throws -> UIImage {
         let artworkURL = try await self.findArtworkURL(for: playcut)
         let artwork = try await self.downloadArtwork(at: artworkURL)
-        
-        Task {
-            await self.cacheCoordinator.set(value: artwork.pngData(), for: playcut, lifespan: .distantFuture)
-        }
+
+        try self.cache.set(value: artwork, for: playcut.cacheKey, lifespan: .distantFuture)
         
         return artwork
     }

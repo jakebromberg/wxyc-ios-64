@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct CachedRecord<Value: Codable>: Codable {
+struct CacheRecord<Value: Codable>: Codable {
     let value: Value
     let timestamp: TimeInterval
     let lifespan: TimeInterval
