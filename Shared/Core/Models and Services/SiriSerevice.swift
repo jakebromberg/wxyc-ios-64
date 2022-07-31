@@ -55,7 +55,7 @@ extension SiriService {
     }
     
     public func donateSiriIntentIfNeeded() async {
-        guard await self.shouldDonateSiriIntent() else {
+        guard self.shouldDonateSiriIntent() else {
             return
         }
 
@@ -67,15 +67,15 @@ extension SiriService {
         }
     }
     
-    public func donate(nowPlayingItem: NowPlayingItem) async {
-        do {
-            try await INInteraction.whatsOnWXYC(with: nowPlayingItem).donate()
-        } catch {
-            print(error)
+    public func donate(nowPlayingItem: NowPlayingItem?) {
+        guard let nowPlayingItem = nowPlayingItem else {
+            return
         }
+        
+        INInteraction.whatsOnWXYC(with: nowPlayingItem).donate()
     }
 
-    func shouldDonateSiriIntent() async -> Bool {
+    func shouldDonateSiriIntent() -> Bool {
         do {
             return try self.cache.value(for: UserSettingsKeys.intentDonated)
         } catch {

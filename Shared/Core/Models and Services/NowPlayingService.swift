@@ -15,16 +15,20 @@ public struct NowPlayingItem {
     public var artwork: UIImage?
 }
 
-public final class NowPlayingService {
+public final class NowPlayingService: ObservableObject {
     public static let shared = NowPlayingService()
+        
+    @Published public var nowPlayingItem: NowPlayingItem? = nil
     
-    public let nowPlayingObservable = PassthroughSubject<NowPlayingItem, Never>()
-    
-    public func observe(_ sink: @escaping (NowPlayingItem) -> Void)  -> AnyCancellable {
-        return self.nowPlayingObservable.sink(receiveValue: sink)
+    public func fetch() async -> NowPlayingItem? {
+        let playlist = await self.playlistService.fetchPlaylist(forceSync: true)
+        guard let playcut = playlist.playcuts.first else {
+            return nil
+        }
+        let artwork = await self.artworkService.getArtwork(for: playcut)
+        return NowPlayingItem(playcut: playcut, artwork: artwork)
     }
     
-    private var nowPlayingItem: NowPlayingItem? = nil
     private var playcut: Playcut? = nil {
         didSet {
             guard oldValue?.id != self.playcut?.id, let playcut = self.playcut else {
@@ -33,8 +37,9 @@ public final class NowPlayingService {
 
             Task {
                 let artwork = await self.artworkService.getArtwork(for: playcut)
-                self.nowPlayingItem = NowPlayingItem(playcut: playcut, artwork: artwork)
-                self.nowPlayingObservable.send(NowPlayingItem(playcut: playcut, artwork: artwork))
+                let nowPlayingItem = NowPlayingItem(playcut: playcut, artwork: artwork)
+                self.nowPlayingItem = nowPlayingItem
+                self.nowPlayingObservable.send(nowPlayingItem)
             }
         }
     }
@@ -43,6 +48,7 @@ public final class NowPlayingService {
     private let artworkService: ArtworkService
     
     private var playcutObservation: Cancellable? = nil
+    private let nowPlayingObservable = PassthroughSubject<NowPlayingItem, Never>()
 
     internal init(
         playlistService: PlaylistService = .shared,
@@ -57,13 +63,5 @@ public final class NowPlayingService {
             .map(Optional.init)
             .receive(on: RunLoop.main)
             .assign(to: \.playcut, on: self)
-    }
-    
-    public func fetch() async -> NowPlayingItem? {
-        guard let playcut = await self.playlistService.fetchPlaylist(forceSync: true).playcuts.first else {
-            return nil
-        }
-        let artwork = await self.artworkService.getArtwork(for: playcut)
-        return NowPlayingItem(playcut: playcut, artwork: artwork)
     }
 }

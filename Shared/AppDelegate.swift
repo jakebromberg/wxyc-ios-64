@@ -10,6 +10,7 @@ import WidgetKit
 @MainActor
 class AppDelegate: UIResponder, UIApplicationDelegate {
     let cacheCoordinator = PlaylistCache
+    let nowPlayingService = NowPlayingService.shared
     var nowPlayingObservation: Any?
 
     // MARK: UIApplicationDelegate
@@ -30,10 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 #if os(iOS)
             await SiriService.shared.donateSiriIntentIfNeeded()
 #endif
-            self.nowPlayingObservation = NowPlayingService.shared.observe { nowPlayingItem in
+            self.nowPlayingObservation = nowPlayingService.$nowPlayingItem.sink { nowPlayingItem in
                 MPNowPlayingInfoCenter.default().update(nowPlayingItem: nowPlayingItem)
                 WidgetCenter.shared.reloadAllTimelines()
-                await SiriService.shared.donate(nowPlayingItem: nowPlayingItem)
+                SiriService.shared.donate(nowPlayingItem: nowPlayingItem)
             }
         }
         

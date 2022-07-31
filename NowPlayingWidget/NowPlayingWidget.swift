@@ -11,32 +11,41 @@ import SwiftUI
 import Core
 
 class Provider: TimelineProvider {
-    var nowPlayingObservations: [Any] = []
-    
     func placeholder(in context: Context) -> NowPlayingEntry {
         NowPlayingEntry.placeholder(family: context.family)
     }
 
     func getSnapshot(in context: Context, completion: @escaping (NowPlayingEntry) -> ()) {
         Task {
-            if let nowPlayingItem = await NowPlayingService.shared.fetch() {
-                completion(NowPlayingEntry(nowPlayingItem, family: context.family))
-            } else {
-                completion(NowPlayingEntry.placeholder(family: context.family))
-            }
+            let nowPlayingItem = await NowPlayingService.shared.fetch()
+            let nowPlayingEntry = nowPlayingEntry(for: nowPlayingItem, context: context)
+            completion(nowPlayingEntry)
         }
     }
 
-    func getTimeline(in context: Context, completion: @escaping (Timeline<Entry>) -> ()) {
+    func getTimeline(in context: Context, completion: @escaping (Timeline<NowPlayingEntry>) -> Void) {
         Task {
-            if let nowPlayingItem = await NowPlayingService.shared.fetch() {
-                let timeline = Timeline(entries: [NowPlayingEntry(nowPlayingItem, family: context.family)], policy: .atEnd)
-                completion(timeline)
-            } else {
-                let timeline = Timeline(entries: [NowPlayingEntry.placeholder(family: context.family)], policy: .atEnd)
-                completion(timeline)
-            }
+            let nowPlayingItem = await NowPlayingService.shared.fetch()
+            let nowPlayingEntry = nowPlayingEntry(for: nowPlayingItem, context: context)
+            completion(timeline(for: nowPlayingEntry))
         }
+    }
+    
+    private func nowPlayingEntry(for nowPlayingItem: NowPlayingItem?, context: Context) -> NowPlayingEntry {
+        if let nowPlayingItem = nowPlayingItem {
+            return NowPlayingEntry(nowPlayingItem, family: context.family)
+        } else {
+            return NowPlayingEntry.placeholder(family: context.family)
+        }
+    }
+    
+    private func timeline(for nowPlayingEntry: NowPlayingEntry) -> Timeline<Entry> {
+        .init(entries: [nowPlayingEntry], policy: .after(fiveMinutesFromNow))
+    }
+    
+    private var fiveMinutesFromNow: Date {
+        let fiveMinues: TimeInterval = 5 * 60
+        return Date(timeIntervalSinceNow: fiveMinues)
     }
 }
 
