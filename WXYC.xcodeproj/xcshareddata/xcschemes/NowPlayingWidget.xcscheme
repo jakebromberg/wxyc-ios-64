@@ -16,7 +16,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "236609EB2D72D1720057E268"
+               BlueprintIdentifier = "236629602D72D5BB0057E268"
                BuildableName = "NowPlayingWidget.appex"
                BlueprintName = "NowPlayingWidget"
                ReferencedContainer = "container:WXYC.xcodeproj">
