@@ -41,26 +41,37 @@ public final class NowPlayingService: @unchecked Sendable {
     }
     
     private func observe() {
-        self.playlistServiceObservation =
+        let playlist =
             withObservationTracking {
-                self.playlistService.playlist
+                PlaylistService.shared.playlist
             } onChange: {
-                Task {
-                    Log(.info, "playlist updated")
-                    guard let playcut = self.playlistService.playlist.playcuts.first else {
-                        Log(.info, "Playlist is empty. Session duration: \(SessionStartTimer.duration())")
-
-                        return
-                    }
-                    
-                    let artwork = await self.artworkService.getArtwork(for: playcut)
-                    await self.updateNowPlayingItem(
-                        nowPlayingItem: NowPlayingItem(playcut: playcut, artwork: artwork)
-                    )
-                    await self.observe()
+                Task { @MainActor in
+                    self.observe()
                 }
             }
+        
+        if validateCollection(playlist.entries, label: "NowPlayingService entries"),
+           let playcut = playlist.playcuts.first {
+            Task {
+                let artwork = await self.artworkService.getArtwork(for: playcut)
+                self.updateNowPlayingItem(
+                    nowPlayingItem: NowPlayingItem(playcut: playcut, artwork: artwork)
+                )
+                self.observe()
+            }
+        } else {
+            Log(.info, "Playlist is empty. Session duration: \(SessionStartTimer.duration())")
+            Task { @MainActor in
+                let nanoseconds = self.backoffTimer.nextWaitTime().nanoseconds
+                Task {
+                    try await Task.sleep(nanoseconds: nanoseconds)
+                    self.observe()
+                }
+            }
+        }
     }
+    
+    var backoffTimer = ExponentialBackoff()
     
     private func updateNowPlayingItem(nowPlayingItem: NowPlayingItem) {
         Log(.info, "Setting nowPlayingItem \(nowPlayingItem)")

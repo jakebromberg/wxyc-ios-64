@@ -73,6 +73,7 @@ struct PlayerPage: View {
 
                     Text(content.songTitle)
                         .font(.headline)
+                        .foregroundStyle(headlineColor)
                         .background(HeightReader())
 
                     Text(content.artist)
@@ -107,12 +108,20 @@ struct PlayerPage: View {
         }
     }
     
-    var subheadlineColor: Color {
-        #if os(tvOS)
-        Color.init(white: 0.75)
-        #else
+    var headlineColor: Color {
+#if os(tvOS)
         .gray
-        #endif
+#else
+        Color.init(white: 1)
+#endif
+    }
+    
+    var subheadlineColor: Color {
+#if os(tvOS)
+        Color.init(white: 0.75)
+#else
+            .gray
+#endif
     }
 
     var cornerRadius: CGFloat {
