@@ -110,7 +110,7 @@ class CarPlaySceneDelegate: NSObject, CPTemplateApplicationSceneDelegate, CPNowP
     }
     
     private func makePlaylistSection() -> CPListSection {
-        let playlistItems = playlist.entries.compactMap { entry in
+        var playlistItems = playlist.entries.compactMap { entry in
             switch entry {
             case let entry as Playcut:
                 CPListItem(playcut: entry)

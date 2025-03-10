@@ -12,6 +12,7 @@ import MediaPlayer
 import Logger
 import PostHog
 
+@Observable
 @MainActor
 internal final class RadioPlayer: Sendable {
     private let streamURL: URL
@@ -34,7 +35,7 @@ internal final class RadioPlayer: Sendable {
             }
     }
     
-    @Publishable var isPlaying: Bool = false
+    var isPlaying: Bool = false
         
     func play() {
         if self.isPlaying {

@@ -10,6 +10,7 @@ import WidgetKit
 import SwiftUI
 import Core
 import PostHog
+import AppIntents
 
 final class Provider: TimelineProvider, Sendable {
     func placeholder(in context: Context) -> NowPlayingEntry {
@@ -23,11 +24,15 @@ final class Provider: TimelineProvider, Sendable {
             properties: ["family" : String(describing: family)]
         )
         
-        Task {
-            if let nowPlayingItem = await NowPlayingService.shared.fetch() {
-                completion(NowPlayingEntry(nowPlayingItem, family: family))
-            } else {
-                completion(NowPlayingEntry.placeholder(family: family))
+        if context.isPreview {
+            completion(NowPlayingEntry.placeholder(family: family))
+        } else {
+            Task {
+                if let nowPlayingItem = await NowPlayingService.shared.fetch() {
+                    completion(NowPlayingEntry(nowPlayingItem, family: family))
+                } else {
+                    completion(NowPlayingEntry.placeholder(family: family))
+                }
             }
         }
     }
@@ -76,60 +81,136 @@ struct NowPlayingEntry: TimelineEntry {
 }
 
 protocol NowPlayingWidgetEntryView: View {
+    associatedtype Artwork: View
+    
     var entry: NowPlayingEntry { get }
-    var artwork: AnyView { get }
+    var artwork: Artwork { get }
 }
 
 extension NowPlayingWidgetEntryView {
-    var artwork: AnyView {
-        if let artwork = entry.artwork {
-            return AnyView(Image(uiImage: artwork).resizable().unredacted())
-        } else {
-            return AnyView(Self.defaultArtwork.unredacted())
+    var artwork: some View {
+        Group {
+            if let artwork = entry.artwork {
+                Image(uiImage: artwork).resizable().unredacted()
+            } else {
+                Self.defaultArtwork
+            }
         }
+        .aspectRatio(contentMode: .fit)
+        .cornerRadius(5)
     }
     
     private static var defaultArtwork: some View {
-        ZStack {
-            Image(uiImage: #imageLiteral(resourceName: "background.pdf"))
-            Image(uiImage: #imageLiteral(resourceName: "logo.pdf"))
-        }
+        Image("background")
     }
 }
 
 struct SmallNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
     var entry: Provider.Entry
-
+    
     var body: some View {
-        ZStack(alignment: .bottom) {
-            self.artwork
+        ZStack(alignment: .leading) {
+            Image(ImageResource(name: "background", bundle: .main))
+                .resizable()
+                .ignoresSafeArea()
+                .background(.ultraThinMaterial)
             
-            VStack(alignment: .leading, spacing: 0.0) {
+            Color(white: 0, opacity: 0.25)
+                .ignoresSafeArea()
+            
+            VStack(alignment: .leading) {
+                self.artwork
+                
                 Text(entry.artist)
-                    .font(.headline)
-                    .foregroundStyle(.foreground)
-                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-                    .frame(maxWidth: .infinity)
-
-                Text(entry.songTitle)
-                    .font(.subheadline)
-                    .foregroundStyle(.foreground)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-                    .frame(maxWidth: .infinity)
+                    .font(.caption)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
                     .lineLimit(1)
-            }
-            .background(.ultraThinMaterial)
-            .multilineTextAlignment(.leading)
-            .containerBackground(for: .widget) {
-                EmptyView()
+                
+                Text(entry.songTitle)
+                    .font(.caption)
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                
+                PlayButton(RadioPlayerController.shared.isPlaying)
+                    .background(Capsule().fill(Color.red))
+                    .clipped()
+                
             }
         }
+        .safeAreaPadding()
+        .containerBackground(.regularMaterial, for: .widget)
+        //        .overlay(
+        ////            Button(action: {
+        ////                RadioPlayerController.shared.play()
+        ////            }) {
+        ////                (RadioPlayerController.shared.isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill"))
+        ////                    .foregroundStyle(.white)
+        ////                    .font(.caption)
+        ////                    .fontWeight(.bold)
+        ////                Text("Play")
+        ////                    .font(.caption)
+        ////                    .fontWeight(.bold)
+        ////                    .foregroundColor(.white)
+        ////            }
+        ////            .background(
+        ////                Capsule()
+        ////                    .fill(Color.red)
+        ////            )
+        ////            .clipped()
+        ////            .padding(.init(top: 10, leading: 0, bottom: 0, trailing: 10)),
+        ////            alignment: .topTrailing
+        //
+        //        )
+    }
+    
+}
+
+struct PlayButton: View {
+    @AppStorage("isPlaying", store: UserDefaults.standard)
+    var isPlaying: Bool = false
+    
+    init(_ isPlaying: Bool) {
+        print(">>> PlayButton init \(RadioPlayerController.shared.isPlaying)")
+        self.isPlaying = isPlaying
+    }
+    
+    var body: some View {
+        Button(intent: intent) {
+            Image(systemName: resourceName)
+                .foregroundStyle(.white)
+                .font(.caption)
+                .fontWeight(.bold)
+                .invalidatableContent()
+            Text(text)
+                .font(.caption)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .invalidatableContent()
+        }
+        .id(isPlaying)
+//        .task {
+//            WidgetCenter.shared.reloadAllTimelines()
+//        }
+    }
+    
+    var intent: any SystemIntent {
+//        isPlaying ? PauseWXYC() : PlayWXYC()
+        ToggleWXYC()
+    }
+    
+    var text: String {
+        isPlaying ? "Pause" : "Play"
+    }
+    
+    var resourceName: String {
+        isPlaying ? "pause.fill" : "play.fill"
     }
 }
 
 struct MediumNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
     var entry: Provider.Entry
-
+    
     var body: some View {
         HStack(alignment: .center, spacing: 0) {
             self.artwork
@@ -139,7 +220,7 @@ struct MediumNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
                     .font(.headline)
                     .foregroundStyle(.foreground)
                     .frame(maxWidth: .infinity, alignment: .leading)
-
+                
                 Text(entry.songTitle)
                     .font(.subheadline)
                     .foregroundStyle(.foreground)
@@ -156,53 +237,52 @@ struct MediumNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
 
 struct LargeNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
     var entry: Provider.Entry
-
+    
     var body: some View {
-        ZStack(alignment: .bottom) {
-            self.artwork
+        //        ZStack(alignment: .bottom) {
+        self.artwork
+        
+        VStack(alignment: .leading) {
+            Text(entry.artist)
+                .font(.title)
+                .foregroundStyle(.foreground)
+                .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
+                .frame(maxWidth: .infinity)
+                .lineLimit(1)
             
-            VStack(alignment: .leading) {
-                Text(entry.artist)
-                    .font(.title)
-                    .foregroundStyle(.foreground)
-                    .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-                    .frame(maxWidth: .infinity)
-                    .lineLimit(1)
-
-                Text(entry.songTitle)
-                    .font(.title2)
-                    .foregroundStyle(.foreground)
-                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-                    .frame(maxWidth: .infinity)
-                    .lineLimit(1)
-            }
-            .background(.ultraThinMaterial)
-            .containerBackground(for: .widget) {
-                EmptyView()
-            }
+            Text(entry.songTitle)
+                .font(.title2)
+                .foregroundStyle(.foreground)
+                .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
+                .frame(maxWidth: .infinity)
+                .lineLimit(1)
         }
+        .background(.ultraThinMaterial)
+        .containerBackground(for: .widget) {
+            EmptyView()
+        }
+        //        }
     }
     
-    internal var artwork: AnyView {
-        if let artwork = entry.artwork {
-            return AnyView(Image(uiImage: artwork).resizable())
-        } else {
-            return AnyView(Self.defaultArtwork)
-        }
-    }
-    
-    private static var defaultArtwork: some View {
-        ZStack {
-            Image(uiImage: #imageLiteral(resourceName: "background.pdf"))
-            Image(uiImage: #imageLiteral(resourceName: "logo.pdf"))
-        }
-    }
+    //    internal var artwork: AnyView {
+    //        if let artwork = entry.artwork {
+    //            return AnyView(Image(uiImage: artwork).resizable())
+    //        } else {
+    //            return AnyView(Self.defaultArtwork)
+    //        }
+    //    }
+    //
+    //    private static var defaultArtwork: some View {
+    //        ZStack {
+    //            Image(uiImage: #imageLiteral(resourceName: "background.pdf"))
+    //            Image(uiImage: #imageLiteral(resourceName: "logo.pdf"))
+    //        }
+    //    }
 }
 
-@main
 struct NowPlayingWidget: Widget {
     let kind: String = "NowPlayingWidget"
-
+    
     var body: some WidgetConfiguration {
         StaticConfiguration(kind: kind, provider: Provider()) { entry -> AnyView in
             switch entry.family {
@@ -220,6 +300,28 @@ struct NowPlayingWidget: Widget {
     }
 }
 
+@main
+struct NowPlayingWidgetBundle: WidgetBundle {
+    var body: some Widget {
+        NowPlayingControl()
+        NowPlayingWidget()
+    }
+}
+
+@available(iOSApplicationExtension 18.0, *)
+struct NowPlayingControl: ControlWidget {
+    var body: some ControlWidgetConfiguration {
+        AppIntentControlConfiguration(kind: "org.wxyc.control", intent: PlayWXYC.self) { config in
+            ControlWidgetButton(action: config) {
+                Image(systemName: "pause.fill")
+                    .foregroundStyle(.white)
+                    .font(.caption)
+                    .fontWeight(.bold)
+            }
+        }
+    }
+}
+
 extension NowPlayingItem {
     static let placeholder = NowPlayingItem(
         playcut: Playcut(
@@ -231,6 +333,12 @@ extension NowPlayingItem {
             artistName: "WXYC 89.3 FM",
             releaseTitle: nil
         ),
-        artwork: nil
+        artwork: UIImage(named: "")
     )
+}
+
+#Preview(as: WidgetFamily.systemSmall) {
+    NowPlayingWidget()
+} timeline: {
+    NowPlayingEntry.placeholder(family: .systemSmall)
 }
