@@ -42,6 +42,7 @@ internal final class RadioPlayer: Sendable {
             PostHogSDK.shared.capture("already playing")
             return
         }
+        UserDefaults.wxyc.set(true, forKey: "isPlaying")
         
         PostHogSDK.shared.capture("play")
         timer = Timer.start()
@@ -49,6 +50,7 @@ internal final class RadioPlayer: Sendable {
     }
     
     func pause() {
+        UserDefaults.wxyc.set(false, forKey: "isPlaying")
         PostHogSDK.shared.capture(
             "pause",
             properties: ["duration": timer.duration]

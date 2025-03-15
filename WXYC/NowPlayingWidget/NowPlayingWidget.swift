@@ -28,11 +28,38 @@ final class Provider: TimelineProvider, Sendable {
             completion(NowPlayingEntry.placeholder(family: family))
         } else {
             Task {
-                if let nowPlayingItem = await NowPlayingService.shared.fetch() {
-                    completion(NowPlayingEntry(nowPlayingItem, family: family))
-                } else {
-                    completion(NowPlayingEntry.placeholder(family: family))
+                // Fetch the now playing item.
+                let nowPlayingItem = await NowPlayingService.shared.fetch() ?? .placeholder
+                
+                // Fetch playlist and get recent playcuts.
+                let playlist = await PlaylistService.shared.fetchPlaylist()
+                let playcuts = playlist.playcuts
+                let recentPlaycuts = Array(playcuts.prefix(4)[1...])
+                
+                // Fetch artwork for the recent playcuts concurrently.
+                let recentPlaycutsWithArtwork = await withTaskGroup(of: NowPlayingItem.self) { group -> [NowPlayingItem] in
+                    var results = [NowPlayingItem]()
+                    for playcut in recentPlaycuts {
+                        group.addTask {
+                            if let artwork = await ArtworkService.shared.getArtwork(for: playcut) {
+                                return NowPlayingItem(playcut: playcut, artwork: artwork)
+                            }
+                            
+                            return NowPlayingItem(playcut: playcut)
+                        }
+                    }
+                    for await updated in group {
+                        results.append(updated)
+                    }
+                    return results
                 }
+                
+                let entry = NowPlayingEntry(
+                    nowPlayingItem,
+                    recentPlaycuts: recentPlaycutsWithArtwork,
+                    family: family
+                )
+                completion(entry)
             }
         }
     }
@@ -43,13 +70,56 @@ final class Provider: TimelineProvider, Sendable {
             "nowplayingwidget gettimeline",
             properties: ["family" : String(describing: family)]
         )
+        
         Task {
+            // Fetch now playing item.
             let nowPlayingItem = await NowPlayingService.shared.fetch() ?? .placeholder
-            let timeline = Timeline(
-                entries: [NowPlayingEntry(nowPlayingItem, family: family)],
-                policy: .atEnd
+            
+            // Fetch playlist and extract the first three playcuts.
+            let playlist = await PlaylistService.shared.fetchPlaylist()
+            let playcuts = playlist.playcuts
+            let recentPlaycuts = Array(playcuts.prefix(4)[1...])
+            
+            // Fetch artwork for each of the recent playcuts concurrently.
+            let recentPlaycutsWithArtwork = await withTaskGroup(of: NowPlayingItem.self) { group -> [NowPlayingItem] in
+                var results = [NowPlayingItem]()
+                for playcut in recentPlaycuts {
+                    group.addTask {
+                        if let artwork = await ArtworkService.shared.getArtwork(for: playcut) {
+                            return NowPlayingItem(playcut: playcut, artwork: artwork)
+                        }
+                        
+                        return NowPlayingItem(playcut: playcut)
+                    }
+                }
+                for await updated in group {
+                    results.append(updated)
+                }
+                return results
+            }
+            
+            // Create the timeline entry including the now playing item and recent playcuts.
+            let entry = NowPlayingEntry(
+                nowPlayingItem,
+                recentPlaycuts: recentPlaycutsWithArtwork,
+                family: family
             )
+            
+            // Schedule the next update (for example, 5 minutes from now).
+            let nextUpdateDate = Calendar.current.date(byAdding: .minute, value: 5, to: Date())!
+            let timeline = Timeline(entries: [entry], policy: .after(nextUpdateDate))
             completion(timeline)
+        }
+    }
+}
+
+extension UIImage {
+    func resized(toWidth width: CGFloat, isOpaque: Bool = true) -> UIImage? {
+        let canvas = CGSize(width: width, height: CGFloat(ceil(width/size.width * size.height)))
+        let format = imageRendererFormat
+        format.opaque = isOpaque
+        return UIGraphicsImageRenderer(size: canvas, format: format).image {
+            _ in draw(in: CGRect(origin: .zero, size: canvas))
         }
     }
 }
@@ -58,25 +128,39 @@ struct NowPlayingEntry: TimelineEntry {
     let date: Date = Date(timeIntervalSinceNow: 1)
     let artist: String
     let songTitle: String
-    let artwork: UIImage?
+    let artwork: Image?
+    let recentPlaycuts: [NowPlayingItem]
     let family: WidgetFamily
     
-    init(_ nowPlayingItem: NowPlayingItem, family: WidgetFamily) {
+    init(_ nowPlayingItem: NowPlayingItem, recentPlaycuts: [NowPlayingItem] = [], family: WidgetFamily) {
         self.artist = nowPlayingItem.playcut.artistName
         self.songTitle = nowPlayingItem.playcut.songTitle
-        self.artwork = nowPlayingItem.artwork
+        
+        if let artwork = nowPlayingItem.artwork {
+            self.artwork = Image(uiImage: artwork)
+        } else {
+            self.artwork = nil
+        }
+        
+        self.recentPlaycuts = recentPlaycuts
         self.family = family
     }
     
-    init(artist: String, songTitle: String, artwork: UIImage?, family: WidgetFamily) {
+    init(artist: String, songTitle: String, artwork: Image?, family: WidgetFamily) {
         self.artist = artist
         self.songTitle = songTitle
         self.artwork = artwork
+        self.recentPlaycuts = []
         self.family = family
     }
     
     public static func placeholder(family: WidgetFamily) -> Self {
-        NowPlayingEntry(artist: "WXYC 89.3 FM", songTitle: "Chapel Hill, NC", artwork: nil, family: family)
+        NowPlayingEntry(
+            artist: "WXYC 89.3 FM",
+            songTitle: "Chapel Hill, NC",
+            artwork: nil,
+            family: family
+        )
     }
 }
 
@@ -91,18 +175,33 @@ extension NowPlayingWidgetEntryView {
     var artwork: some View {
         Group {
             if let artwork = entry.artwork {
-                Image(uiImage: artwork).resizable().unredacted()
+                artwork
+                    .resizable()
+                    .frame(maxWidth: 800, maxHeight: 800)
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(5)
+                    .containerBackground(Color.clear, for: .widget)
             } else {
                 Self.defaultArtwork
+                    .frame(maxWidth: 800, maxHeight: 800)
+                    .aspectRatio(contentMode: .fit)
+                    .cornerRadius(5)
+                    .containerBackground(Color.clear, for: .widget)
             }
         }
-        .aspectRatio(contentMode: .fit)
-        .cornerRadius(5)
     }
     
     private static var defaultArtwork: some View {
-        Image("background")
+        ZStack {
+            Rectangle()
+                .opacity(0.2)
+            Image("logo")
+                .resizable()
+                .scaleEffect(0.8)
+        }
     }
+    
+    
 }
 
 struct SmallNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
@@ -132,48 +231,19 @@ struct SmallNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
                     .foregroundStyle(.white)
                     .lineLimit(1)
                 
-                PlayButton(RadioPlayerController.shared.isPlaying)
+                PlayButton()
                     .background(Capsule().fill(Color.red))
                     .clipped()
                 
             }
         }
         .safeAreaPadding()
-        .containerBackground(.regularMaterial, for: .widget)
-        //        .overlay(
-        ////            Button(action: {
-        ////                RadioPlayerController.shared.play()
-        ////            }) {
-        ////                (RadioPlayerController.shared.isPlaying ? Image(systemName: "pause.fill") : Image(systemName: "play.fill"))
-        ////                    .foregroundStyle(.white)
-        ////                    .font(.caption)
-        ////                    .fontWeight(.bold)
-        ////                Text("Play")
-        ////                    .font(.caption)
-        ////                    .fontWeight(.bold)
-        ////                    .foregroundColor(.white)
-        ////            }
-        ////            .background(
-        ////                Capsule()
-        ////                    .fill(Color.red)
-        ////            )
-        ////            .clipped()
-        ////            .padding(.init(top: 10, leading: 0, bottom: 0, trailing: 10)),
-        ////            alignment: .topTrailing
-        //
-        //        )
     }
-    
 }
 
 struct PlayButton: View {
-    @AppStorage("isPlaying", store: UserDefaults.standard)
-    var isPlaying: Bool = false
-    
-    init(_ isPlaying: Bool) {
-        print(">>> PlayButton init \(RadioPlayerController.shared.isPlaying)")
-        self.isPlaying = isPlaying
-    }
+    @AppStorage("isPlaying", store: .wxyc)
+    var isPlaying: Bool = UserDefaults.wxyc.bool(forKey: "isPlaying")
     
     var body: some View {
         Button(intent: intent) {
@@ -189,13 +259,9 @@ struct PlayButton: View {
                 .invalidatableContent()
         }
         .id(isPlaying)
-//        .task {
-//            WidgetCenter.shared.reloadAllTimelines()
-//        }
     }
     
     var intent: any SystemIntent {
-//        isPlaying ? PauseWXYC() : PlayWXYC()
         ToggleWXYC()
     }
     
@@ -212,72 +278,193 @@ struct MediumNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
     var entry: Provider.Entry
     
     var body: some View {
-        HStack(alignment: .center, spacing: 0) {
-            self.artwork
+        ZStack(alignment: .leading) {
+            Image(ImageResource(name: "background", bundle: .main))
+                .resizable()
+                .ignoresSafeArea()
+                .background(.ultraThinMaterial)
+            
+            Color(white: 0, opacity: 0.25)
+                .ignoresSafeArea()
+            
+            HStack(alignment: .center) {
+                self.artwork
+                    .cornerRadius(10)
+                
+                VStack(alignment: .leading) {
+                    
+                    Text(entry.artist)
+                        .font(.caption)
+                        .fontWeight(.bold)
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                    
+                    Text(entry.songTitle)
+                        .font(.caption)
+                        .foregroundStyle(.white)
+                        .lineLimit(1)
+                    
+                    PlayButton()
+                        .background(Capsule().fill(Color.red))
+                        .clipped()
+                    
+                }
+            }
+        }
+        .safeAreaPadding()
+    }
+}
+
+struct Header: View {
+    var entry: NowPlayingEntry
+    
+    var body: some View {
+        HStack(alignment: .center) {
+            ZStack {
+                Group {
+                    Rectangle()
+                        .aspectRatio(contentMode: .fit)
+                        .background(.ultraThinMaterial)
+                        .cornerRadius(10)
+                        .clipped()
+                        .frame(width: 100, height: 100, alignment: .leading)
+                    
+                    if let artwork = entry.artwork {
+                        artwork
+                            .resizable()
+                            .cornerRadius(10)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 100, maxHeight: 100)
+                    } else {
+                        Self.defaultArtwork
+                            .cornerRadius(10)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(maxWidth: 90, maxHeight: 90)
+                    }
+                }
+            }
             
             VStack(alignment: .leading) {
                 Text(entry.artist)
                     .font(.headline)
-                    .foregroundStyle(.foreground)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
                 
                 Text(entry.songTitle)
                     .font(.subheadline)
-                    .foregroundStyle(.foreground)
-                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                                
+                PlayButton()
+                    .background(Capsule().fill(Color.red))
+                    .clipped()
+                    .frame(alignment: .bottom)
             }
-            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
-        .background(.ultraThickMaterial)
-        .containerBackground(for: .widget) {
-            EmptyView()
+    }
+    
+    private static var defaultArtwork: some View {
+        ZStack {
+            Rectangle()
+                .opacity(0.2)
+            Image("logo")
+                .resizable()
+                .scaleEffect(0.8)
         }
     }
 }
 
-struct LargeNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
-    var entry: Provider.Entry
+struct RecentlyPlayedRow: View {
+    let nowPlayingItem: NowPlayingItem
+    let imageDimension = 45.0
     
-    var body: some View {
-        //        ZStack(alignment: .bottom) {
-        self.artwork
-        
-        VStack(alignment: .leading) {
-            Text(entry.artist)
-                .font(.title)
-                .foregroundStyle(.foreground)
-                .padding(EdgeInsets(top: 5, leading: 0, bottom: 0, trailing: 0))
-                .frame(maxWidth: .infinity)
-                .lineLimit(1)
-            
-            Text(entry.songTitle)
-                .font(.title2)
-                .foregroundStyle(.foreground)
-                .padding(EdgeInsets(top: 0, leading: 0, bottom: 5, trailing: 0))
-                .frame(maxWidth: .infinity)
-                .lineLimit(1)
-        }
-        .background(.ultraThinMaterial)
-        .containerBackground(for: .widget) {
-            EmptyView()
-        }
-        //        }
+    init(nowPlayingItem: NowPlayingItem) {
+        self.nowPlayingItem = nowPlayingItem
     }
     
-    //    internal var artwork: AnyView {
-    //        if let artwork = entry.artwork {
-    //            return AnyView(Image(uiImage: artwork).resizable())
-    //        } else {
-    //            return AnyView(Self.defaultArtwork)
-    //        }
-    //    }
-    //
-    //    private static var defaultArtwork: some View {
-    //        ZStack {
-    //            Image(uiImage: #imageLiteral(resourceName: "background.pdf"))
-    //            Image(uiImage: #imageLiteral(resourceName: "logo.pdf"))
-    //        }
-    //    }
+    var body: some View {
+        HStack(alignment: .center) {
+            Image(uiImage: nowPlayingItem.artwork!)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .cornerRadius(10)
+                .clipped()
+                .frame(
+                    width: imageDimension,
+                    height: imageDimension,
+                    alignment: .leading
+                )
+                .padding(5)
+            
+            VStack(alignment: .leading) {
+                Text(nowPlayingItem.playcut.artistName)
+                    .font(.headline)
+                    .fontWeight(.bold)
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+                
+                Text(nowPlayingItem.playcut.songTitle)
+                    .font(.subheadline)
+                    .foregroundStyle(.white)
+                    .lineLimit(1)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .background(Color(red: 1, green: 1, blue: 1, opacity: 0.1))
+        .cornerRadius(10)
+        .clipped()
+    }
+}
+
+struct LargeNowPlayingWidgetEntryView: NowPlayingWidgetEntryView {
+    let entry: NowPlayingEntry
+    
+    init(entry: NowPlayingEntry) {
+        self.entry = entry
+    }
+    
+    var body: some View {
+        ZStack(alignment: .top) {
+            Image(ImageResource(name: "background", bundle: .main))
+                .resizable()
+                .background(.ultraThinMaterial)
+                .cornerRadius(15)
+                .ignoresSafeArea()
+            
+            Color(white: 0, opacity: 0.25)
+                .ignoresSafeArea()
+            
+            VStack(alignment: .leading, spacing: 10) {
+                Spacer()
+                
+                Header(entry: entry)
+                
+//                Spacer()
+
+                Text("Recently Played")
+                    .font(.body.smallCaps().bold())
+                    .foregroundStyle(.white)
+                    .frame(maxHeight: .infinity, alignment: .top)
+                
+                ForEach(entry.recentPlaycuts.sorted(by: \.playcut.chronOrderID)) { nowPlayingItem in
+                    RecentlyPlayedRow(nowPlayingItem: nowPlayingItem)
+                }
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+                
+                Spacer()
+            }
+        }
+        .safeAreaPadding()
+        .containerBackground(Color.clear, for: .widget)
+    }
+    
+    var rowCount: Int {
+        print(">>>> \(PlaylistService.shared.playlist.playcuts.count)")
+        print(">>>> \(PlaylistService.shared.playlist.playcuts)")
+        return min(PlaylistService.shared.playlist.playcuts.count, 4)
+    }
 }
 
 struct NowPlayingWidget: Widget {
@@ -294,8 +481,6 @@ struct NowPlayingWidget: Widget {
                 return AnyView(LargeNowPlayingWidgetEntryView(entry: entry))
             }
         }
-        .configurationDisplayName("Now Playing")
-        .description("Now playing on WXYC…")
         .contentMarginsDisabled()
     }
 }
@@ -337,8 +522,46 @@ extension NowPlayingItem {
     )
 }
 
-#Preview(as: WidgetFamily.systemSmall) {
+struct RemoteImage: View {
+    let playcut: Playcut
+    @State private var artwork: UIImage? = nil
+    
+    var body: some View {
+        Group {
+            if let artwork {
+                Image(uiImage: artwork)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+            } else {
+                Image("logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .onAppear {
+                        Task {
+                            let artwork = await ArtworkService.shared.getArtwork(for: playcut)
+                            assert(artwork != nil)
+                            Task { @MainActor in
+                                self.artwork = artwork
+                                print(">>>> artwork updated")
+                            }
+                        }
+                    }
+            }
+        }
+    }
+}
+
+#Preview(as: .systemLarge) {
     NowPlayingWidget()
 } timeline: {
-    NowPlayingEntry.placeholder(family: .systemSmall)
+    NowPlayingEntry(artist: "Autechre", songTitle: "VI Scose Poise", artwork: Image("logo"), family: .systemLarge)
+}
+
+
+extension Array {
+    func sorted<T: Comparable>(by keyPath: KeyPath<Element, T>) -> [Element] {
+        sorted { e1, e2 in
+            e1[keyPath: keyPath] < e2[keyPath: keyPath]
+        }
+    }
 }

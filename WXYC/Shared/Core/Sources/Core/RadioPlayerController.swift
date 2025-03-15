@@ -12,7 +12,6 @@ import MediaPlayer
 import Logger
 import UIKit
 import PostHog
-import SwiftUI
 
 public enum PlaybackState: Sendable {
     case initialized
@@ -20,15 +19,11 @@ public enum PlaybackState: Sendable {
     case paused
 }
 
-@MainActor @Observable
+@MainActor
+@Observable
 public final class RadioPlayerController: @unchecked Sendable {
     public static let shared = RadioPlayerController()
-    public var isPlaying = false {
-        didSet {
-            print(">>>>> \(UserDefaults.standard.bool(forKey: "isPlaying"))")
-            UserDefaults.standard.set(isPlaying, forKey: "isPlaying")
-        }
-    }
+    public var isPlaying = false
 
     private init(
         radioPlayer: RadioPlayer = RadioPlayer(),

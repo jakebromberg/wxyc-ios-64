@@ -11,9 +11,12 @@ import UIKit
 import Logger
 import Observation
 
-public struct NowPlayingItem: Sendable, Equatable {
+public struct NowPlayingItem: Sendable, Equatable, Identifiable {
     public let playcut: Playcut
     public var artwork: UIImage?
+    public var id: UInt64 {
+        playcut.id
+    }
     
     public init(playcut: Playcut, artwork: UIImage? = nil) {
         self.playcut = playcut

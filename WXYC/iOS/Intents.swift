@@ -18,7 +18,7 @@ struct IntentError: Error {
     let description: String
 }
 
-public struct PlayWXYC: AudioPlaybackIntent {
+public struct PlayWXYC: AudioPlaybackIntent, WidgetConfigurationIntent {
     public static let authenticationPolicy: IntentAuthenticationPolicy = .alwaysAllowed
     public static let description = "Plays WXYC."
     public static let isDiscoverable = true
