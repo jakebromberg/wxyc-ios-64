@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		231260472D938C1600762428 /* Secrets in Frameworks */ = {isa = PBXBuildFile; productRef = 231260462D938C1600762428 /* Secrets */; };
+		2334D1612DA490AB00B9106B /* Sottsass in Frameworks */ = {isa = PBXBuildFile; productRef = 2334D1602DA490AB00B9106B /* Sottsass */; };
+		2334D1632DA490CF00B9106B /* Sottsass in Frameworks */ = {isa = PBXBuildFile; productRef = 2334D1622DA490CF00B9106B /* Sottsass */; };
 		236609AD2D72D0270057E268 /* Core in Frameworks */ = {isa = PBXBuildFile; productRef = 236609AC2D72D0270057E268 /* Core */; };
 		236609AF2D72D0270057E268 /* Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 236609AE2D72D0270057E268 /* Logger */; };
 		236609B12D72D0270057E268 /* OpenNSFW in Frameworks */ = {isa = PBXBuildFile; productRef = 236609B02D72D0270057E268 /* OpenNSFW */; };
@@ -73,7 +75,6 @@
 		236629612D72D5BB0057E268 /* NowPlayingWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = NowPlayingWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		236629792D72D94A0057E268 /* WatchXYC-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "WatchXYC-Info.plist"; sourceTree = "<group>"; };
 		236629952D73905A0057E268 /* WXYC TV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "WXYC TV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		236629B32D7390930057E268 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		2366FA1D2D72CE880057E268 /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,7 +124,6 @@
 				WatchXYC/DialADJPage.swift,
 				WatchXYC/Info.plist,
 				WatchXYC/PlayerPage.swift,
-				WatchXYC/PlaylistPage.swift,
 				"WatchXYC/Preview Content/Preview Assets.xcassets",
 				WatchXYC/RootTabView.swift,
 				WatchXYC/WatchXYCApp.swift,
@@ -184,6 +184,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2334D1612DA490AB00B9106B /* Sottsass in Frameworks */,
 				236609E32D72D08C0057E268 /* Logger in Frameworks */,
 				236609E52D72D08C0057E268 /* OpenNSFW in Frameworks */,
 				236609E12D72D08C0057E268 /* Core in Frameworks */,
@@ -216,6 +217,7 @@
 			files = (
 				236609AF2D72D0270057E268 /* Logger in Frameworks */,
 				23DB847B2D828093000EB53A /* Analytics in Frameworks */,
+				2334D1632DA490CF00B9106B /* Sottsass in Frameworks */,
 				236609B12D72D0270057E268 /* OpenNSFW in Frameworks */,
 				236609AD2D72D0270057E268 /* Core in Frameworks */,
 				231260472D938C1600762428 /* Secrets in Frameworks */,
@@ -228,7 +230,6 @@
 		236609AB2D72D0270057E268 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				236629B32D7390930057E268 /* AVFoundation.framework */,
 				236609B42D72D02D0057E268 /* AVFoundation.framework */,
 			);
 			name = Frameworks;
@@ -269,6 +270,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				2334D15F2DA490A300B9106B /* PBXTargetDependency */,
 				236609D92D72D0840057E268 /* PBXTargetDependency */,
 				236609DB2D72D0840057E268 /* PBXTargetDependency */,
 				236609DD2D72D0840057E268 /* PBXTargetDependency */,
@@ -278,6 +280,7 @@
 				236609E02D72D08C0057E268 /* Core */,
 				236609E22D72D08C0057E268 /* Logger */,
 				236609E42D72D08C0057E268 /* OpenNSFW */,
+				2334D1602DA490AB00B9106B /* Sottsass */,
 			);
 			productName = "WatchXYC Watch App";
 			productReference = 236609BA2D72D0420057E268 /* WatchXYC.app */;
@@ -363,6 +366,7 @@
 				236609B02D72D0270057E268 /* OpenNSFW */,
 				23DB847A2D828093000EB53A /* Analytics */,
 				231260462D938C1600762428 /* Secrets */,
+				2334D1622DA490CF00B9106B /* Sottsass */,
 			);
 			productName = WXYC;
 			productReference = 2366FA1D2D72CE880057E268 /* WXYC.app */;
@@ -479,6 +483,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		2334D15F2DA490A300B9106B /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 2334D15E2DA490A300B9106B /* Sottsass */;
+		};
 		236609A02D72CF5A0057E268 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 2366099F2D72CF5A0057E268 /* Core */;
@@ -1160,6 +1168,18 @@
 		231260462D938C1600762428 /* Secrets */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Secrets;
+		};
+		2334D15E2DA490A300B9106B /* Sottsass */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Sottsass;
+		};
+		2334D1602DA490AB00B9106B /* Sottsass */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Sottsass;
+		};
+		2334D1622DA490CF00B9106B /* Sottsass */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Sottsass;
 		};
 		2366099F2D72CF5A0057E268 /* Core */ = {
 			isa = XCSwiftPackageProductDependency;

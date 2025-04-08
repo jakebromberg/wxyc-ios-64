@@ -90,7 +90,7 @@ public final actor CacheCoordinator {
         }
         
         Task {
-            let _: Value = await try! self.value(for: key)
+            let _: Value = try! await self.value(for: key)
         }
     }
     

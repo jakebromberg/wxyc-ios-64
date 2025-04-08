@@ -9,29 +9,32 @@
 import Foundation
 import SwiftUI
 import Core
+import Sottsass
 
 struct PlaylistPage: View {
     @State var playlister = Playlister()
     
     var body: some View {
         List {
-            Section("Recently Played") {
-                ForEach(playlister.playlist.wrappedEntries) { wrappedEntry in
-                    switch wrappedEntry {
-                    case .playcut(let playcut):
-                        PlaycutView(playcut: playcut)
-                            .listRowInsets(EdgeInsets(10))
-                    case .breakpoint(let breakpoint):
-                        BreakpointView(breakpoint: breakpoint)
-                            .listRowBackground(Color.black)
-                    case .talkset(_):
-                        TalksetView()
-                            .background(
-                            )
-                            .listRowBackground(Color.black)
-                    }
-                }
-            }
+            Sottsass(text: "Hello", scaleFactor: 1.0)
+
+//            Section("Recently Played") {
+//                ForEach(playlister.playlist.wrappedEntries) { wrappedEntry in
+//                    switch wrappedEntry {
+//                    case .playcut(let playcut):
+//                        PlaycutView(playcut: playcut)
+//                            .listRowInsets(EdgeInsets(10))
+//                    case .breakpoint(let breakpoint):
+//                        BreakpointView(breakpoint: breakpoint)
+//                            .listRowBackground(Color.black)
+//                    case .talkset(_):
+//                        TalksetView()
+//                            .background(
+//                            )
+//                            .listRowBackground(Color.black)
+//                    }
+//                }
+//            }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
     }
