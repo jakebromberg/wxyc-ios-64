@@ -6,7 +6,7 @@ import PackageDescription
 let package = Package(
     name: "Sottsass",
     platforms: [
-        .iOS(.v18), .watchOS(.v9), .macOS(.v13)
+        .iOS(.v18)
     ],
     products: [
         .library(
@@ -18,9 +18,9 @@ let package = Package(
         .target(
             name: "Sottsass",
             resources: [
-                .copy("../Resources/Cassettes"),
-                .copy("../Resources/Stickers"),
-                .copy("../Resources/Fonts")
+                .process("Resources/Media"),
+                .process("Resources/Stickers"),
+                .process("Resources/Fonts")
             ]
         )
     ]

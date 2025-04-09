@@ -1,18 +1,19 @@
 //
-//  File.swift
-//  Filler Art
+//  Bundle.swift
+//  Sottsass
 //
 //  Created by Jake Bromberg on 4/7/25.
 //
 
 import SwiftUI
+import UIKit
 
 extension Bundle {
-    /// Returns a random background image from the Cassettes directory.
+    /// Returns a random background image from the Media directory.
     static func randomBackground() -> Image? {
-        guard let urls = Bundle.module.urls(forResourcesWithExtension: "png", subdirectory: "Cassettes"),
+        guard let urls = Bundle.module.urls(forResourcesWithExtension: "png", subdirectory: "Media"),
                 let randomURL = urls.randomElement() else {
-            print("❌ No background images found in Cassettes directory")
+            print("❌ No background images found in Media directory")
             return nil
         }
         let imageName = randomURL.deletingPathExtension().lastPathComponent

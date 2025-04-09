@@ -4,7 +4,7 @@
         {
             "label": "swift-build",
             "type": "shell",
-            "command": "swift build",
+            "command": "xcodebuild -scheme Sottsass -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 16,OS=latest' clean build",
             "group": {
                 "kind": "build",
                 "isDefault": true
@@ -15,7 +15,10 @@
             },
             "problemMatcher": {
                 "owner": "swift",
-                "fileLocation": ["relative", "${workspaceFolder}"],
+                "fileLocation": [
+                    "relative",
+                    "${workspaceFolder}"
+                ],
                 "pattern": {
                     "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
                     "file": 1,
