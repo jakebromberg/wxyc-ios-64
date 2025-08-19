@@ -46,6 +46,13 @@ public final class RadioPlayerController {
         notificationCenter: NotificationCenter = .default,
         remoteCommandCenter: MPRemoteCommandCenter = .shared()
     ) {
+        do {
+            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, policy: .longFormAudio)
+        } catch {
+            Log(.error, "Could not set AVAudioSession category: \(error)")
+            PostHogSDK.shared.capture(error: error, context: "AppDelegate: Could not set AVAudioSession category")
+        }
+
         func notificationObserver(
             for name: Notification.Name,
             sink: @escaping @Sendable (Notification) -> ()

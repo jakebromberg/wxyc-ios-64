@@ -6,3 +6,5 @@ WXYC/DerivedData
 DerivedData
 WXYC/WXYC.xcodeproj/xcshareddata/*
 *Secrets.swift
+.env
+WXYC/Shared/Core/.build

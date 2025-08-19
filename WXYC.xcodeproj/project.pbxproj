@@ -24,6 +24,61 @@
 		2395669D2D7524CE0094A215 /* Logger in Frameworks */ = {isa = PBXBuildFile; productRef = 2395669C2D7524CE0094A215 /* Logger */; };
 		2395669F2D7524CE0094A215 /* OpenNSFW in Frameworks */ = {isa = PBXBuildFile; productRef = 2395669E2D7524CE0094A215 /* OpenNSFW */; };
 		23DB847B2D828093000EB53A /* Analytics in Frameworks */ = {isa = PBXBuildFile; productRef = 23DB847A2D828093000EB53A /* Analytics */; };
+		23F91EDB2E4C0F6900C0DA3C /* iOSMain.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EAF2E4C0F6800C0DA3C /* iOSMain.storyboard */; };
+		23F91EDC2E4C0F6900C0DA3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EB92E4C0F6800C0DA3C /* Info.plist */; };
+		23F91EDD2E4C0F6900C0DA3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F91ECA2E4C0F6800C0DA3C /* Info.plist */; };
+		23F91EDE2E4C0F6900C0DA3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EAA2E4C0F6800C0DA3C /* Info.plist */; };
+		23F91EDF2E4C0F6900C0DA3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EB02E4C0F6800C0DA3C /* LaunchScreen.storyboard */; };
+		23F91EE02E4C0F6900C0DA3C /* generate_secrets.sh in Resources */ = {isa = PBXBuildFile; fileRef = 23F91E8D2E4C0F6800C0DA3C /* generate_secrets.sh */; };
+		23F91EE12E4C0F6900C0DA3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EC82E4C0F6800C0DA3C /* Assets.xcassets */; };
+		23F91EE22E4C0F6900C0DA3C /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EBC2E4C0F6800C0DA3C /* Info.plist */; };
+		23F91EE32E4C0F6900C0DA3C /* TalksetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F91E9C2E4C0F6800C0DA3C /* TalksetCell.xib */; };
+		23F91EE42E4C0F6900C0DA3C /* PlayerHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F91E9A2E4C0F6800C0DA3C /* PlayerHeader.xib */; };
+		23F91EE52E4C0F6900C0DA3C /* PlaycutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F91E982E4C0F6800C0DA3C /* PlaycutCell.xib */; };
+		23F91EE62E4C0F6900C0DA3C /* README_Configuration.md in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EB42E4C0F6800C0DA3C /* README_Configuration.md */; };
+		23F91EE72E4C0F6900C0DA3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EBB2E4C0F6800C0DA3C /* Assets.xcassets */; };
+		23F91EE82E4C0F6900C0DA3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F91ED22E4C0F6800C0DA3C /* Assets.xcassets */; };
+		23F91EE92E4C0F6900C0DA3C /* WXYC-TV-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23F91ED42E4C0F6800C0DA3C /* WXYC-TV-Info.plist */; };
+		23F91EEA2E4C0F6900C0DA3C /* InfoDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EAC2E4C0F6800C0DA3C /* InfoDetailViewController.xib */; };
+		23F91EEB2E4C0F6900C0DA3C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EC62E4C0F6800C0DA3C /* Preview Assets.xcassets */; };
+		23F91EEC2E4C0F6900C0DA3C /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 23F91ED72E4C0F6800C0DA3C /* LICENSE */; };
+		23F91EED2E4C0F6900C0DA3C /* BreakpointCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23F91E962E4C0F6800C0DA3C /* BreakpointCell.xib */; };
+		23F91EEE2E4C0F6900C0DA3C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 23F91EA92E4C0F6800C0DA3C /* Images.xcassets */; };
+		23F91EEF2E4C0F6900C0DA3C /* WXYC.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 23F91ED92E4C0F6800C0DA3C /* WXYC.xcconfig */; };
+		23F91EF02E4C0F6900C0DA3C /* NowPlayingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EBD2E4C0F6800C0DA3C /* NowPlayingWidget.swift */; };
+		23F91EF12E4C0F6900C0DA3C /* PlaylistCellViewModelProducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA12E4C0F6800C0DA3C /* PlaylistCellViewModelProducer.swift */; };
+		23F91EF22E4C0F6900C0DA3C /* PlaybackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EB32E4C0F6800C0DA3C /* PlaybackButton.swift */; };
+		23F91EF32E4C0F6900C0DA3C /* WatchXYCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ED02E4C0F6800C0DA3C /* WatchXYCApp.swift */; };
+		23F91EF42E4C0F6900C0DA3C /* InfoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EAB2E4C0F6800C0DA3C /* InfoDetailViewController.swift */; };
+		23F91EF52E4C0F6900C0DA3C /* ConfigurationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA62E4C0F6800C0DA3C /* ConfigurationService.swift */; };
+		23F91EF62E4C0F6900C0DA3C /* PlayerHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91E992E4C0F6800C0DA3C /* PlayerHeader.swift */; };
+		23F91EF72E4C0F6900C0DA3C /* RootTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ECF2E4C0F6800C0DA3C /* RootTabView.swift */; };
+		23F91EF82E4C0F6900C0DA3C /* Intents.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EAE2E4C0F6800C0DA3C /* Intents.swift */; };
+		23F91EF92E4C0F6900C0DA3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EC02E4C0F6800C0DA3C /* AppDelegate.swift */; };
+		23F91EFA2E4C0F6900C0DA3C /* DialADJPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EC92E4C0F6800C0DA3C /* DialADJPage.swift */; };
+		23F91EFB2E4C0F6900C0DA3C /* WXYCTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ED52E4C0F6800C0DA3C /* WXYCTVApp.swift */; };
+		23F91EFC2E4C0F6900C0DA3C /* InstagramStoryActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91E9E2E4C0F6800C0DA3C /* InstagramStoryActivity.swift */; };
+		23F91EFD2E4C0F6900C0DA3C /* RootPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EB52E4C0F6800C0DA3C /* RootPageViewController.swift */; };
+		23F91EFE2E4C0F6900C0DA3C /* InkingButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EAD2E4C0F6800C0DA3C /* InkingButton.swift */; };
+		23F91EFF2E4C0F6900C0DA3C /* PlaylistPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ECD2E4C0F6800C0DA3C /* PlaylistPage.swift */; };
+		23F91F002E4C0F6900C0DA3C /* DPoPService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA82E4C0F6800C0DA3C /* DPoPService.swift */; };
+		23F91F012E4C0F6900C0DA3C /* BreakpointCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91E952E4C0F6800C0DA3C /* BreakpointCell.swift */; };
+		23F91F022E4C0F6900C0DA3C /* SpinningAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EB72E4C0F6800C0DA3C /* SpinningAnimation.swift */; };
+		23F91F032E4C0F6900C0DA3C /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA32E4C0F6800C0DA3C /* PlaylistViewController.swift */; };
+		23F91F042E4C0F6900C0DA3C /* PlaycutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91E972E4C0F6800C0DA3C /* PlaycutCell.swift */; };
+		23F91F052E4C0F6900C0DA3C /* Playlister.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ECC2E4C0F6800C0DA3C /* Playlister.swift */; };
+		23F91F062E4C0F6900C0DA3C /* PlaycutActivityItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91E9F2E4C0F6800C0DA3C /* PlaycutActivityItem.swift */; };
+		23F91F072E4C0F6900C0DA3C /* ListenTogether.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EB12E4C0F6800C0DA3C /* ListenTogether.swift */; };
+		23F91F082E4C0F6900C0DA3C /* CarPlaySceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA52E4C0F6800C0DA3C /* CarPlaySceneDelegate.swift */; };
+		23F91F092E4C0F6900C0DA3C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ED32E4C0F6800C0DA3C /* ContentView.swift */; };
+		23F91F0A2E4C0F6900C0DA3C /* SendRequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EB62E4C0F6800C0DA3C /* SendRequestService.swift */; };
+		23F91F0B2E4C0F6900C0DA3C /* PlaylistDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA22E4C0F6800C0DA3C /* PlaylistDataSource.swift */; };
+		23F91F0C2E4C0F6900C0DA3C /* ConfigurationServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA72E4C0F6800C0DA3C /* ConfigurationServiceTests.swift */; };
+		23F91F0D2E4C0F6900C0DA3C /* PlaylistCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EA02E4C0F6800C0DA3C /* PlaylistCellViewModel.swift */; };
+		23F91F0E2E4C0F6900C0DA3C /* PlayerPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ECB2E4C0F6800C0DA3C /* PlayerPage.swift */; };
+		23F91F0F2E4C0F6900C0DA3C /* TalksetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91E9B2E4C0F6800C0DA3C /* TalksetCell.swift */; };
+		23F91F102E4C0F6900C0DA3C /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91ECE2E4C0F6800C0DA3C /* RemoteImage.swift */; };
+		23F91F112E4C0F6900C0DA3C /* NowPlayingInfoCenterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23F91EB22E4C0F6800C0DA3C /* NowPlayingInfoCenterManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +95,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 236629602D72D5BB0057E268;
 			remoteInfo = NowPlayingWidget;
+		};
+		23C919372E4C13000082BCC2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2366FA152D72CE880057E268 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 2366FA1C2D72CE880057E268;
+			remoteInfo = WXYC;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -69,6 +131,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		233A01FB2E4C151600686439 /* WXYC.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; name = WXYC.xctestplan; path = WXYCTests/WXYC.xctestplan; sourceTree = "<group>"; };
 		236609B42D72D02D0057E268 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		236609BA2D72D0420057E268 /* WatchXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WatchXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		236629612D72D5BB0057E268 /* NowPlayingWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.extensionkit-extension"; includeInIndex = 0; path = NowPlayingWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,9 +140,83 @@
 		236629B32D7390930057E268 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS18.2.sdk/System/Library/Frameworks/AVFoundation.framework; sourceTree = DEVELOPER_DIR; };
 		2366FA1D2D72CE880057E268 /* WXYC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WXYC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23906F452DD4FC950033EB69 /* ListenTogether.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListenTogether.swift; path = WXYC/iOS/ListenTogether.swift; sourceTree = "<group>"; };
+		23C919332E4C13000082BCC2 /* WXYCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WXYCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		23F91E8D2E4C0F6800C0DA3C /* generate_secrets.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = generate_secrets.sh; sourceTree = "<group>"; };
+		23F91E8F2E4C0F6800C0DA3C /* NowPlayingWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowPlayingWidget.entitlements; sourceTree = "<group>"; };
+		23F91E902E4C0F6800C0DA3C /* NowPlayingWidgetDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = NowPlayingWidgetDebug.entitlements; sourceTree = "<group>"; };
+		23F91E912E4C0F6800C0DA3C /* WXYC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WXYC.entitlements; sourceTree = "<group>"; };
+		23F91E922E4C0F6800C0DA3C /* WXYC TV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "WXYC TV.entitlements"; sourceTree = "<group>"; };
+		23F91E932E4C0F6800C0DA3C /* WXYCDebug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WXYCDebug.entitlements; sourceTree = "<group>"; };
+		23F91E952E4C0F6800C0DA3C /* BreakpointCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreakpointCell.swift; sourceTree = "<group>"; };
+		23F91E962E4C0F6800C0DA3C /* BreakpointCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BreakpointCell.xib; sourceTree = "<group>"; };
+		23F91E972E4C0F6800C0DA3C /* PlaycutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaycutCell.swift; sourceTree = "<group>"; };
+		23F91E982E4C0F6800C0DA3C /* PlaycutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlaycutCell.xib; sourceTree = "<group>"; };
+		23F91E992E4C0F6800C0DA3C /* PlayerHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHeader.swift; sourceTree = "<group>"; };
+		23F91E9A2E4C0F6800C0DA3C /* PlayerHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerHeader.xib; sourceTree = "<group>"; };
+		23F91E9B2E4C0F6800C0DA3C /* TalksetCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalksetCell.swift; sourceTree = "<group>"; };
+		23F91E9C2E4C0F6800C0DA3C /* TalksetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TalksetCell.xib; sourceTree = "<group>"; };
+		23F91E9E2E4C0F6800C0DA3C /* InstagramStoryActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InstagramStoryActivity.swift; sourceTree = "<group>"; };
+		23F91E9F2E4C0F6800C0DA3C /* PlaycutActivityItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaycutActivityItem.swift; sourceTree = "<group>"; };
+		23F91EA02E4C0F6800C0DA3C /* PlaylistCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellViewModel.swift; sourceTree = "<group>"; };
+		23F91EA12E4C0F6800C0DA3C /* PlaylistCellViewModelProducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistCellViewModelProducer.swift; sourceTree = "<group>"; };
+		23F91EA22E4C0F6800C0DA3C /* PlaylistDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistDataSource.swift; sourceTree = "<group>"; };
+		23F91EA32E4C0F6800C0DA3C /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
+		23F91EA52E4C0F6800C0DA3C /* CarPlaySceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarPlaySceneDelegate.swift; sourceTree = "<group>"; };
+		23F91EA62E4C0F6800C0DA3C /* ConfigurationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationService.swift; sourceTree = "<group>"; };
+		23F91EA72E4C0F6800C0DA3C /* ConfigurationServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationServiceTests.swift; sourceTree = "<group>"; };
+		23F91EA82E4C0F6800C0DA3C /* DPoPService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DPoPService.swift; sourceTree = "<group>"; };
+		23F91EA92E4C0F6800C0DA3C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		23F91EAA2E4C0F6800C0DA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F91EAB2E4C0F6800C0DA3C /* InfoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoDetailViewController.swift; sourceTree = "<group>"; };
+		23F91EAC2E4C0F6800C0DA3C /* InfoDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoDetailViewController.xib; sourceTree = "<group>"; };
+		23F91EAD2E4C0F6800C0DA3C /* InkingButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InkingButton.swift; sourceTree = "<group>"; };
+		23F91EAE2E4C0F6800C0DA3C /* Intents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intents.swift; sourceTree = "<group>"; };
+		23F91EAF2E4C0F6800C0DA3C /* iOSMain.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = iOSMain.storyboard; sourceTree = "<group>"; };
+		23F91EB02E4C0F6800C0DA3C /* LaunchScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		23F91EB12E4C0F6800C0DA3C /* ListenTogether.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListenTogether.swift; sourceTree = "<group>"; };
+		23F91EB22E4C0F6800C0DA3C /* NowPlayingInfoCenterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingInfoCenterManager.swift; sourceTree = "<group>"; };
+		23F91EB32E4C0F6800C0DA3C /* PlaybackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybackButton.swift; sourceTree = "<group>"; };
+		23F91EB42E4C0F6800C0DA3C /* README_Configuration.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README_Configuration.md; sourceTree = "<group>"; };
+		23F91EB52E4C0F6800C0DA3C /* RootPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootPageViewController.swift; sourceTree = "<group>"; };
+		23F91EB62E4C0F6800C0DA3C /* SendRequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendRequestService.swift; sourceTree = "<group>"; };
+		23F91EB72E4C0F6800C0DA3C /* SpinningAnimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinningAnimation.swift; sourceTree = "<group>"; };
+		23F91EB92E4C0F6800C0DA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F91EBB2E4C0F6800C0DA3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23F91EBC2E4C0F6800C0DA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F91EBD2E4C0F6800C0DA3C /* NowPlayingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NowPlayingWidget.swift; sourceTree = "<group>"; };
+		23F91EBF2E4C0F6800C0DA3C /* Analytics */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Analytics; sourceTree = "<group>"; };
+		23F91EC02E4C0F6800C0DA3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		23F91EC12E4C0F6800C0DA3C /* Core */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Core; sourceTree = "<group>"; };
+		23F91EC22E4C0F6800C0DA3C /* Logger */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Logger; sourceTree = "<group>"; };
+		23F91EC32E4C0F6800C0DA3C /* OpenNSFW */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = OpenNSFW; sourceTree = "<group>"; };
+		23F91EC42E4C0F6800C0DA3C /* Secrets */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = Secrets; sourceTree = "<group>"; };
+		23F91EC62E4C0F6800C0DA3C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		23F91EC82E4C0F6800C0DA3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23F91EC92E4C0F6800C0DA3C /* DialADJPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialADJPage.swift; sourceTree = "<group>"; };
+		23F91ECA2E4C0F6800C0DA3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		23F91ECB2E4C0F6800C0DA3C /* PlayerPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerPage.swift; sourceTree = "<group>"; };
+		23F91ECC2E4C0F6800C0DA3C /* Playlister.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Playlister.swift; sourceTree = "<group>"; };
+		23F91ECD2E4C0F6800C0DA3C /* PlaylistPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistPage.swift; sourceTree = "<group>"; };
+		23F91ECE2E4C0F6800C0DA3C /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
+		23F91ECF2E4C0F6800C0DA3C /* RootTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootTabView.swift; sourceTree = "<group>"; };
+		23F91ED02E4C0F6800C0DA3C /* WatchXYCApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchXYCApp.swift; sourceTree = "<group>"; };
+		23F91ED22E4C0F6800C0DA3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		23F91ED32E4C0F6800C0DA3C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		23F91ED42E4C0F6800C0DA3C /* WXYC-TV-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "WXYC-TV-Info.plist"; sourceTree = "<group>"; };
+		23F91ED52E4C0F6800C0DA3C /* WXYCTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WXYCTVApp.swift; sourceTree = "<group>"; };
+		23F91ED72E4C0F6800C0DA3C /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		23F91ED82E4C0F6800C0DA3C /* WXYC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WXYC.entitlements; sourceTree = "<group>"; };
+		23F91ED92E4C0F6800C0DA3C /* WXYC.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = WXYC.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		233A02012E4C15BA00686439 /* Exceptions for "WXYCTests" folder in "WXYCTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				WXYC.xctestplan,
+			);
+			target = 23C919322E4C13000082BCC2 /* WXYCTests */;
+		};
 		23660A112D72D2630057E268 /* Exceptions for "WXYC" folder in "WatchXYC" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
@@ -111,6 +248,8 @@
 			membershipExceptions = (
 				"Build Tools/generate_secrets.sh",
 				"iOS Intents Extension/Info.plist",
+				iOS/ConfigurationService.swift,
+				iOS/ConfigurationServiceTests.swift,
 				iOS/Info.plist,
 				iOS/ListenTogether.swift,
 				LICENSE,
@@ -146,6 +285,13 @@
 			);
 			target = 236629602D72D5BB0057E268 /* NowPlayingWidget */;
 		};
+		23C9193F2E4C130F0082BCC2 /* Exceptions for "WXYC" folder in "WXYCTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				iOS/ConfigurationServiceTests.swift,
+			);
+			target = 23C919322E4C13000082BCC2 /* WXYCTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
@@ -167,6 +313,11 @@
 /* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
+		2309CCDA2E4BF51B00E30E2A /* WXYCTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = WXYCTests;
+			sourceTree = "<group>";
+		};
 		2366FA1F2D72CE880057E268 /* WXYC */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
@@ -176,8 +327,17 @@
 				239566992D751E9A0094A215 /* Exceptions for "WXYC" folder in "NowPlayingWidget" target */,
 				23D57D0D2D7B6F5F005CAD95 /* Exceptions for "WXYC" folder in "Compile Sources" phase from "NowPlayingWidget" target */,
 				236629C02D7390A00057E268 /* Exceptions for "WXYC" folder in "WXYC TV" target */,
+				23C9193F2E4C130F0082BCC2 /* Exceptions for "WXYC" folder in "WXYCTests" target */,
 			);
 			path = WXYC;
+			sourceTree = "<group>";
+		};
+		23C919342E4C13000082BCC2 /* WXYCTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				233A02012E4C15BA00686439 /* Exceptions for "WXYCTests" folder in "WXYCTests" target */,
+			);
+			path = WXYCTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -225,6 +385,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		23C919302E4C13000082BCC2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -240,11 +407,17 @@
 		2366FA142D72CE880057E268 = {
 			isa = PBXGroup;
 			children = (
+				233A01FB2E4C151600686439 /* WXYC.xctestplan */,
 				23906F452DD4FC950033EB69 /* ListenTogether.swift */,
 				236629792D72D94A0057E268 /* WatchXYC-Info.plist */,
 				2366FA1F2D72CE880057E268 /* WXYC */,
+				2309CCDA2E4BF51B00E30E2A /* WXYCTests */,
+				23C919342E4C13000082BCC2 /* WXYCTests */,
 				236609AB2D72D0270057E268 /* Frameworks */,
 				2366FA1E2D72CE880057E268 /* Products */,
+				23F91E872E4C0ED800C0DA3C /* Build Configurations */,
+				23F91E882E4C0EFC00C0DA3C /* Build Configurations */,
+				23F91EDA2E4C0F6800C0DA3C /* WXYC */,
 			);
 			sourceTree = "<group>";
 		};
@@ -255,8 +428,192 @@
 				236609BA2D72D0420057E268 /* WatchXYC.app */,
 				236629612D72D5BB0057E268 /* NowPlayingWidget.appex */,
 				236629952D73905A0057E268 /* WXYC TV.app */,
+				23C919332E4C13000082BCC2 /* WXYCTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		23F91E872E4C0ED800C0DA3C /* Build Configurations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Build Configurations";
+			sourceTree = "<group>";
+		};
+		23F91E882E4C0EFC00C0DA3C /* Build Configurations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Build Configurations";
+			sourceTree = "<group>";
+		};
+		23F91E8C2E4C0F6800C0DA3C /* Build Configurations */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Build Configurations";
+			sourceTree = "<group>";
+		};
+		23F91E8E2E4C0F6800C0DA3C /* Build Tools */ = {
+			isa = PBXGroup;
+			children = (
+				23F91E8D2E4C0F6800C0DA3C /* generate_secrets.sh */,
+			);
+			path = "Build Tools";
+			sourceTree = "<group>";
+		};
+		23F91E942E4C0F6800C0DA3C /* Entitlements */ = {
+			isa = PBXGroup;
+			children = (
+				23F91E8F2E4C0F6800C0DA3C /* NowPlayingWidget.entitlements */,
+				23F91E902E4C0F6800C0DA3C /* NowPlayingWidgetDebug.entitlements */,
+				23F91E912E4C0F6800C0DA3C /* WXYC.entitlements */,
+				23F91E922E4C0F6800C0DA3C /* WXYC TV.entitlements */,
+				23F91E932E4C0F6800C0DA3C /* WXYCDebug.entitlements */,
+			);
+			path = Entitlements;
+			sourceTree = "<group>";
+		};
+		23F91E9D2E4C0F6800C0DA3C /* Playlist Cells */ = {
+			isa = PBXGroup;
+			children = (
+				23F91E952E4C0F6800C0DA3C /* BreakpointCell.swift */,
+				23F91E962E4C0F6800C0DA3C /* BreakpointCell.xib */,
+				23F91E972E4C0F6800C0DA3C /* PlaycutCell.swift */,
+				23F91E982E4C0F6800C0DA3C /* PlaycutCell.xib */,
+				23F91E992E4C0F6800C0DA3C /* PlayerHeader.swift */,
+				23F91E9A2E4C0F6800C0DA3C /* PlayerHeader.xib */,
+				23F91E9B2E4C0F6800C0DA3C /* TalksetCell.swift */,
+				23F91E9C2E4C0F6800C0DA3C /* TalksetCell.xib */,
+			);
+			path = "Playlist Cells";
+			sourceTree = "<group>";
+		};
+		23F91EA42E4C0F6800C0DA3C /* Playlist */ = {
+			isa = PBXGroup;
+			children = (
+				23F91E9D2E4C0F6800C0DA3C /* Playlist Cells */,
+				23F91E9E2E4C0F6800C0DA3C /* InstagramStoryActivity.swift */,
+				23F91E9F2E4C0F6800C0DA3C /* PlaycutActivityItem.swift */,
+				23F91EA02E4C0F6800C0DA3C /* PlaylistCellViewModel.swift */,
+				23F91EA12E4C0F6800C0DA3C /* PlaylistCellViewModelProducer.swift */,
+				23F91EA22E4C0F6800C0DA3C /* PlaylistDataSource.swift */,
+				23F91EA32E4C0F6800C0DA3C /* PlaylistViewController.swift */,
+			);
+			path = Playlist;
+			sourceTree = "<group>";
+		};
+		23F91EB82E4C0F6800C0DA3C /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				23F91EA42E4C0F6800C0DA3C /* Playlist */,
+				23F91EA52E4C0F6800C0DA3C /* CarPlaySceneDelegate.swift */,
+				23F91EA62E4C0F6800C0DA3C /* ConfigurationService.swift */,
+				23F91EA72E4C0F6800C0DA3C /* ConfigurationServiceTests.swift */,
+				23F91EA82E4C0F6800C0DA3C /* DPoPService.swift */,
+				23F91EA92E4C0F6800C0DA3C /* Images.xcassets */,
+				23F91EAA2E4C0F6800C0DA3C /* Info.plist */,
+				23F91EAB2E4C0F6800C0DA3C /* InfoDetailViewController.swift */,
+				23F91EAC2E4C0F6800C0DA3C /* InfoDetailViewController.xib */,
+				23F91EAD2E4C0F6800C0DA3C /* InkingButton.swift */,
+				23F91EAE2E4C0F6800C0DA3C /* Intents.swift */,
+				23F91EAF2E4C0F6800C0DA3C /* iOSMain.storyboard */,
+				23F91EB02E4C0F6800C0DA3C /* LaunchScreen.storyboard */,
+				23F91EB12E4C0F6800C0DA3C /* ListenTogether.swift */,
+				23F91EB22E4C0F6800C0DA3C /* NowPlayingInfoCenterManager.swift */,
+				23F91EB32E4C0F6800C0DA3C /* PlaybackButton.swift */,
+				23F91EB42E4C0F6800C0DA3C /* README_Configuration.md */,
+				23F91EB52E4C0F6800C0DA3C /* RootPageViewController.swift */,
+				23F91EB62E4C0F6800C0DA3C /* SendRequestService.swift */,
+				23F91EB72E4C0F6800C0DA3C /* SpinningAnimation.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		23F91EBA2E4C0F6800C0DA3C /* iOS Intents Extension */ = {
+			isa = PBXGroup;
+			children = (
+				23F91EB92E4C0F6800C0DA3C /* Info.plist */,
+			);
+			path = "iOS Intents Extension";
+			sourceTree = "<group>";
+		};
+		23F91EBE2E4C0F6800C0DA3C /* NowPlayingWidget */ = {
+			isa = PBXGroup;
+			children = (
+				23F91EBB2E4C0F6800C0DA3C /* Assets.xcassets */,
+				23F91EBC2E4C0F6800C0DA3C /* Info.plist */,
+				23F91EBD2E4C0F6800C0DA3C /* NowPlayingWidget.swift */,
+			);
+			path = NowPlayingWidget;
+			sourceTree = "<group>";
+		};
+		23F91EC52E4C0F6800C0DA3C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				23F91EBF2E4C0F6800C0DA3C /* Analytics */,
+				23F91EC02E4C0F6800C0DA3C /* AppDelegate.swift */,
+				23F91EC12E4C0F6800C0DA3C /* Core */,
+				23F91EC22E4C0F6800C0DA3C /* Logger */,
+				23F91EC32E4C0F6800C0DA3C /* OpenNSFW */,
+				23F91EC42E4C0F6800C0DA3C /* Secrets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		23F91EC72E4C0F6800C0DA3C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				23F91EC62E4C0F6800C0DA3C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		23F91ED12E4C0F6800C0DA3C /* WatchXYC */ = {
+			isa = PBXGroup;
+			children = (
+				23F91EC72E4C0F6800C0DA3C /* Preview Content */,
+				23F91EC82E4C0F6800C0DA3C /* Assets.xcassets */,
+				23F91EC92E4C0F6800C0DA3C /* DialADJPage.swift */,
+				23F91ECA2E4C0F6800C0DA3C /* Info.plist */,
+				23F91ECB2E4C0F6800C0DA3C /* PlayerPage.swift */,
+				23F91ECC2E4C0F6800C0DA3C /* Playlister.swift */,
+				23F91ECD2E4C0F6800C0DA3C /* PlaylistPage.swift */,
+				23F91ECE2E4C0F6800C0DA3C /* RemoteImage.swift */,
+				23F91ECF2E4C0F6800C0DA3C /* RootTabView.swift */,
+				23F91ED02E4C0F6800C0DA3C /* WatchXYCApp.swift */,
+			);
+			path = WatchXYC;
+			sourceTree = "<group>";
+		};
+		23F91ED62E4C0F6800C0DA3C /* WXYC TV */ = {
+			isa = PBXGroup;
+			children = (
+				23F91ED22E4C0F6800C0DA3C /* Assets.xcassets */,
+				23F91ED32E4C0F6800C0DA3C /* ContentView.swift */,
+				23F91ED42E4C0F6800C0DA3C /* WXYC-TV-Info.plist */,
+				23F91ED52E4C0F6800C0DA3C /* WXYCTVApp.swift */,
+			);
+			path = "WXYC TV";
+			sourceTree = "<group>";
+		};
+		23F91EDA2E4C0F6800C0DA3C /* WXYC */ = {
+			isa = PBXGroup;
+			children = (
+				23F91E8C2E4C0F6800C0DA3C /* Build Configurations */,
+				23F91E8E2E4C0F6800C0DA3C /* Build Tools */,
+				23F91E942E4C0F6800C0DA3C /* Entitlements */,
+				23F91EB82E4C0F6800C0DA3C /* iOS */,
+				23F91EBA2E4C0F6800C0DA3C /* iOS Intents Extension */,
+				23F91EBE2E4C0F6800C0DA3C /* NowPlayingWidget */,
+				23F91EC52E4C0F6800C0DA3C /* Shared */,
+				23F91ED12E4C0F6800C0DA3C /* WatchXYC */,
+				23F91ED62E4C0F6800C0DA3C /* WXYC TV */,
+				23F91ED72E4C0F6800C0DA3C /* LICENSE */,
+				23F91ED82E4C0F6800C0DA3C /* WXYC.entitlements */,
+				23F91ED92E4C0F6800C0DA3C /* WXYC.xcconfig */,
+			);
+			path = WXYC;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -372,6 +729,29 @@
 			productReference = 2366FA1D2D72CE880057E268 /* WXYC.app */;
 			productType = "com.apple.product-type.application";
 		};
+		23C919322E4C13000082BCC2 /* WXYCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23C9193D2E4C13000082BCC2 /* Build configuration list for PBXNativeTarget "WXYCTests" */;
+			buildPhases = (
+				23C9192F2E4C13000082BCC2 /* Sources */,
+				23C919302E4C13000082BCC2 /* Frameworks */,
+				23C919312E4C13000082BCC2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				23C919382E4C13000082BCC2 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				23C919342E4C13000082BCC2 /* WXYCTests */,
+			);
+			name = WXYCTests;
+			packageProductDependencies = (
+			);
+			productName = WXYCTests;
+			productReference = 23C919332E4C13000082BCC2 /* WXYCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -379,7 +759,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1620;
+				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					236609B92D72D0420057E268 = {
@@ -393,6 +773,10 @@
 					};
 					2366FA1C2D72CE880057E268 = {
 						CreatedOnToolsVersion = 16.2;
+					};
+					23C919322E4C13000082BCC2 = {
+						CreatedOnToolsVersion = 16.4;
+						TestTargetID = 2366FA1C2D72CE880057E268;
 					};
 				};
 			};
@@ -416,6 +800,7 @@
 				236609B92D72D0420057E268 /* WatchXYC */,
 				236629602D72D5BB0057E268 /* NowPlayingWidget */,
 				236629942D73905A0057E268 /* WXYC TV */,
+				23C919322E4C13000082BCC2 /* WXYCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -443,6 +828,34 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		2366FA1B2D72CE880057E268 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23F91EDB2E4C0F6900C0DA3C /* iOSMain.storyboard in Resources */,
+				23F91EDC2E4C0F6900C0DA3C /* Info.plist in Resources */,
+				23F91EDD2E4C0F6900C0DA3C /* Info.plist in Resources */,
+				23F91EDE2E4C0F6900C0DA3C /* Info.plist in Resources */,
+				23F91EDF2E4C0F6900C0DA3C /* LaunchScreen.storyboard in Resources */,
+				23F91EE02E4C0F6900C0DA3C /* generate_secrets.sh in Resources */,
+				23F91EE12E4C0F6900C0DA3C /* Assets.xcassets in Resources */,
+				23F91EE22E4C0F6900C0DA3C /* Info.plist in Resources */,
+				23F91EE32E4C0F6900C0DA3C /* TalksetCell.xib in Resources */,
+				23F91EE42E4C0F6900C0DA3C /* PlayerHeader.xib in Resources */,
+				23F91EE52E4C0F6900C0DA3C /* PlaycutCell.xib in Resources */,
+				23F91EE62E4C0F6900C0DA3C /* README_Configuration.md in Resources */,
+				23F91EE72E4C0F6900C0DA3C /* Assets.xcassets in Resources */,
+				23F91EE82E4C0F6900C0DA3C /* Assets.xcassets in Resources */,
+				23F91EE92E4C0F6900C0DA3C /* WXYC-TV-Info.plist in Resources */,
+				23F91EEA2E4C0F6900C0DA3C /* InfoDetailViewController.xib in Resources */,
+				23F91EEB2E4C0F6900C0DA3C /* Preview Assets.xcassets in Resources */,
+				23F91EEC2E4C0F6900C0DA3C /* LICENSE in Resources */,
+				23F91EED2E4C0F6900C0DA3C /* BreakpointCell.xib in Resources */,
+				23F91EEE2E4C0F6900C0DA3C /* Images.xcassets in Resources */,
+				23F91EEF2E4C0F6900C0DA3C /* WXYC.xcconfig in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23C919312E4C13000082BCC2 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -477,7 +890,48 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23F91EF02E4C0F6900C0DA3C /* NowPlayingWidget.swift in Sources */,
+				23F91EF12E4C0F6900C0DA3C /* PlaylistCellViewModelProducer.swift in Sources */,
+				23F91EF22E4C0F6900C0DA3C /* PlaybackButton.swift in Sources */,
+				23F91EF32E4C0F6900C0DA3C /* WatchXYCApp.swift in Sources */,
+				23F91EF42E4C0F6900C0DA3C /* InfoDetailViewController.swift in Sources */,
+				23F91EF52E4C0F6900C0DA3C /* ConfigurationService.swift in Sources */,
+				23F91EF62E4C0F6900C0DA3C /* PlayerHeader.swift in Sources */,
+				23F91EF72E4C0F6900C0DA3C /* RootTabView.swift in Sources */,
+				23F91EF82E4C0F6900C0DA3C /* Intents.swift in Sources */,
+				23F91EF92E4C0F6900C0DA3C /* AppDelegate.swift in Sources */,
+				23F91EFA2E4C0F6900C0DA3C /* DialADJPage.swift in Sources */,
+				23F91EFB2E4C0F6900C0DA3C /* WXYCTVApp.swift in Sources */,
+				23F91EFC2E4C0F6900C0DA3C /* InstagramStoryActivity.swift in Sources */,
+				23F91EFD2E4C0F6900C0DA3C /* RootPageViewController.swift in Sources */,
+				23F91EFE2E4C0F6900C0DA3C /* InkingButton.swift in Sources */,
+				23F91EFF2E4C0F6900C0DA3C /* PlaylistPage.swift in Sources */,
+				23F91F002E4C0F6900C0DA3C /* DPoPService.swift in Sources */,
+				23F91F012E4C0F6900C0DA3C /* BreakpointCell.swift in Sources */,
+				23F91F022E4C0F6900C0DA3C /* SpinningAnimation.swift in Sources */,
+				23F91F032E4C0F6900C0DA3C /* PlaylistViewController.swift in Sources */,
+				23F91F042E4C0F6900C0DA3C /* PlaycutCell.swift in Sources */,
+				23F91F052E4C0F6900C0DA3C /* Playlister.swift in Sources */,
+				23F91F062E4C0F6900C0DA3C /* PlaycutActivityItem.swift in Sources */,
+				23F91F072E4C0F6900C0DA3C /* ListenTogether.swift in Sources */,
+				23F91F082E4C0F6900C0DA3C /* CarPlaySceneDelegate.swift in Sources */,
+				23F91F092E4C0F6900C0DA3C /* ContentView.swift in Sources */,
+				23F91F0A2E4C0F6900C0DA3C /* SendRequestService.swift in Sources */,
+				23F91F0B2E4C0F6900C0DA3C /* PlaylistDataSource.swift in Sources */,
+				23F91F0C2E4C0F6900C0DA3C /* ConfigurationServiceTests.swift in Sources */,
+				23F91F0D2E4C0F6900C0DA3C /* PlaylistCellViewModel.swift in Sources */,
+				23F91F0E2E4C0F6900C0DA3C /* PlayerPage.swift in Sources */,
+				23F91F0F2E4C0F6900C0DA3C /* TalksetCell.swift in Sources */,
+				23F91F102E4C0F6900C0DA3C /* RemoteImage.swift in Sources */,
+				23F91F112E4C0F6900C0DA3C /* NowPlayingInfoCenterManager.swift in Sources */,
 				23906F462DD4FC950033EB69 /* ListenTogether.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23C9192F2E4C13000082BCC2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -541,6 +995,11 @@
 		239566A72D7524D50094A215 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			productRef = 239566A62D7524D50094A215 /* OpenNSFW */;
+		};
+		23C919382E4C13000082BCC2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 2366FA1C2D72CE880057E268 /* WXYC */;
+			targetProxy = 23C919372E4C13000082BCC2 /* PBXContainerItemProxy */;
 		};
 		23DB84792D828090000EB53A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -611,7 +1070,7 @@
 		231A3F3D2D809A2C0045FD68 /* TestFlight */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 2366FA1F2D72CE880057E268 /* WXYC */;
-			baseConfigurationReferenceRelativePath = WXYC.xcconfig;
+			baseConfigurationReferenceRelativePath = "Build Configurations/WXYC.xcconfig";
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -640,7 +1099,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.5;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = TEST_FLIGHT;
@@ -669,7 +1128,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.4;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -696,7 +1155,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.5.4;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.wxyc.iphoneapp.now-playing-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -751,7 +1210,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.4;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -782,7 +1241,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.4;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -810,7 +1269,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.5.4;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.wxyc.iphoneapp.now-playing-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -836,7 +1295,7 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 2.5.4;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.wxyc.iphoneapp.now-playing-widget";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -901,7 +1360,7 @@
 		2366FA312D72CE890057E268 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 2366FA1F2D72CE880057E268 /* WXYC */;
-			baseConfigurationReferenceRelativePath = WXYC.xcconfig;
+			baseConfigurationReferenceRelativePath = "Build Configurations/WXYC.xcconfig";
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -930,7 +1389,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.5;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -942,7 +1401,7 @@
 		2366FA322D72CE890057E268 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 2366FA1F2D72CE880057E268 /* WXYC */;
-			baseConfigurationReferenceRelativePath = WXYC.xcconfig;
+			baseConfigurationReferenceRelativePath = "Build Configurations/WXYC.xcconfig";
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -971,7 +1430,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.5.5;
+				MARKETING_VERSION = 2.5.6;
 				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1106,6 +1565,273 @@
 			};
 			name = Release;
 		};
+		23C919392E4C13000082BCC2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.WXYCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WXYC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WXYC";
+			};
+			name = Debug;
+		};
+		23C9193A2E4C13000082BCC2 /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.WXYCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WXYC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WXYC";
+			};
+			name = Testing;
+		};
+		23C9193B2E4C13000082BCC2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.WXYCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WXYC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WXYC";
+			};
+			name = Release;
+		};
+		23C9193C2E4C13000082BCC2 /* TestFlight */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.WXYCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/WXYC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/WXYC";
+			};
+			name = TestFlight;
+		};
+		23F91E802E4C0E9D00C0DA3C /* Testing */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 2366FA1F2D72CE880057E268 /* WXYC */;
+			baseConfigurationReferenceRelativePath = "Build Configurations/WXYC-Testing.xcconfig";
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 2.5.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "-D DEBUG_PLAYLIST";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
+				TVOS_DEPLOYMENT_TARGET = 18.0;
+			};
+			name = Testing;
+		};
+		23F91E812E4C0E9D00C0DA3C /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = WXYC/Entitlements/WXYCDebug.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/WXYC/Shared",
+				);
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WXYC/iOS/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = WXYC;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
+				INFOPLIST_KEY_UIStatusBarStyle = UIStatusBarStyleLightContent;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.5.6;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Testing;
+		};
+		23F91E822E4C0E9D00C0DA3C /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"WXYC/WatchXYC/Preview Content\"";
+				DEVELOPMENT_TEAM = 92V374HC38;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WatchXYC-Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = WatchXYC;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = org.wxyc.iphoneapp;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 2.5.6;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.iphoneapp.watchkitapp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 11.2;
+			};
+			name = Testing;
+		};
+		23F91E832E4C0E9D00C0DA3C /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = WXYC/Entitlements/NowPlayingWidgetDebug.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = WXYC/NowPlayingWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = NowPlayingWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 2.5.6;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.wxyc.iphoneapp.now-playing-widget";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Testing;
+		};
+		23F91E842E4C0E9D00C0DA3C /* Testing */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 92V374HC38;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "WXYC/WXYC TV/WXYC-TV-Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Automatic;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = org.wxyc.tv;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = appletvos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 3;
+			};
+			name = Testing;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1113,6 +1839,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				236609CA2D72D0430057E268 /* Debug */,
+				23F91E822E4C0E9D00C0DA3C /* Testing */,
 				236609CB2D72D0430057E268 /* Release */,
 				231A3F3E2D809A2C0045FD68 /* TestFlight */,
 			);
@@ -1123,6 +1850,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2366296C2D72D5BB0057E268 /* Debug */,
+				23F91E832E4C0E9D00C0DA3C /* Testing */,
 				2366296D2D72D5BB0057E268 /* Release */,
 				231A3F3F2D809A2C0045FD68 /* TestFlight */,
 			);
@@ -1133,6 +1861,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				236629A12D73905B0057E268 /* Debug */,
+				23F91E842E4C0E9D00C0DA3C /* Testing */,
 				236629A22D73905B0057E268 /* Release */,
 				231A3F402D809A2C0045FD68 /* TestFlight */,
 			);
@@ -1143,6 +1872,7 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2366FA332D72CE890057E268 /* Debug */,
+				23F91E802E4C0E9D00C0DA3C /* Testing */,
 				2366FA342D72CE890057E268 /* Release */,
 				231A3F3C2D809A2C0045FD68 /* TestFlight */,
 			);
@@ -1153,8 +1883,20 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2366FA312D72CE890057E268 /* Debug */,
+				23F91E812E4C0E9D00C0DA3C /* Testing */,
 				2366FA322D72CE890057E268 /* Release */,
 				231A3F3D2D809A2C0045FD68 /* TestFlight */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23C9193D2E4C13000082BCC2 /* Build configuration list for PBXNativeTarget "WXYCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23C919392E4C13000082BCC2 /* Debug */,
+				23C9193A2E4C13000082BCC2 /* Testing */,
+				23C9193B2E4C13000082BCC2 /* Release */,
+				23C9193C2E4C13000082BCC2 /* TestFlight */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

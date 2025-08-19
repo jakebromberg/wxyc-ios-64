@@ -1,0 +1,36 @@
+{
+  "configurations" : [
+    {
+      "id" : "CD261E8B-DCB3-40E3-909A-968CD874A282",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:WXYC.xcodeproj",
+      "identifier" : "2366FA1C2D72CE880057E268",
+      "name" : "WXYC"
+    }
+  },
+  "testTargets" : [
+    {
+      "skippedTests" : {
+        "suites" : [
+          {
+            "name" : "WXYCTests"
+          }
+        ]
+      },
+      "target" : {
+        "containerPath" : "container:WXYC.xcodeproj",
+        "identifier" : "23C919322E4C13000082BCC2",
+        "name" : "WXYCTests"
+      }
+    }
+  ],
+  "version" : 2
+}

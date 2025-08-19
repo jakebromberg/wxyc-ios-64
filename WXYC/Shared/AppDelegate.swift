@@ -21,14 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         self.setUpAnalytics()
         PostHogSDK.shared.capture("app launch")
-        
-        do {
-            try AVAudioSession.sharedInstance().setCategory(.playback, mode: .default, policy: .longFormAudio)
-        } catch {
-            Log(.error, "Could not set AVAudioSession category: \(error)")
-            PostHogSDK.shared.capture(error: error, context: "AppDelegate: Could not set AVAudioSession category")
-        }
-        
+                
         let _ = NowPlayingInfoCenterManager.shared
         
 #if os(iOS)

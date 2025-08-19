@@ -72,32 +72,7 @@ class InfoDetailViewController: UIViewController {
     // MARK: Private
     
     func sendMessageToServer(message: String) async throws {
-        guard let url = URL(string: Secrets.slackWxycRequestsWebhook) else { return }
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-type")
-        
-        let json: [String: Any] = ["text": message]
-        guard let jsonData = try? JSONSerialization.data(withJSONObject: json) else { return }
-        request.httpBody = jsonData
-        
-        PostHogSDK.shared.capture(
-            "Request sent",
-            context: "Info ViewController",
-            additionalData: [
-                "message": message
-            ]
-        )
-        
-        do {
-            let (_, response) = try await URLSession.shared.data(for: request)
-            if let response = response as? HTTPURLResponse {
-                Log(.info, "Response status code: \(response.statusCode)")
-            }
-        } catch {
-            Log(.error, "Error sending message to Slack: \(error)")
-            PostHogSDK.shared.capture(error: error, context: "Info ViewController")
-        }
+        try await SendRequestService.shared.sendMessageToServer(message: message)
     }
     
     private func promptForLogs() {

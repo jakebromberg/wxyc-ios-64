@@ -1,0 +1,27 @@
+{
+  "object" : {
+    "artifacts" : [
+
+    ],
+    "dependencies" : [
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "logger",
+          "kind" : "fileSystem",
+          "location" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Logger",
+          "name" : "Logger"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Logger"
+        },
+        "subpath" : "logger"
+      }
+    ],
+    "prebuilts" : [
+
+    ]
+  },
+  "version" : 7
+}

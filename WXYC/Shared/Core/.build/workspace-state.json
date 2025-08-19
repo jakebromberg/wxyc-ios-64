@@ -7,32 +7,182 @@
       {
         "basedOn" : null,
         "packageRef" : {
+          "identity" : "analytics",
+          "kind" : "fileSystem",
+          "location" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Analytics",
+          "name" : "Analytics"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Analytics"
+        },
+        "subpath" : "analytics"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
           "identity" : "logger",
           "kind" : "fileSystem",
-          "location" : "/Users/jake/Developer/wxyc-ios-64/Shared/Logger",
+          "location" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Logger",
           "name" : "Logger"
         },
         "state" : {
           "name" : "fileSystem",
-          "path" : "/Users/jake/Developer/wxyc-ios-64/Shared/Logger"
+          "path" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Logger"
         },
         "subpath" : "logger"
       },
       {
         "basedOn" : null,
         "packageRef" : {
+          "identity" : "obfuscatemacro",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/p-x9/ObfuscateMacro.git",
+          "name" : "ObfuscateMacro"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "c0e3e48b104a47fafd996d35499b341297f23c47",
+            "version" : "0.10.0"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "ObfuscateMacro"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
           "identity" : "opennsfw",
           "kind" : "fileSystem",
-          "location" : "/Users/jake/Developer/wxyc-ios-64/Shared/OpenNSFW",
+          "location" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/OpenNSFW",
           "name" : "OpenNSFW"
         },
         "state" : {
           "name" : "fileSystem",
-          "path" : "/Users/jake/Developer/wxyc-ios-64/Shared/OpenNSFW"
+          "path" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/OpenNSFW"
         },
         "subpath" : "opennsfw"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "posthog-ios",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/PostHog/posthog-ios.git",
+          "name" : "posthog-ios"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "5077fa8ef9f7823030198fa2dd742f5b3f19f433",
+            "version" : "3.20.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "posthog-ios"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "secrets",
+          "kind" : "fileSystem",
+          "location" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Secrets",
+          "name" : "Secrets"
+        },
+        "state" : {
+          "name" : "fileSystem",
+          "path" : "/Users/jake/Developer/wxyc-ios-64/WXYC/Shared/Secrets"
+        },
+        "subpath" : "secrets"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-algorithms",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/apple/swift-algorithms",
+          "name" : "swift-algorithms"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "87e50f483c54e6efd60e885f7f5aa946cee68023",
+            "version" : "1.2.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-algorithms"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-asn1",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/apple/swift-asn1.git",
+          "name" : "swift-asn1"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "ae33e5941bb88d88538d0a6b19ca0b01e6c76dcf",
+            "version" : "1.3.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-asn1"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-crypto",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/apple/swift-crypto.git",
+          "name" : "swift-crypto"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "a6ce32a18b81b04ce7e897d1d98df6eb2da04786",
+            "version" : "3.12.2"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-crypto"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-numerics",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/apple/swift-numerics.git",
+          "name" : "swift-numerics"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "e0ec0f5f3af6f3e4d5e7a19d2af26b481acb6ba8",
+            "version" : "1.0.3"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-numerics"
+      },
+      {
+        "basedOn" : null,
+        "packageRef" : {
+          "identity" : "swift-syntax",
+          "kind" : "remoteSourceControl",
+          "location" : "https://github.com/swiftlang/swift-syntax.git",
+          "name" : "swift-syntax"
+        },
+        "state" : {
+          "checkoutState" : {
+            "revision" : "0687f71944021d616d34d922343dcef086855920",
+            "version" : "600.0.1"
+          },
+          "name" : "sourceControlCheckout"
+        },
+        "subpath" : "swift-syntax"
       }
+    ],
+    "prebuilts" : [
+
     ]
   },
-  "version" : 6
+  "version" : 7
 }
