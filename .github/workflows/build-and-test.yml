@@ -126,8 +126,6 @@ jobs:
             -configuration Debug \
             -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO \
-            -parallel-testing-enabled YES \
-            -skip-testing:WXYCUITests \
             -resultBundlePath TestResults.xcresult
 
       - name: Upload test results
