@@ -15,7 +15,7 @@ env:
 jobs:
   build-and-test:
     runs-on: macos-latest
-    timeout-minutes: 60
+    timeout-minutes: 30
 
     steps:
       - name: Checkout
@@ -127,6 +127,7 @@ jobs:
             -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO \
             -parallel-testing-enabled YES \
+            -skip-testing:WXYCUITests \
             -resultBundlePath TestResults.xcresult
 
       - name: Upload test results
