@@ -36,6 +36,11 @@ final class MockAnalytics: AnalyticsService, @unchecked Sendable {
     func capturedEvent(named: String) -> AnalyticsEvent? {
         return capturedEvents.compactMap { $0 as? AnalyticsEvent }.first { $0.name == named }
     }
+
+    /// Checks if a PlaybackStartedEvent was captured with the given reason.
+    func hasPlaybackStartedEvent(withReason reason: String) -> Bool {
+        capturedEvents.compactMap { $0 as? PlaybackStartedEvent }.contains { $0.reason == reason }
+    }
 }
 
 // MARK: - RadioPlayer Tests
@@ -84,7 +89,7 @@ struct RadioPlayerTests {
 
         // Then
         #expect(mockPlayer.playCallCount == 1)
-        #expect(mockAnalytics.capturedEventNames().contains("radioPlayer play"))
+        #expect(mockAnalytics.hasPlaybackStartedEvent(withReason: "radioPlayer play"))
     }
 
     @Test("Play does nothing when already playing")
@@ -211,8 +216,7 @@ struct RadioPlayerTests {
         try await Task.sleep(for: .milliseconds(50))
 
         // Then
-        let capturedEvents = mockAnalytics.capturedEventNames()
-        #expect(capturedEvents.contains("radioPlayer play"))
+        #expect(mockAnalytics.hasPlaybackStartedEvent(withReason: "radioPlayer play"))
     }
 
     @Test("Works without analytics")

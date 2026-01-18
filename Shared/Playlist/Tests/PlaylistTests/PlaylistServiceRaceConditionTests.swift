@@ -77,6 +77,9 @@ actor ConcurrentTrackingMockFetcher: PlaylistFetcherProtocol {
     var maxConcurrentFetches: Int = 0
     var totalFetchCount: Int = 0
     
+    /// Continuations waiting for a fetch to complete
+    private var fetchCompletionContinuations: [CheckedContinuation<Void, Never>] = []
+
     /// Returns a non-empty playlist so broadcasts happen
     private let testPlaylist = Playlist(
         playcuts: [
@@ -106,6 +109,13 @@ actor ConcurrentTrackingMockFetcher: PlaylistFetcherProtocol {
         // Track exit from fetch
         activeFetchCount -= 1
 
+        // Notify any waiters that a fetch completed
+        let continuations = fetchCompletionContinuations
+        fetchCompletionContinuations.removeAll()
+        for continuation in continuations {
+            continuation.resume()
+        }
+
         return testPlaylist
     }
 
@@ -113,6 +123,13 @@ actor ConcurrentTrackingMockFetcher: PlaylistFetcherProtocol {
         activeFetchCount = 0
         maxConcurrentFetches = 0
         totalFetchCount = 0
+    }
+
+    /// Wait for at least one fetch to complete
+    func waitForFetch() async {
+        await withCheckedContinuation { continuation in
+            fetchCompletionContinuations.append(continuation)
+        }
     }
 }
 
@@ -125,46 +142,44 @@ struct PlaylistServiceRaceConditionTests {
         let tracker = ConcurrentTrackingMockFetcher()
         let service = PlaylistService(
             fetcher: tracker,
-            interval: 1.0, // Short interval for testing
+            interval: 10.0, // Long interval - we only care about the first fetch
             cacheCoordinator: CacheCoordinator(cache: RaceConditionTestMockCache())
         )
-
+        
         // When: Many observers subscribe concurrently and consume values
         let observerCount = 50
-        var tasks: [Task<Void, Never>] = []
+        var tasks: [Task<Playlist?, Never>] = []
         for _ in 0..<observerCount {
             let task = Task {
                 var iterator = service.updates().makeAsyncIterator()
-                // Consume first value and keep stream alive
-                _ = await iterator.next()
-                // Keep alive briefly
-                try? await Task.sleep(for: .milliseconds(200))
+                // Consume first value - this waits for the fetch to complete
+                return await iterator.next()
             }
             tasks.append(task)
         }
 
-        // Give the fetch tasks time to start
-        try await Task.sleep(for: .milliseconds(100))
-        
-        // Then: Only one fetch task should be running
+        // Wait for all observers to receive their first value
+        // This ensures the fetch has completed
+        for task in tasks {
+            _ = await task.value
+        }
+
+        // Then: Only one fetch task should have been running at any point
         let maxConcurrent = await tracker.maxConcurrentFetches
+        let totalFetches = await tracker.totalFetchCount
 
         // Cancel all tasks to trigger cleanup
         for task in tasks {
             task.cancel()
         }
-        
-        // Wait for all tasks to complete
-        for task in tasks {
-            await task.value
-        }
-        
-        // Give the service time to clean up
-        try await Task.sleep(for: .milliseconds(100))
 
         #expect(
             maxConcurrent == 1,
             "Expected only 1 concurrent fetch, but found \(maxConcurrent). This indicates multiple fetch tasks were started."
+        )
+        #expect(
+            totalFetches == 1,
+            "Expected only 1 total fetch, but found \(totalFetches)."
         )
     }
 
@@ -173,47 +188,45 @@ struct PlaylistServiceRaceConditionTests {
         let tracker = ConcurrentTrackingMockFetcher()
         let service = PlaylistService(
             fetcher: tracker,
-            interval: 0.5,
+            interval: 0.1, // Short interval to test multiple fetches
             cacheCoordinator: CacheCoordinator(cache: RaceConditionTestMockCache())
         )
 
-        // Create some observers
-        var tasks: [Task<Void, Never>] = []
+        // Create some observers that consume one value then exit
+        var tasks: [Task<Playlist?, Never>] = []
         for _ in 0..<5 {
             let task = Task {
-                for await _ in service.updates() {
-                    // Consume one value then break
-                    break
-                }
+                var iterator = service.updates().makeAsyncIterator()
+                // Consume one value then exit (which disconnects this observer)
+                return await iterator.next()
             }
             tasks.append(task)
         }
 
-        // Wait for initial fetches
-        try await Task.sleep(for: .milliseconds(100))
+        // Wait for all observers to receive their first value
+        for task in tasks {
+            _ = await task.value
+        }
+
+        // Record the fetch count after initial fetches complete
+        let fetchCountAfterInitial = await tracker.totalFetchCount
+
+        // All observers have exited their for-await loops, so the service
+        // should have no continuations and should stop fetching.
+        // Wait for any in-flight fetch to complete and give cleanup time.
+        try await Task.sleep(for: .milliseconds(150))
+
+        // Reset the counter to track only new fetches
         await tracker.reset()
 
-        // Cancel all observers
-        for task in tasks {
-            task.cancel()
-        }
-        
-        // Wait for all tasks to complete
-        for task in tasks {
-            await task.value
-        }
+        // Wait longer than multiple fetch intervals
+        try await Task.sleep(for: .milliseconds(300))
 
-        // Wait for cleanup
-        try await Task.sleep(for: .milliseconds(200))
-
-        // Wait longer than the fetch interval
-        try await Task.sleep(for: .milliseconds(600))
-
-        // Verify no more fetches occurred
+        // Verify no more fetches occurred after all observers disconnected
         let fetchesAfterDisconnect = await tracker.totalFetchCount
         #expect(
             fetchesAfterDisconnect == 0,
-            "Expected no fetches after all observers disconnected, but found \(fetchesAfterDisconnect)"
+            "Expected no fetches after all observers disconnected, but found \(fetchesAfterDisconnect). Initial fetches were \(fetchCountAfterInitial)."
         )
     }
 
@@ -225,7 +238,7 @@ struct PlaylistServiceRaceConditionTests {
             interval: 1.0,
             cacheCoordinator: CacheCoordinator(cache: RaceConditionTestMockCache())
         )
-        
+
         // Use a Task to properly manage the stream lifecycle
         let task = Task {
             var iterator = service.updates().makeAsyncIterator()
