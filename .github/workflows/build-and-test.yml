@@ -118,6 +118,8 @@ jobs:
 
       - name: Run Tests
         run: |
+          # Skip UI tests in CI - they require simulator graphics and take too long
+          # UI tests can be run locally with the --uitesting flag for fast execution
           xcodebuild test \
             -project WXYC.xcodeproj \
             -scheme "$SCHEME" \
@@ -126,6 +128,7 @@ jobs:
             -configuration Debug \
             -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO \
+            -skip-testing:WXYCUITests \
             -resultBundlePath TestResults.xcresult
 
       - name: Upload test results
