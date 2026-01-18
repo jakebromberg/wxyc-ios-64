@@ -18,6 +18,7 @@ struct PlaybackUITests {
     let app = XCUIApplication()
 
     init() {
+        app.launchArguments = ["--uitesting"]
         app.launch()
     }
 

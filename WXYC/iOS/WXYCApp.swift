@@ -46,7 +46,18 @@ struct WXYCApp: App {
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.requestReview) private var requestReview
 
+    /// Whether the app is running in UI testing mode.
+    /// Disables animations to prevent XCUITest idle timeouts.
+    private var isUITesting: Bool {
+        ProcessInfo.processInfo.arguments.contains("--uitesting")
+    }
+
     init() {
+        // Disable animations in UI testing mode to prevent XCUITest idle timeouts
+        if ProcessInfo.processInfo.arguments.contains("--uitesting") {
+            UIView.setAnimationsEnabled(false)
+        }
+
         // Cache migration - purge if version changed
         CacheMigrationManager.migrateIfNeeded()
         
@@ -84,7 +95,7 @@ struct WXYCApp: App {
 
         // Note: AVAudioSession category is set by AudioPlayerController when playback starts.
         // Setting it here at launch would interrupt other apps' audio unnecessarily.
-
+        
         // UIKit appearance setup
         #if os(iOS)
         UINavigationBar.appearance().barStyle = .black
@@ -153,6 +164,7 @@ struct WXYCApp: App {
 #endif
                 }
             }
+            .environment(\.isUITesting, isUITesting)
         }
         .onChange(of: scenePhase) { oldPhase, newPhase in
             handleScenePhaseChange(from: oldPhase, to: newPhase)
@@ -291,7 +303,7 @@ struct WXYCApp: App {
     private func setUpThemePickerAnalytics() {
         appState.themePickerState.setAnalytics(StructuredPostHogAnalytics.shared)
     }
-
+    
     private func buildConfiguration() -> String {
         #if DEBUG
         return "Debug"

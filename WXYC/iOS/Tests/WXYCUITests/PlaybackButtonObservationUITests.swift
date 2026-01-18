@@ -18,6 +18,7 @@ struct PlaybackButtonObservationUITests {
     let app = XCUIApplication()
 
     init() {
+        app.launchArguments = ["--uitesting"]
         app.launch()
     }
 

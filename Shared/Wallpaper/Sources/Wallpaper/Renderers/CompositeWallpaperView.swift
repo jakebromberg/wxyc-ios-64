@@ -15,6 +15,7 @@ import WXUI
 public struct CompositeWallpaperView: View {
     @Environment(\.displayScale) private var displayScale
     @Environment(\.wallpaperAnimationStartTime) private var startTime
+    @Environment(\.isUITesting) private var isUITesting
 
     let theme: LoadedTheme
 
@@ -46,7 +47,7 @@ public struct CompositeWallpaperView: View {
 
     @ViewBuilder
     private func shaderOverlay(functionName: String) -> some View {
-        TimelineView(.animation) { context in
+        TimelineView(.animation(paused: isUITesting)) { context in
             GeometryReader { geometry in
                 let time = Float(context.date.timeIntervalSince(startTime))
                 let arguments = theme.parameterStore.buildShaderArguments(

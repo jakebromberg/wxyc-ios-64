@@ -18,6 +18,7 @@ struct PlayWXYCIntentUITests {
     let app = XCUIApplication()
 
     init() {
+        app.launchArguments = ["--uitesting"]
         app.launch()
     }
 

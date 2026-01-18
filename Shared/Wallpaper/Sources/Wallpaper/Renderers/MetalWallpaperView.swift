@@ -24,6 +24,7 @@ public struct MetalWallpaperView: ViewRepresentable {
     @Environment(\.wallpaperQualityProfile) private var qualityProfile
     @Environment(\.scenePhase) private var scenePhase
     @Environment(\.isThemePickerActive) private var isThemePickerActive
+    @Environment(\.isUITesting) private var isUITesting
 
     let theme: LoadedTheme
     let directiveStore: ShaderDirectiveStore?
@@ -62,7 +63,7 @@ public struct MetalWallpaperView: ViewRepresentable {
         let view = MTKView(frame: .zero, device: device)
         view.colorPixelFormat = .bgra8Unorm
         view.framebufferOnly = false
-        view.isPaused = false
+        view.isPaused = isUITesting  // Pause immediately in UI testing mode
         view.enableSetNeedsDisplay = false
         view.preferredFramesPerSecond = 60
 
@@ -72,10 +73,10 @@ public struct MetalWallpaperView: ViewRepresentable {
         return view
     }
 
-    /// Updates the MTKView's paused state based on app lifecycle and picker state.
+    /// Updates the MTKView's paused state based on app lifecycle, picker state, and UI testing mode.
     private func updateViewState(_ view: MTKView, context: Context) {
-        // Pause rendering when app is not active (backgrounded or inactive)
-        let shouldPause = scenePhase != .active
+        // Pause rendering when app is not active, or when UI testing to prevent XCUITest idle timeouts
+        let shouldPause = scenePhase != .active || isUITesting
 
         if view.isPaused != shouldPause {
             view.isPaused = shouldPause

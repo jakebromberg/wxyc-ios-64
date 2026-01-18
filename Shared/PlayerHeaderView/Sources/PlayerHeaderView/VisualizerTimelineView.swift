@@ -9,6 +9,7 @@
 //
 
 import SwiftUI
+import Wallpaper
 
 // MARK: - Visualizer Timeline View
 
@@ -18,6 +19,8 @@ public struct VisualizerTimelineView: View {
     @Binding var barHistory: [[Float]]
     var isPlaying: Bool
     var onDebugTapped: (() -> Void)?
+
+    @Environment(\.isUITesting) private var isUITesting
     
     /// Computed property to get the current display data based on displayProcessor
     private var displayData: [Float] {
@@ -74,9 +77,9 @@ public struct VisualizerTimelineView: View {
         BarData(category: String($0), value: 0)
     }
     
-    /// Animation runs during playback OR while dots are falling
+    /// Animation runs during playback OR while dots are falling (disabled in UI testing)
     private var isAnimating: Bool {
-        isPlaying || isFalling
+        !isUITesting && (isPlaying || isFalling)
     }
     
     public init(
