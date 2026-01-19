@@ -20,21 +20,22 @@ struct AsyncMessageTests {
         let center = NotificationCenter()
         let expectedData = "test-data"
 
-        let subscribed = AsyncStream<Void>.makeStream()
+        var task: Task<String?, Never>!
 
-        let task = Task<String?, Never> {
-            for await message in center.messages(for: TestMessage.self, onSubscribed: {
-                subscribed.continuation.yield()
-                subscribed.continuation.finish()
-            }) {
-                return message.data
+        // Use withCheckedContinuation to deterministically wait for subscription
+        // The continuation suspends until resume() is called in onSubscribed
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            task = Task<String?, Never> {
+                for await message in center.messages(for: TestMessage.self, onSubscribed: {
+                    continuation.resume()
+                }) {
+                    return message.data
+                }
+                return nil
             }
-            return nil
         }
 
-        // Wait for observer to be registered
-        for await _ in subscribed.stream { break }
-
+        // Now we're guaranteed the observer is registered
         center.post(TestMessage(data: expectedData), subject: nil as TestService?)
 
         let received = await task.value
@@ -46,24 +47,22 @@ struct AsyncMessageTests {
         let center = NotificationCenter()
         let messages = ["first", "second", "third"]
 
-        let subscribed = AsyncStream<Void>.makeStream()
+        var task: Task<[String], Never>!
 
-        let task = Task {
-            var received: [String] = []
-            for await message in center.messages(for: TestMessage.self, onSubscribed: {
-                subscribed.continuation.yield()
-                subscribed.continuation.finish()
-            }) {
-                received.append(message.data)
-                if received.count == messages.count {
-                    break
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            task = Task {
+                var received: [String] = []
+                for await message in center.messages(for: TestMessage.self, onSubscribed: {
+                    continuation.resume()
+                }) {
+                    received.append(message.data)
+                    if received.count == messages.count {
+                        break
+                    }
                 }
+                return received
             }
-            return received
         }
-
-        // Wait for observer to be registered
-        for await _ in subscribed.stream { break }
 
         for msg in messages {
             center.post(TestMessage(data: msg), subject: nil as TestService?)
@@ -79,20 +78,18 @@ struct AsyncMessageTests {
         let targetService = TestService()
         let otherService = TestService()
 
-        let subscribed = AsyncStream<Void>.makeStream()
+        var task: Task<String?, Never>!
 
-        let task = Task<String?, Never> {
-            for await message in center.messages(of: targetService, for: TestMessage.self, onSubscribed: {
-                subscribed.continuation.yield()
-                subscribed.continuation.finish()
-            }) {
-                return message.data
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            task = Task<String?, Never> {
+                for await message in center.messages(of: targetService, for: TestMessage.self, onSubscribed: {
+                    continuation.resume()
+                }) {
+                    return message.data
+                }
+                return nil
             }
-            return nil
         }
-
-        // Wait for observer to be registered
-        for await _ in subscribed.stream { break }
 
         // Post to other service first - should be ignored
         center.post(TestMessage(data: "wrong"), subject: otherService)
@@ -127,21 +124,20 @@ struct AsyncMessageTests {
         let center = NotificationCenter()
         let counter = Counter()
 
-        let subscribed = AsyncStream<Void>.makeStream()
         let received = AsyncStream<Void>.makeStream()
 
-        let task = Task {
-            for await _ in center.messages(for: TestMessage.self, onSubscribed: {
-                subscribed.continuation.yield()
-                subscribed.continuation.finish()
-            }) {
-                counter.increment()
-                received.continuation.yield()
+        var task: Task<Void, Never>!
+
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            task = Task {
+                for await _ in center.messages(for: TestMessage.self, onSubscribed: {
+                    continuation.resume()
+                }) {
+                    counter.increment()
+                    received.continuation.yield()
+                }
             }
         }
-
-        // Wait for observer to be registered
-        for await _ in subscribed.stream { break }
 
         center.post(TestMessage(data: "one"), subject: nil as TestService?)
 

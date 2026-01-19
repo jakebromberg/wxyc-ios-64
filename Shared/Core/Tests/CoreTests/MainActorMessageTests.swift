@@ -21,20 +21,18 @@ struct MainActorMessageTests {
         let center = NotificationCenter()
         let expectedTitle = "Test Title"
 
-        let subscribed = AsyncStream<Void>.makeStream()
+        var task: Task<String?, Never>!
 
-        let task = Task<String?, Never> { @MainActor in
-            for await message in center.messages(for: UIUpdateMessage.self, onSubscribed: {
-                subscribed.continuation.yield()
-                subscribed.continuation.finish()
-            }) {
-                return message.title
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            task = Task<String?, Never> { @MainActor in
+                for await message in center.messages(for: UIUpdateMessage.self, onSubscribed: {
+                    continuation.resume()
+                }) {
+                    return message.title
+                }
+                return nil
             }
-            return nil
         }
-
-        // Wait for observer to be registered
-        for await _ in subscribed.stream { break }
 
         center.post(UIUpdateMessage(title: expectedTitle), subject: nil as TestController?)
 
@@ -77,20 +75,18 @@ struct MainActorMessageTests {
         let targetController = TestController()
         let otherController = TestController()
 
-        let subscribed = AsyncStream<Void>.makeStream()
+        var task: Task<String?, Never>!
 
-        let task = Task<String?, Never> { @MainActor in
-            for await message in center.messages(of: targetController, for: UIUpdateMessage.self, onSubscribed: {
-                subscribed.continuation.yield()
-                subscribed.continuation.finish()
-            }) {
-                return message.title
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            task = Task<String?, Never> { @MainActor in
+                for await message in center.messages(of: targetController, for: UIUpdateMessage.self, onSubscribed: {
+                    continuation.resume()
+                }) {
+                    return message.title
+                }
+                return nil
             }
-            return nil
         }
-
-        // Wait for observer to be registered
-        for await _ in subscribed.stream { break }
 
         // Post to other controller first - should be ignored
         center.post(UIUpdateMessage(title: "wrong"), subject: otherController)
@@ -128,24 +124,22 @@ struct MainActorMessageTests {
         let center = NotificationCenter()
         let titles = ["first", "second", "third"]
 
-        let subscribed = AsyncStream<Void>.makeStream()
+        var task: Task<[String], Never>!
 
-        let task = Task { @MainActor in
-            var received: [String] = []
-            for await message in center.messages(for: UIUpdateMessage.self, onSubscribed: {
-                subscribed.continuation.yield()
-                subscribed.continuation.finish()
-            }) {
-                received.append(message.title)
-                if received.count == titles.count {
-                    break
+        await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
+            task = Task { @MainActor in
+                var received: [String] = []
+                for await message in center.messages(for: UIUpdateMessage.self, onSubscribed: {
+                    continuation.resume()
+                }) {
+                    received.append(message.title)
+                    if received.count == titles.count {
+                        break
+                    }
                 }
+                return received
             }
-            return received
         }
-
-        // Wait for observer to be registered
-        for await _ in subscribed.stream { break }
 
         for title in titles {
             center.post(UIUpdateMessage(title: title), subject: nil as TestController?)
