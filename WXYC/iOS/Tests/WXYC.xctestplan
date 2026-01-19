@@ -89,6 +89,7 @@
       }
     },
     {
+      "parallelizable" : false,
       "target" : {
         "containerPath" : "container:Shared\/Core",
         "identifier" : "CoreTests",

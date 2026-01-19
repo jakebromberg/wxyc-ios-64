@@ -116,10 +116,10 @@ jobs:
             -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO
 
-      - name: Run Tests (except CoreTests and UI)
+      - name: Run Tests
         run: |
           # Skip UI tests in CI - they require simulator graphics
-          # Skip CoreTests - run separately to avoid parallel execution issues
+          # CoreTests has parallelizable:false in test plan to prevent Swift Testing parallel issues
           xcodebuild test-without-building \
             -project WXYC.xcodeproj \
             -scheme "$SCHEME" \
@@ -129,84 +129,12 @@ jobs:
             -skipMacroValidation \
             CODE_SIGNING_ALLOWED=NO \
             -skip-testing:WXYCUITests \
-            -skip-testing:CoreTests \
             -disable-concurrent-testing \
             -resultBundlePath TestResults.xcresult
-
-      - name: Run CoreTests
-        run: |
-          # Run CoreTests with explicit test identifiers to avoid Swift Testing parallel execution issues
-          # Specifying individual tests prevents Swift Testing's parallel scheduler from overwhelming CI
-          xcodebuild test-without-building \
-            -project WXYC.xcodeproj \
-            -scheme "$SCHEME" \
-            -destination "$DESTINATION" \
-            -configuration Debug \
-            -skipMacroValidation \
-            CODE_SIGNING_ALLOWED=NO \
-            -only-testing:CoreTests/ImageCompatibilityTests/heifDataProducesValidImageDataThatCanBeDecoded \
-            -only-testing:CoreTests/ImageCompatibilityTests/heifDataRespectsCompressionQualityParameter \
-            -only-testing:CoreTests/ImageCompatibilityTests/heifDataReturnsValidDataForValidImage \
-            -only-testing:CoreTests/ImageCompatibilityTests/scaledHEIFIsSmallerThanScaledPNG \
-            -only-testing:CoreTests/ImageCompatibilityTests/scaledToWidthHandlesSquareImages \
-            -only-testing:CoreTests/ImageCompatibilityTests/scaledToWidthHandlesTallImages \
-            -only-testing:CoreTests/ImageCompatibilityTests/scaledToWidthMaintainsAspectRatio \
-            -only-testing:CoreTests/ImageCompatibilityTests/scaledToWidthReturnsOriginalForImagesBelowTargetWidth \
-            -only-testing:CoreTests/ImageCompatibilityTests/scaledToWidthReturnsOriginalForImagesAtTargetWidth \
-            -only-testing:CoreTests/ImageCompatibilityTests/scaledToWidthScalesImagesWiderThanTarget \
-            -only-testing:CoreTests/AsyncMessageTests/postAndReceive \
-            -only-testing:CoreTests/AsyncMessageTests/multipleMessages \
-            -only-testing:CoreTests/AsyncMessageTests/subjectFiltering \
-            -only-testing:CoreTests/AsyncMessageTests/makeMessageReturnsNil \
-            -only-testing:CoreTests/AsyncMessageTests/cancellationStopsReceiving \
-            -only-testing:CoreTests/MainActorMessageTests/postAndReceiveViaSequence \
-            -only-testing:CoreTests/MainActorMessageTests/postAndReceiveViaObserver \
-            -only-testing:CoreTests/MainActorMessageTests/subjectFiltering \
-            -only-testing:CoreTests/MainActorMessageTests/makeMessageReturnsNil \
-            -only-testing:CoreTests/MainActorMessageTests/makeNotificationCreatesValidNotification \
-            -only-testing:CoreTests/MainActorMessageTests/multipleMessages \
-            -only-testing:CoreTests/DequeTests/testAppend \
-            -only-testing:CoreTests/DequeTests/testArrayConversion \
-            -only-testing:CoreTests/DequeTests/testCapacityGrowth \
-            -only-testing:CoreTests/DequeTests/testCapacityShrinking \
-            -only-testing:CoreTests/DequeTests/testCircularBuffer \
-            -only-testing:CoreTests/DequeTests/testCircularBufferWrapping \
-            -only-testing:CoreTests/DequeTests/testCollectionIndices \
-            -only-testing:CoreTests/DequeTests/testCopyOnWrite \
-            -only-testing:CoreTests/DequeTests/testEmptyDeque \
-            -only-testing:CoreTests/DequeTests/testEquatable \
-            -only-testing:CoreTests/DequeTests/testExpressibleByArrayLiteral \
-            -only-testing:CoreTests/DequeTests/testHashable \
-            -only-testing:CoreTests/DequeTests/testPrepend \
-            -only-testing:CoreTests/DequeTests/testPrependAndAppend \
-            -only-testing:CoreTests/DequeTests/testPrependMany \
-            -only-testing:CoreTests/DequeTests/testRandomAccessCollection \
-            -only-testing:CoreTests/DequeTests/testRemoveAll \
-            -only-testing:CoreTests/DequeTests/testRemoveFirst \
-            -only-testing:CoreTests/DequeTests/testRemoveFirstAll \
-            -only-testing:CoreTests/DequeTests/testRemoveFirstMultiple \
-            -only-testing:CoreTests/DequeTests/testRemoveFirstZero \
-            -only-testing:CoreTests/DequeTests/testRemoveLast \
-            -only-testing:CoreTests/DequeTests/testRemoveLastFromSingleElement \
-            -only-testing:CoreTests/DequeTests/testSubscript \
-            -only-testing:CoreTests/ExponentialBackoffTests/customConfigurationIsRespected \
-            -only-testing:CoreTests/ExponentialBackoffTests/defaultConfigurationHasCorrectValues \
-            -only-testing:CoreTests/ExponentialBackoffTests/descriptionFormatIsCorrect \
-            -only-testing:CoreTests/ExponentialBackoffTests/firstAttemptReturnsZeroWaitTime \
-            -only-testing:CoreTests/ExponentialBackoffTests/resetClearsAttemptsAndTotalWaitTime \
-            -only-testing:CoreTests/ExponentialBackoffTests/returnsNilWhenMaxAttemptsExhausted \
-            -only-testing:CoreTests/ExponentialBackoffTests/timeIntervalNanosecondsConversion \
-            -only-testing:CoreTests/ExponentialBackoffTests/totalWaitTimeAccumulatesCorrectly \
-            -only-testing:CoreTests/ExponentialBackoffTests/waitTimeIsCappedAtMaximum \
-            -only-testing:CoreTests/ExponentialBackoffTests/waitTimesIncreaseExponentially \
-            -disable-concurrent-testing \
-            -resultBundlePath CoreTestResults.xcresult
 
       - name: Upload test results
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: test-results
-          path: |
-            TestResults.xcresult
-            CoreTestResults.xcresult
+          path: TestResults.xcresult
