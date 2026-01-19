@@ -24,8 +24,8 @@ struct MainActorMessageTests {
         var task: Task<String?, Never>!
 
         await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
-            task = Task<String?, Never> { @MainActor in
-                for await message in center.messages(for: UIUpdateMessage.self, onSubscribed: {
+            task = Task<String?, Never> {
+                for await message in await center.messages(for: UIUpdateMessage.self, onSubscribed: {
                     continuation.resume()
                 }) {
                     return message.title
@@ -78,8 +78,8 @@ struct MainActorMessageTests {
         var task: Task<String?, Never>!
 
         await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
-            task = Task<String?, Never> { @MainActor in
-                for await message in center.messages(of: targetController, for: UIUpdateMessage.self, onSubscribed: {
+            task = Task<String?, Never> {
+                for await message in await center.messages(of: targetController, for: UIUpdateMessage.self, onSubscribed: {
                     continuation.resume()
                 }) {
                     return message.title
@@ -127,9 +127,9 @@ struct MainActorMessageTests {
         var task: Task<[String], Never>!
 
         await withCheckedContinuation { (continuation: CheckedContinuation<Void, Never>) in
-            task = Task { @MainActor in
+            task = Task {
                 var received: [String] = []
-                for await message in center.messages(for: UIUpdateMessage.self, onSubscribed: {
+                for await message in await center.messages(for: UIUpdateMessage.self, onSubscribed: {
                     continuation.resume()
                 }) {
                     received.append(message.title)
