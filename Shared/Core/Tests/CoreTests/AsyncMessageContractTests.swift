@@ -22,7 +22,7 @@ enum AsyncMessageImplementation: String, CaseIterable, CustomTestStringConvertib
     var testDescription: String { rawValue }
 }
 
-@Suite("AsyncMessage Behavioral Contract")
+@Suite("AsyncMessage Behavioral Contract", .serialized)
 struct AsyncMessageContractTests {
 
     // MARK: - Post and Receive

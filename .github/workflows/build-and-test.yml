@@ -119,7 +119,7 @@ jobs:
       - name: Run Tests
         run: |
           # Skip UI tests in CI - they require simulator graphics
-          # CoreTests has parallelizable:false in test plan to prevent Swift Testing parallel issues
+          # All CoreTests suites use .serialized trait to prevent Swift Testing parallel issues
           xcodebuild test-without-building \
             -project WXYC.xcodeproj \
             -scheme "$SCHEME" \

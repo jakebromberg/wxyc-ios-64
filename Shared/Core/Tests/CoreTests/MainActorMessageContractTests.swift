@@ -22,7 +22,7 @@ enum MainActorMessageImplementation: String, CaseIterable, CustomTestStringConve
     var testDescription: String { rawValue }
 }
 
-@Suite("MainActorMessage Behavioral Contract")
+@Suite("MainActorMessage Behavioral Contract", .serialized)
 struct MainActorMessageContractTests {
 
     // MARK: - Post and Receive via addObserver
