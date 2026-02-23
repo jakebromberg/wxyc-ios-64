@@ -112,9 +112,9 @@ public enum PlaylistAPIVersion: String, CaseIterable, Identifiable, Hashable, Se
     public var displayName: String {
         switch self {
         case .v1:
-            "v1 (Legacy)"
+            "Legacy"
         case .v2:
-            "v2 (Flowsheet)"
+            "New World"
         }
     }
 
