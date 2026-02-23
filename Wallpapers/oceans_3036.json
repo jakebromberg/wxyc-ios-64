@@ -1,0 +1,73 @@
+{
+  "accent" : {
+    "brightness" : 0.7745901639344263,
+    "hue" : 163.7704918032787,
+    "saturation" : 0.65
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "Oceans 3036",
+  "id" : "oceans_3036",
+  "material" : {
+    "blurRadius" : 14.567164778709412,
+    "foreground" : "dark",
+    "overlay" : {
+      "darkness" : 0.7761194109916687,
+      "opacity" : 0.2766169011592865
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 9,
+      "id" : "timeSpeed",
+      "label" : "Time Speed",
+      "range" : {
+        "max" : 20,
+        "min" : 4
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 10,
+      "id" : "colorInterval",
+      "label" : "Color Interval",
+      "range" : {
+        "max" : 20,
+        "min" : 5
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.75,
+      "id" : "baseGray",
+      "label" : "Base Gray",
+      "range" : {
+        "max" : 1,
+        "min" : 0.5
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0,
+      "id" : "hueShift",
+      "label" : "Hue Shift",
+      "range" : {
+        "max" : 180,
+        "min" : -180
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "oceans3036Frag",
+    "shaderFile" : "Oceans3036.metal",
+    "timeScale" : 1,
+    "type" : "rawMetal",
+    "vertexFunction" : "fullscreenVertex"
+  },
+  "shaderArguments" : [
+
+  ],
+  "version" : "1.0.0"
+}

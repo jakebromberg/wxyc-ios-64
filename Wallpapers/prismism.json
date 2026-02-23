@@ -1,0 +1,110 @@
+{
+  "accent" : {
+    "brightness" : 0.7759562841530054,
+    "hue" : 154.4262295081967,
+    "saturation" : 0.5553072625698324
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "Prismism",
+  "id" : "prismism",
+  "material" : {
+    "blurRadius" : 19.179105162620544,
+    "foreground" : "dark",
+    "overlay" : {
+      "darkness" : 0.5049751400947571,
+      "opacity" : 0.31393036246299744
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 0.5223881,
+      "id" : "highlightCompression",
+      "label" : "Highlight Compression",
+      "range" : {
+        "max" : 2,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 23.861937,
+      "id" : "waveScale",
+      "label" : "Wave Scale",
+      "range" : {
+        "max" : 50,
+        "min" : 5
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 1.9581853,
+      "id" : "iterationDivisor",
+      "label" : "Iteration Divisor",
+      "range" : {
+        "max" : 2.5,
+        "min" : 1.2
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.09177707,
+      "id" : "colorEnhancement",
+      "label" : "Color Enhancement",
+      "range" : {
+        "max" : 0.5,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 26.74627,
+      "id" : "timeScale",
+      "label" : "Time Speed",
+      "range" : {
+        "max" : 64,
+        "min" : 16
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "prismismFrag",
+    "functionName" : "prismism",
+    "shaderFile" : "Prismism.metal",
+    "type" : "stitchable"
+  },
+  "shaderArguments" : [
+    {
+      "source" : "viewWidth"
+    },
+    {
+      "source" : "viewHeight"
+    },
+    {
+      "source" : "time"
+    },
+    {
+      "id" : "highlightCompression",
+      "source" : "parameter"
+    },
+    {
+      "id" : "waveScale",
+      "source" : "parameter"
+    },
+    {
+      "id" : "iterationDivisor",
+      "source" : "parameter"
+    },
+    {
+      "id" : "colorEnhancement",
+      "source" : "parameter"
+    },
+    {
+      "id" : "timeScale",
+      "source" : "parameter"
+    }
+  ],
+  "version" : "1.0.0"
+}

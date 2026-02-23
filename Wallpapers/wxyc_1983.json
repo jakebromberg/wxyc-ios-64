@@ -1,0 +1,30 @@
+{
+  "accent" : {
+    "brightness" : 1,
+    "hue" : 23,
+    "saturation" : 0.75
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "WXYC 1983",
+  "id" : "wxyc_1983",
+  "material" : {
+    "blurRadius" : 8,
+    "foreground" : "light",
+    "overlay" : {
+      "darkness" : 1,
+      "opacity" : 0.13368818163871765
+    }
+  },
+  "parameters" : [
+
+  ],
+  "renderer" : {
+    "type" : "swiftUI"
+  },
+  "shaderArguments" : [
+
+  ],
+  "version" : "1.0.0"
+}

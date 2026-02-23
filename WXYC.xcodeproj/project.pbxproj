@@ -195,6 +195,7 @@
 		23A10B252EF5F166001EF137 /* Exceptions for "WXYC" folder in "WXYCUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				iOS/Tests/WXYCUITests/MarketingRecordingUITests.swift,
 				iOS/Tests/WXYCUITests/PlaybackButtonObservationUITests.swift,
 				iOS/Tests/WXYCUITests/PlaybackUITests.swift,
 				iOS/Tests/WXYCUITests/PlayWXYCIntentUITests.swift,
@@ -239,6 +240,7 @@
 				iOS/Tests/WXYCTests/PlayWXYCIntentTests.swift,
 				iOS/Tests/WXYCTests/ScaledRenderTargetTests.swift,
 				iOS/Tests/WXYCTests/WallpaperPickerTests.swift,
+				iOS/Tests/WXYCUITests/MarketingRecordingUITests.swift,
 				iOS/Tests/WXYCUITests/PlaybackButtonObservationUITests.swift,
 				iOS/Tests/WXYCUITests/PlaybackUITests.swift,
 				iOS/Tests/WXYCUITests/PlayWXYCIntentUITests.swift,

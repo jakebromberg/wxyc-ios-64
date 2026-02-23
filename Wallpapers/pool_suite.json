@@ -1,0 +1,112 @@
+{
+  "accent" : {
+    "brightness" : 1,
+    "hue" : 161.80327868852456,
+    "saturation" : 0.26092896174863384
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "Pool Suite",
+  "id" : "pool_suite",
+  "material" : {
+    "blurRadius" : 8,
+    "foreground" : "light",
+    "overlay" : {
+      "darkness" : 0,
+      "opacity" : 0
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 0.06,
+      "id" : "tileColorR",
+      "label" : "Tile Red",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.76,
+      "id" : "tileColorG",
+      "label" : "Tile Green",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.78,
+      "id" : "tileColorB",
+      "label" : "Tile Blue",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.8,
+      "id" : "refractIndex",
+      "label" : "Refract Index",
+      "range" : {
+        "max" : 1,
+        "min" : 0.5
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.25,
+      "id" : "cubeTintR",
+      "label" : "Cube Tint Red",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.75,
+      "id" : "cubeTintG",
+      "label" : "Cube Tint Green",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 1,
+      "id" : "cubeTintB",
+      "label" : "Cube Tint Blue",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.15,
+      "id" : "noiseStrength",
+      "label" : "Noise Strength",
+      "range" : {
+        "max" : 0.3,
+        "min" : 0.05
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "poolSuiteFrag",
+    "timeScale" : 1,
+    "type" : "rawMetal",
+    "vertexFunction" : "fullscreenVertex"
+  },
+  "shaderArguments" : [
+
+  ],
+  "version" : "1.0.0"
+}

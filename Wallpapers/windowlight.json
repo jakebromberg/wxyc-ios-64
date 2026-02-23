@@ -1,0 +1,114 @@
+{
+  "accent" : {
+    "brightness" : 1,
+    "hue" : 23,
+    "saturation" : 0.2322404371584699
+  },
+  "button" : {
+    "darkness" : 0.5,
+    "opacity" : 0.15,
+    "style" : "glass"
+  },
+  "displayName" : "Windowlight",
+  "id" : "windowlight",
+  "material" : {
+    "blurRadius" : 4,
+    "foreground" : "dark",
+    "overlay" : {
+      "darkness" : 1,
+      "opacity" : 0.16467662155628204
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 1,
+      "id" : "warmLightR",
+      "label" : "Warm Light Red",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.85,
+      "id" : "warmLightG",
+      "label" : "Warm Light Green",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.6,
+      "id" : "warmLightB",
+      "label" : "Warm Light Blue",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.15,
+      "id" : "coolShadowR",
+      "label" : "Cool Shadow Red",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.2,
+      "id" : "coolShadowG",
+      "label" : "Cool Shadow Green",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.35,
+      "id" : "coolShadowB",
+      "label" : "Cool Shadow Blue",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 6,
+      "id" : "maxBlur",
+      "label" : "Max Blur",
+      "range" : {
+        "max" : 10,
+        "min" : 3
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 2,
+      "id" : "minBlur",
+      "label" : "Min Blur",
+      "range" : {
+        "max" : 4,
+        "min" : 0
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "windowlightFragment",
+    "timeScale" : 1,
+    "type" : "rawMetal",
+    "vertexFunction" : "fullscreenVertex"
+  },
+  "shaderArguments" : [
+
+  ],
+  "version" : "1.0.0"
+}

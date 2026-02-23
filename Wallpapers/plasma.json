@@ -1,0 +1,138 @@
+{
+  "accent" : {
+    "brightness" : 0.95,
+    "hue" : 65,
+    "saturation" : 0.55
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "Plasma",
+  "id" : "plasma",
+  "material" : {
+    "blurRadius" : 17.858208417892456,
+    "foreground" : "dark",
+    "overlay" : {
+      "darkness" : 0.3420397937297821,
+      "opacity" : 0.5634328126907349
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 6,
+      "id" : "patternScale",
+      "label" : "Pattern Scale",
+      "range" : {
+        "max" : 12,
+        "min" : 2
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.3,
+      "id" : "colorAmplitude",
+      "label" : "Color Amplitude",
+      "range" : {
+        "max" : 0.5,
+        "min" : 0.1
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0,
+      "id" : "colorOffsetR",
+      "label" : "Color Offset R",
+      "range" : {
+        "max" : 6.28,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 2.1,
+      "id" : "colorOffsetG",
+      "label" : "Color Offset G",
+      "range" : {
+        "max" : 6.28,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 4.2,
+      "id" : "colorOffsetB",
+      "label" : "Color Offset B",
+      "range" : {
+        "max" : 6.28,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.5,
+      "id" : "waveThreeAmplitude",
+      "label" : "Wave 3 Amplitude",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 1,
+      "id" : "timeScale",
+      "label" : "Time Speed",
+      "range" : {
+        "max" : 2,
+        "min" : 0.5
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "plasmaFrag",
+    "functionName" : "plasma",
+    "shaderFile" : "Plasma.metal",
+    "type" : "stitchable"
+  },
+  "shaderArguments" : [
+    {
+      "source" : "viewWidth"
+    },
+    {
+      "source" : "viewHeight"
+    },
+    {
+      "source" : "time"
+    },
+    {
+      "id" : "patternScale",
+      "source" : "parameter"
+    },
+    {
+      "id" : "colorAmplitude",
+      "source" : "parameter"
+    },
+    {
+      "id" : "colorOffsetR",
+      "source" : "parameter"
+    },
+    {
+      "id" : "colorOffsetG",
+      "source" : "parameter"
+    },
+    {
+      "id" : "colorOffsetB",
+      "source" : "parameter"
+    },
+    {
+      "id" : "waveThreeAmplitude",
+      "source" : "parameter"
+    },
+    {
+      "id" : "timeScale",
+      "source" : "parameter"
+    }
+  ],
+  "version" : "1.0.0"
+}

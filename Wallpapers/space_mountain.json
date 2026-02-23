@@ -1,0 +1,138 @@
+{
+  "accent" : {
+    "brightness" : 0.8155737704918032,
+    "hue" : 229.18032786885243,
+    "saturation" : 0.6898907103825136
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "Space Mountain",
+  "id" : "space_mountain",
+  "material" : {
+    "blurRadius" : 11.126260757446289,
+    "foreground" : "dark",
+    "overlay" : {
+      "darkness" : 0.6355721354484558,
+      "opacity" : 0.611940324306488
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 10,
+      "id" : "bandCount",
+      "label" : "Band Count",
+      "range" : {
+        "max" : 20,
+        "min" : 5
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 1.25,
+      "id" : "lineWidthScale",
+      "label" : "Line Width",
+      "range" : {
+        "max" : 3,
+        "min" : 0.5
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.5,
+      "id" : "glowBrightness",
+      "label" : "Glow Brightness",
+      "range" : {
+        "max" : 2,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.7,
+      "id" : "targetHue",
+      "label" : "Target Hue",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.3,
+      "id" : "hueRange",
+      "label" : "Hue Range",
+      "range" : {
+        "max" : 0.5,
+        "min" : 0.1
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 5,
+      "id" : "noiseFrequency",
+      "label" : "Noise Frequency",
+      "range" : {
+        "max" : 10,
+        "min" : 2
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.01,
+      "id" : "timeScale",
+      "label" : "Time Speed",
+      "range" : {
+        "max" : 0.05,
+        "min" : 0.005
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "spaceMountainFrag",
+    "functionName" : "spaceMountain",
+    "shaderFile" : "SpaceMountain.metal",
+    "type" : "stitchable"
+  },
+  "shaderArguments" : [
+    {
+      "source" : "viewWidth"
+    },
+    {
+      "source" : "viewHeight"
+    },
+    {
+      "source" : "time"
+    },
+    {
+      "id" : "bandCount",
+      "source" : "parameter"
+    },
+    {
+      "id" : "lineWidthScale",
+      "source" : "parameter"
+    },
+    {
+      "id" : "glowBrightness",
+      "source" : "parameter"
+    },
+    {
+      "id" : "targetHue",
+      "source" : "parameter"
+    },
+    {
+      "id" : "hueRange",
+      "source" : "parameter"
+    },
+    {
+      "id" : "noiseFrequency",
+      "source" : "parameter"
+    },
+    {
+      "id" : "timeScale",
+      "source" : "parameter"
+    }
+  ],
+  "version" : "1.0.0"
+}

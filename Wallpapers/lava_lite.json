@@ -1,0 +1,42 @@
+{
+  "accent" : {
+    "brightness" : 0.85,
+    "hue" : 135,
+    "saturation" : 0.55
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "Lava Lite",
+  "id" : "lava_lite",
+  "material" : {
+    "blurRadius" : 18.604477643966675,
+    "foreground" : "dark",
+    "overlay" : {
+      "darkness" : 0.5174129605293274,
+      "opacity" : 0.751741349697113
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 0.83830845,
+      "id" : "brightness",
+      "label" : "Brightness",
+      "range" : {
+        "max" : 2,
+        "min" : 0
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "lavaLiteFragment",
+    "timeScale" : 0.5,
+    "type" : "rawMetal",
+    "vertexFunction" : "fullscreenVertex"
+  },
+  "shaderArguments" : [
+
+  ],
+  "version" : "1.0.0"
+}

@@ -1,0 +1,112 @@
+{
+  "accent" : {
+    "brightness" : 0.7131147540983607,
+    "hue" : 185.40983606557376,
+    "saturation" : 0.6666666666666665
+  },
+  "button" : {
+    "style" : "colored"
+  },
+  "displayName" : "The Plastic Pulse",
+  "id" : "plastic_pulse",
+  "material" : {
+    "blurRadius" : 16.582090258598328,
+    "foreground" : "dark",
+    "overlay" : {
+      "darkness" : 0.5534825921058655,
+      "opacity" : 0.603233814239502
+    }
+  },
+  "parameters" : [
+    {
+      "default" : 1.2,
+      "id" : "yellowIntensity",
+      "label" : "Yellow",
+      "range" : {
+        "max" : 3,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.7,
+      "id" : "magentaIntensity",
+      "label" : "Magenta",
+      "range" : {
+        "max" : 3,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.6,
+      "id" : "cyanIntensity",
+      "label" : "Cyan",
+      "range" : {
+        "max" : 3,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0,
+      "id" : "blueIntensity",
+      "label" : "Blue",
+      "range" : {
+        "max" : 3,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.24875621,
+      "id" : "ambientLevel",
+      "label" : "Ambient",
+      "range" : {
+        "max" : 2,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.14079604,
+      "id" : "glowAmount",
+      "label" : "Glow",
+      "range" : {
+        "max" : 1,
+        "min" : 0
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 2,
+      "id" : "voronoiScale",
+      "label" : "Cell Scale",
+      "range" : {
+        "max" : 4,
+        "min" : 1
+      },
+      "type" : "float"
+    },
+    {
+      "default" : 0.5,
+      "id" : "cellAnimSpeed",
+      "label" : "Cell Anim Speed",
+      "range" : {
+        "max" : 1,
+        "min" : 0.2
+      },
+      "type" : "float"
+    }
+  ],
+  "renderer" : {
+    "fragmentFunction" : "plasticPulseFragment",
+    "timeScale" : 1,
+    "type" : "rawMetal",
+    "vertexFunction" : "fullscreenVertex"
+  },
+  "shaderArguments" : [
+
+  ],
+  "version" : "1.0.0"
+}
