@@ -21,8 +21,8 @@ struct ThemeCarouselView: View {
     @Bindable var pickerState: ThemePickerState
     let screenSize: CGSize
 
-    /// The photo storage for the photo picker card.
-    let photoStorage: PhotoBackgroundStorageProtocol
+    /// The photo storage for the photo picker card, injected via environment.
+    @Environment(\.photoBackgroundStorage) private var photoStorage
 
     /// Scale factor for theme cards relative to screen size.
     private let cardScale: CGFloat = 0.75
@@ -69,18 +69,18 @@ struct ThemeCarouselView: View {
                     }
 
                     // Photo picker card at the end
-                    PhotoPickerCard(
+                    PhotoCarouselCard(
                         storage: photoStorage,
                         cardSize: cardSize,
                         cornerRadius: cardCornerRadius,
-                        onPhotoSaved: {
-                            pickerState.refreshPhotoTheme(storage: photoStorage)
+                        photoCardIndex: photoCardIndex,
+                        onPhotoSaved: { storage in
+                            pickerState.refreshPhotoTheme(storage: storage)
+                        },
+                        onTap: {
+                            handleCardTap(at: photoCardIndex)
                         }
                     )
-                    .id(photoCardIndex)
-                    .onTapGesture {
-                        handleCardTap(at: photoCardIndex)
-                    }
                 }
                 .scrollTargetLayout()
             }
@@ -101,8 +101,7 @@ struct ThemeCarouselView: View {
                     scrollOffset: newOffset,
                     cardWidth: cardSize.width,
                     cardSpacing: cardSpacing,
-                    horizontalPadding: (screenSize.width - cardSize.width) / 2,
-                    includesPhotoCard: true
+                    horizontalPadding: (screenSize.width - cardSize.width) / 2
                 )
             }
             .onChange(of: pickerState.carouselIndex) { _, newIndex in
@@ -146,6 +145,30 @@ struct ThemeCarouselView: View {
         withAnimation(.spring(duration: 0.5, bounce: 0.2)) {
             pickerState.confirmSelection(to: configuration)
             pickerState.exit()
+        }
+    }
+}
+
+/// Extracted view for the photo picker card to help the Swift type-checker
+/// with the complex `LazyHStack` body in `ThemeCarouselView`.
+private struct PhotoCarouselCard: View {
+    let storage: PhotoBackgroundStorageProtocol?
+    let cardSize: CGSize
+    let cornerRadius: CGFloat
+    let photoCardIndex: Int
+    var onPhotoSaved: ((PhotoBackgroundStorageProtocol) -> Void)?
+    var onTap: (() -> Void)?
+
+    var body: some View {
+        if let storage {
+            PhotoPickerCard(
+                storage: storage,
+                cardSize: cardSize,
+                cornerRadius: cornerRadius,
+                onPhotoSaved: { onPhotoSaved?(storage) }
+            )
+            .id(photoCardIndex)
+            .onTapGesture { onTap?() }
         }
     }
 }

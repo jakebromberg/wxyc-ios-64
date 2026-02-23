@@ -298,6 +298,7 @@ public enum RendererType: String, Codable, Sendable {
     case composite
     case swiftUI
     case compute
+    case photo
 }
 
 // MARK: - Overlay Configuration

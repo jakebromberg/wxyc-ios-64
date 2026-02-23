@@ -127,6 +127,19 @@ public final class ThemePickerState {
     /// Current theme transition state during picker scrolling.
     public private(set) var themeTransition: ThemeTransition?
 
+    /// The loaded photo theme, if a photo background is available.
+    public private(set) var photoTheme: LoadedTheme?
+
+    /// Refreshes the photo theme from the given storage.
+    /// Call after a new photo is saved so the carousel reflects the update.
+    public func refreshPhotoTheme(storage: PhotoBackgroundStorageProtocol) {
+        if storage.hasPhoto {
+            photoTheme = PhotoThemeFactory.makeTheme(storage: storage)
+        } else {
+            photoTheme = nil
+        }
+    }
+
     // MARK: - Dependencies
 
     /// Theme registry for looking up themes.

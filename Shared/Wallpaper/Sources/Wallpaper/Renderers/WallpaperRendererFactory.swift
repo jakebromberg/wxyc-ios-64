@@ -35,6 +35,23 @@ public enum WallpaperRendererFactory {
         case .compute:
             // Compute-based wallpapers (particle simulations, physarum, etc.)
             MetalWallpaperView(theme: theme)
+
+        case .photo:
+            PhotoRendererView()
+        }
+    }
+}
+
+/// Wrapper that reads `PhotoBackgroundStorageProtocol` from the environment
+/// and delegates to ``PhotoBackgroundView``.
+private struct PhotoRendererView: View {
+    @Environment(\.photoBackgroundStorage) private var storage
+
+    var body: some View {
+        if let storage {
+            PhotoBackgroundView(storage: storage)
+        } else {
+            Color.black.ignoresSafeArea()
         }
     }
 }
